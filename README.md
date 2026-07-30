@@ -41,9 +41,17 @@ Two consequences worth holding on to:
 
 ## Changing policy
 
-CI checks that every document parses and matches the shape FluxOS expects. That check is the one
-thing worth blocking on: a malformed document is rejected by every node on the network, and for the
-whitelist that means refusing every image.
+Open a PR. `main` refuses direct pushes, including from admins, because the `validate` check has to
+pass first and it cannot run against a commit that has not been pushed anywhere.
+
+No reviewer is required — merge your own PR once CI is green, which takes about fifteen seconds.
+That is deliberate: the moment you most need to change policy is during an incident, and a rule
+requiring a second person is one that gets bypassed at 3am. A rule one person can satisfy alone
+does not.
+
+The check is the point of the rule, not the PR. A malformed document is rejected by every node on
+the network, and for the whitelist that means refusing every image — so the one mistake worth
+preventing here is a shape error, which four trusted people can make as easily as anyone.
 
 There is deliberately no review requirement. Write access here is already limited to the org owners
 — narrower than the application repo this was split out of — and everyone who has it is an admin, so
