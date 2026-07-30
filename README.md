@@ -41,13 +41,16 @@ Two consequences worth holding on to:
 
 ## Changing policy
 
-Open a PR. One approval from the code owners is required and CI must pass. Both are deliberately
-light: the moment you most need to push a block is during an incident, and a rule that cannot be
-satisfied at 3am is a rule people learn to bypass.
+CI checks that every document parses and matches the shape FluxOS expects. That check is the one
+thing worth blocking on: a malformed document is rejected by every node on the network, and for the
+whitelist that means refusing every image.
 
-CI checks that every document parses and matches its expected shape. A malformed document would
-otherwise be rejected by every node on the network, which for the whitelist means refusing every
-image.
+There is deliberately no review requirement. Write access here is already limited to the org owners
+— narrower than the application repo this was split out of — and everyone who has it is an admin, so
+a review rule among them would be a convention rather than a control. The protection that mattered
+was the split itself: a merge to `RunOnFlux/flux` can no longer change what the fleet enforces as a
+side effect of unrelated work, which is exactly how a tidy-up commit once removed a policy document
+from under the whole network.
 
 **While the migration is in progress, changes must also be applied to `RunOnFlux/flux` under
 `helpers/`.** Nodes on releases predating the switch still read from there, and they are most of the

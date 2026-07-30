@@ -1,11 +1,17 @@
-# Everything in this repo is fleet policy, including the workflow that validates it and this file
-# itself — so ownership is repo-wide rather than per-document. A narrower rule would let someone
-# change the rules in the same PR that changes the policy.
+# Intentionally empty.
 #
-# CODEOWNERS is only enforced when the branch protection rule on the default branch has
-# "Require review from Code Owners" enabled. Without that toggle this file only auto-requests
-# reviewers, and does not require them.
+# Write access to this repo is already limited to the org owners, which is a narrower set
+# than the application repo it was split out of. A code-owner rule on top of that would add
+# nothing: everyone who can push here is an admin, and admins bypass review unless the branch
+# rule also disallows bypassing — so the requirement would be a convention among the same
+# handful of people, not a control.
 #
-# The team must exist and must have write access to this repo, or GitHub treats the entry as
-# unresolvable and requests nobody.
-* @RunOnFlux/policy-owners
+# It becomes worth adding the day someone outside the org owners curates these documents:
+# create a team, grant it Write (Read is silently ignored — GitHub treats an owner without
+# write access as unresolvable and requests nobody), enable "Require review from Code Owners"
+# on main, and uncomment the line below.
+#
+# Own `*` rather than the documents alone, so that this file and the CI workflow are covered
+# by the same rule; otherwise one PR can remove the requirement and change policy together.
+#
+# * @RunOnFlux/policy-owners
