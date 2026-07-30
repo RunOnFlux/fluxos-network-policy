@@ -16,6 +16,7 @@ default branch.
 | `blockedrepositories.json` | images, app owners and app hashes that may not run anywhere | array of strings |
 | `enterprisenodes.json` | which app owners may install on which enterprise nodes | object of node pubkey → array of owner addresses |
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
+| `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
 | `iplocation.json` | the IP → (organisation, country) table placement uses to count fault domains | generated artifact, see below |
 
 Entries in `blockedrepositories.json` are matched against an image reference with its tag or digest

@@ -19,6 +19,7 @@ const UPSTREAM = 'https://raw.githubusercontent.com/RunOnFlux/flux/master/helper
 
 const DOCUMENTS = [
   'blockedrepositories.json',
+  'vettedrepositories.json',
   'tamperingblockednodes.json',
   'enterprisenodes.json',
 ];
