@@ -78,6 +78,13 @@ The artifact is self-describing (`format`, `generated`, per-registry source seri
 cannot resolve an address in the table falls back to /16 arithmetic, which errs toward refusing
 placement — the failure mode is the pre-table status quo, never over-concentration.
 
+Two deliberate compactions, both revisitable: the artifact carries **IPv4 only** (no Flux node has
+an IPv6 address; a v6 lookup falls back strict; reinstate the `v6` section when v6 nodes can
+exist), and organisation identity is a **12-hex-char token** of the registry-scoped org id —
+nothing reads the id's content, distinctness is all that placement needs. Adjacent ranges of the
+same organisation, country and region are merged; org-less ranges keep their registry boundaries
+because for them the boundary is the fault domain.
+
 ## Changing policy
 
 Open a PR. `main` refuses direct pushes, including from admins, because the `validate` check has to

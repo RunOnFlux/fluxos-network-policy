@@ -1,38 +1,21 @@
 {
-  "started": "2026-07-30T11:11:51.524Z",
+  "started": "2026-07-30T12:52:23.769Z",
   "malformedRows": [],
   "overlaps": [
     "v4: [3497658880-3497659391] vs [3497659136-3497659391]"
   ],
+  "mergedRows": 31182,
   "fleet": {
-    "blocks": 513,
+    "blocks": 512,
     "disputedBlocks": 60
   },
   "corrections": [
     {
-      "block": "82.165.0.0-82.165.255.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FR",
+      "block": "152.53.0.0-152.53.255.255",
+      "delegated": "AT",
+      "fleetSelfReport": "DE",
       "nodes": 11,
-      "rdapCountry": "DE",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "95.216.0.0-95.217.255.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FI",
-      "nodes": 46,
-      "rdapCountry": "FI",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "149.154.176.0-149.154.177.255",
-      "delegated": "GB",
-      "fleetSelfReport": "ES",
-      "nodes": 273,
-      "rdapCountry": "ES",
+      "rdapCountry": "AT",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -46,11 +29,11 @@
       "applied": "rdap"
     },
     {
-      "block": "87.106.0.0-87.106.255.255",
+      "block": "65.21.0.0-65.21.255.255",
       "delegated": "DE",
-      "fleetSelfReport": "FR",
-      "nodes": 2,
-      "rdapCountry": "DE",
+      "fleetSelfReport": "FI",
+      "nodes": 43,
+      "rdapCountry": "FI",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -60,15 +43,6 @@
       "fleetSelfReport": "FI",
       "nodes": 494,
       "rdapCountry": "FI",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "152.53.0.0-152.53.255.255",
-      "delegated": "AT",
-      "fleetSelfReport": "DE",
-      "nodes": 11,
-      "rdapCountry": "AT",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -91,11 +65,29 @@
       "applied": "rdap"
     },
     {
-      "block": "217.76.48.0-217.76.63.255",
+      "block": "95.216.0.0-95.217.255.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FI",
+      "nodes": 46,
+      "rdapCountry": "FI",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "82.165.0.0-82.165.255.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FR",
+      "nodes": 11,
+      "rdapCountry": "DE",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "217.154.14.0-217.154.15.255",
       "delegated": "DE",
       "fleetSelfReport": "FR",
       "nodes": 1,
-      "rdapCountry": "DE",
+      "rdapCountry": "FR",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -105,6 +97,24 @@
       "fleetSelfReport": "EE",
       "nodes": 1,
       "rdapCountry": "EE",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "149.154.176.0-149.154.177.255",
+      "delegated": "GB",
+      "fleetSelfReport": "ES",
+      "nodes": 269,
+      "rdapCountry": "ES",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "157.173.96.0-157.173.127.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FR",
+      "nodes": 1,
+      "rdapCountry": "DE",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -123,6 +133,15 @@
       "fleetSelfReport": "IT",
       "nodes": 1,
       "rdapCountry": "FR",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "87.106.0.0-87.106.255.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FR",
+      "nodes": 2,
+      "rdapCountry": "DE",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -154,24 +173,6 @@
       "applied": "rdap"
     },
     {
-      "block": "217.154.14.0-217.154.15.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FR",
-      "nodes": 1,
-      "rdapCountry": "FR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "157.173.96.0-157.173.127.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FR",
-      "nodes": 1,
-      "rdapCountry": "DE",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
       "block": "85.159.208.0-85.159.215.255",
       "delegated": "US",
       "fleetSelfReport": "GB",
@@ -181,20 +182,20 @@
       "applied": "rdap"
     },
     {
-      "block": "65.21.0.0-65.21.255.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FI",
-      "nodes": 43,
-      "rdapCountry": "FI",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
       "block": "155.4.0.0-155.4.255.255",
       "delegated": "NO",
       "fleetSelfReport": "SE",
       "nodes": 1,
       "rdapCountry": "NO",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "217.76.48.0-217.76.63.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FR",
+      "nodes": 1,
+      "rdapCountry": "DE",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -244,73 +245,10 @@
       "applied": "rdap"
     },
     {
-      "block": "135.181.0.0-135.181.255.255",
-      "delegated": "DE",
-      "fleetSelfReport": "FI",
-      "nodes": 14,
-      "rdapCountry": "FI",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "103.65.230.0-103.65.231.255",
-      "delegated": "BG",
-      "fleetSelfReport": "NL",
-      "nodes": 1,
-      "rdapCountry": "US",
-      "geofeed": "https://virterion.com/geofeeds.csv",
-      "applied": "rdap+geofeed"
-    },
-    {
-      "block": "188.213.140.0-188.213.143.255",
-      "delegated": "FR",
-      "fleetSelfReport": "NL",
-      "nodes": 7,
-      "rdapCountry": "FR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "193.124.176.0-193.124.191.255",
-      "delegated": "VG",
-      "fleetSelfReport": "FI",
-      "nodes": 1,
-      "rdapCountry": "RU",
-      "geofeed": "https://geofeed.power-servers.net/ih_geofeed.csv",
-      "applied": "rdap+geofeed"
-    },
-    {
-      "block": "87.98.128.0-87.98.255.255",
-      "delegated": "FR",
-      "fleetSelfReport": "PL",
-      "nodes": 5,
-      "rdapCountry": "FR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "5.39.0.0-5.39.127.255",
-      "delegated": "FR",
-      "fleetSelfReport": "CZ",
-      "nodes": 1,
-      "rdapCountry": "FR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
-      "block": "178.32.0.0-178.33.255.255",
-      "delegated": "FR",
-      "fleetSelfReport": "BE",
-      "nodes": 5,
-      "rdapCountry": "FR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
       "block": "149.154.182.0-149.154.183.255",
       "delegated": "GB",
       "fleetSelfReport": "ES",
-      "nodes": 34,
+      "nodes": 35,
       "rdapCountry": "ES",
       "geofeed": null,
       "applied": "rdap"
@@ -341,6 +279,24 @@
       "rdapCountry": "FI",
       "geofeed": null,
       "applied": "rdap"
+    },
+    {
+      "block": "188.213.140.0-188.213.143.255",
+      "delegated": "FR",
+      "fleetSelfReport": "NL",
+      "nodes": 7,
+      "rdapCountry": "FR",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "103.65.230.0-103.65.231.255",
+      "delegated": "BG",
+      "fleetSelfReport": "NL",
+      "nodes": 1,
+      "rdapCountry": "US",
+      "geofeed": "https://virterion.com/geofeeds.csv",
+      "applied": "rdap+geofeed"
     },
     {
       "block": "161.97.64.0-161.97.127.255",
@@ -388,20 +344,20 @@
       "applied": "rdap"
     },
     {
-      "block": "81.31.224.0-81.31.255.255",
-      "delegated": "IR",
-      "fleetSelfReport": "RU",
-      "nodes": 1,
-      "rdapCountry": "IR",
-      "geofeed": null,
-      "applied": "rdap"
-    },
-    {
       "block": "89.117.72.0-89.117.79.255",
       "delegated": "LT",
       "fleetSelfReport": "US",
       "nodes": 1,
       "rdapCountry": "LT",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "81.31.224.0-81.31.255.255",
+      "delegated": "IR",
+      "fleetSelfReport": "RU",
+      "nodes": 1,
+      "rdapCountry": "IR",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -415,29 +371,20 @@
       "applied": "rdap"
     },
     {
-      "block": "185.243.214.0-185.243.215.255",
-      "delegated": "CY",
-      "fleetSelfReport": "SE",
-      "nodes": 2,
-      "rdapCountry": "GR",
-      "geofeed": "https://www.mvps.net/api/geolocation.php",
-      "applied": "rdap+geofeed"
-    },
-    {
-      "block": "185.96.163.0-185.96.163.255",
-      "delegated": "CY",
-      "fleetSelfReport": "SE",
-      "nodes": 3,
-      "rdapCountry": "SE",
-      "geofeed": "https://www.mvps.net/api/geolocation.php",
-      "applied": "rdap+geofeed"
-    },
-    {
       "block": "185.202.236.0-185.202.239.255",
       "delegated": "DE",
       "fleetSelfReport": "FR",
       "nodes": 1,
       "rdapCountry": "DE",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "135.181.0.0-135.181.255.255",
+      "delegated": "DE",
+      "fleetSelfReport": "FI",
+      "nodes": 14,
+      "rdapCountry": "FI",
       "geofeed": null,
       "applied": "rdap"
     },
@@ -478,13 +425,31 @@
       "applied": "rdap"
     },
     {
-      "block": "149.22.0.0-149.22.255.255",
-      "delegated": "US",
-      "fleetSelfReport": "GB",
-      "nodes": 1,
-      "rdapCountry": null,
+      "block": "87.98.128.0-87.98.255.255",
+      "delegated": "FR",
+      "fleetSelfReport": "PL",
+      "nodes": 5,
+      "rdapCountry": "FR",
       "geofeed": null,
-      "applied": "none"
+      "applied": "rdap"
+    },
+    {
+      "block": "5.39.0.0-5.39.127.255",
+      "delegated": "FR",
+      "fleetSelfReport": "CZ",
+      "nodes": 1,
+      "rdapCountry": "FR",
+      "geofeed": null,
+      "applied": "rdap"
+    },
+    {
+      "block": "178.32.0.0-178.33.255.255",
+      "delegated": "FR",
+      "fleetSelfReport": "BE",
+      "nodes": 5,
+      "rdapCountry": "FR",
+      "geofeed": null,
+      "applied": "rdap"
     },
     {
       "block": "212.71.244.0-212.71.247.255",
@@ -514,12 +479,30 @@
       "applied": "rdap"
     },
     {
-      "block": "91.239.23.0-91.239.23.255",
-      "delegated": "RU",
-      "fleetSelfReport": "LV",
+      "block": "193.124.176.0-193.124.191.255",
+      "delegated": "VG",
+      "fleetSelfReport": "FI",
       "nodes": 1,
-      "rdapCountry": "LV",
-      "geofeed": "https://vdc.ru/geo/geofeed.csv",
+      "rdapCountry": "RU",
+      "geofeed": "https://geofeed.power-servers.net/ih_geofeed.csv",
+      "applied": "rdap+geofeed"
+    },
+    {
+      "block": "185.96.163.0-185.96.163.255",
+      "delegated": "CY",
+      "fleetSelfReport": "SE",
+      "nodes": 3,
+      "rdapCountry": "SE",
+      "geofeed": "https://www.mvps.net/api/geolocation.php",
+      "applied": "rdap+geofeed"
+    },
+    {
+      "block": "185.243.214.0-185.243.215.255",
+      "delegated": "CY",
+      "fleetSelfReport": "SE",
+      "nodes": 2,
+      "rdapCountry": "GR",
+      "geofeed": "https://www.mvps.net/api/geolocation.php",
       "applied": "rdap+geofeed"
     },
     {
@@ -532,13 +515,13 @@
       "applied": "rdap+geofeed"
     },
     {
-      "block": "149.40.0.0-149.40.255.255",
-      "delegated": "US",
-      "fleetSelfReport": "GB",
+      "block": "91.239.23.0-91.239.23.255",
+      "delegated": "RU",
+      "fleetSelfReport": "LV",
       "nodes": 1,
-      "rdapCountry": null,
-      "geofeed": "https://geoip-feed.network.as212655.net/geoip.csv",
-      "applied": "geofeed"
+      "rdapCountry": "LV",
+      "geofeed": "https://vdc.ru/geo/geofeed.csv",
+      "applied": "rdap+geofeed"
     },
     {
       "block": "154.61.0.0-154.61.255.255",
@@ -548,12 +531,30 @@
       "rdapCountry": null,
       "geofeed": null,
       "applied": "none"
+    },
+    {
+      "block": "149.22.0.0-149.22.255.255",
+      "delegated": "US",
+      "fleetSelfReport": "GB",
+      "nodes": 1,
+      "rdapCountry": null,
+      "geofeed": null,
+      "applied": "none"
+    },
+    {
+      "block": "149.40.0.0-149.40.255.255",
+      "delegated": "US",
+      "fleetSelfReport": "GB",
+      "nodes": 1,
+      "rdapCountry": null,
+      "geofeed": "https://geoip-feed.network.as212655.net/geoip.csv",
+      "applied": "geofeed"
     }
   ],
   "validation": {
-    "fleetIps": 2968,
-    "joined": 2897,
-    "agree": 2694,
+    "fleetIps": 2963,
+    "joined": 2732,
+    "agree": 2529,
     "disagreements": {
       "US->CA": 130,
       "DE->FR": 27,
@@ -569,23 +570,23 @@
       "MN->FI": 1,
       "FR->IT": 1,
       "NO->SE": 1,
-      "FR->FI": 1,
-      "FR->DE": 1,
       "LT->US": 1,
       "FR->RO": 1,
       "IR->RU": 1,
-      "US->FR": 1
+      "US->FR": 1,
+      "FR->FI": 1,
+      "FR->DE": 1
     },
     "continentMismatches": {}
   },
-  "finished": "2026-07-30T11:12:02.263Z",
+  "finished": "2026-07-30T12:52:30.400Z",
   "output": {
     "file": "iplocation.json",
-    "v4Rows": 260562,
-    "v6Rows": 70249,
+    "v4Rows": 229380,
+    "v6Rows": 0,
     "countries": 239,
-    "orgs": 110484,
+    "orgs": 103366,
     "regions": 10,
-    "bytes": 16771735
+    "bytes": 8956714
   }
 }

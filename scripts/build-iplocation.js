@@ -26,6 +26,7 @@
 //   node scripts/build-iplocation.js [--out iplocation.json]
 //     [--cache-dir .cache] [--no-corrections] [--report build-report.json]
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
@@ -133,23 +134,6 @@ function ipv6ToBigInt(ip) {
   return value;
 }
 
-function bigIntToIpv6(value) {
-  const groups = [];
-  for (let i = 7; i >= 0; i -= 1) {
-    groups.push(Number((value >> BigInt(i * 16)) & 0xffffn).toString(16));
-  }
-  let bestStart = -1;
-  let bestLen = 0;
-  for (let i = 0; i < groups.length; i += 1) {
-    if (groups[i] !== '0') continue;
-    let len = 0;
-    while (i + len < groups.length && groups[i + len] === '0') len += 1;
-    if (len > bestLen) { bestStart = i; bestLen = len; }
-  }
-  if (bestLen < 2) return groups.join(':');
-  return `${groups.slice(0, bestStart).join(':')}::${groups.slice(bestStart + bestLen).join(':')}`;
-}
-
 async function fetchText(url, timeoutMs) {
   const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), redirect: 'follow' });
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
@@ -204,6 +188,9 @@ function parseDelegated(registry, text, sources, report) {
     if (status !== 'allocated' && status !== 'assigned') continue;
     const org = fields.length >= 8 && fields[7] ? `${registry}:${fields[7]}` : null;
     const country = /^[A-Z]{2}$/.test(cc) && cc !== 'ZZ' ? cc : null;
+    // ipv6 is deliberately not emitted: no Flux node has an IPv6 address, the
+    // reader treats a v6 miss as strict /32 fallback, and the rows would be
+    // ~40% of the artifact. Reinstate the section when v6 nodes can exist.
     if (type === 'ipv4') {
       const startInt = ipv4ToInt(start);
       const count = Number(value);
@@ -214,19 +201,9 @@ function parseDelegated(registry, text, sources, report) {
       v4.push({
         start: BigInt(startInt), end: BigInt(startInt + count - 1), cc: country, org, registry, source: 'delegated',
       });
-    } else if (type === 'ipv6') {
-      const startInt = ipv6ToBigInt(start);
-      const prefix = Number(value);
-      if (startInt === null || !Number.isInteger(prefix) || prefix < 0 || prefix > 128) {
-        report.malformedRows.push(`${registry}: ${line.slice(0, 120)}`);
-        continue;
-      }
-      v6.push({
-        start: startInt, end: startInt + (1n << BigInt(128 - prefix)) - 1n, cc: country, org, registry, source: 'delegated',
-      });
     }
   }
-  return { v4, v6 };
+  return { v4 };
 }
 
 // Sort and resolve overlaps, most-specific range wins: a range fully contained
@@ -435,6 +412,27 @@ async function correctFleetBlocks(v4, report) {
   return corrected;
 }
 
+// Merge adjacent ranges holding the same organisation, country and region.
+// Only rows WITH an organisation merge: their fault domain is the org, so the
+// block boundary carries no meaning. Org-less rows keep their registry
+// boundaries - for them the block IS the fault domain, and merging two
+// neighbouring allocations would collapse two real domains into one.
+function mergeSameOrg(ranges, report) {
+  const out = [];
+  for (const range of ranges) {
+    const prev = out[out.length - 1];
+    if (prev && prev.org !== null && prev.org === range.org
+      && prev.cc === range.cc && (prev.region ?? null) === (range.region ?? null)
+      && prev.end + 1n === range.start) {
+      prev.end = range.end;
+      report.mergedRows += 1;
+      continue;
+    }
+    out.push({ ...range });
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------------------
 // validation join against the live fleet
 
@@ -485,7 +483,15 @@ async function validate(v4, report) {
 // ---------------------------------------------------------------------------
 // artifact emit
 
-function emit(v4, v6, sources, outPath) {
+// Organisation identity ships as a 12-hex-char token (48 bits of the sha256 of
+// the registry-scoped id). Nothing reads the id's content - the token only has
+// to be distinct per organisation. 48 bits across ~110k orgs gives ~1e-5 odds
+// of any collision, and a collision merely merges two orgs into one domain.
+function orgToken(org) {
+  return crypto.createHash('sha256').update(org).digest('hex').slice(0, 12);
+}
+
+function emit(v4, sources, outPath) {
   const countries = new Map();
   const orgs = new Map();
   const regions = new Map();
@@ -494,13 +500,11 @@ function emit(v4, v6, sources, outPath) {
     if (!map.has(key)) map.set(key, map.size);
     return map.get(key);
   };
-  const rows = (ranges, toStr) => ranges.map((range) => {
-    const row = [toStr ? toStr(range.start) : Number(range.start), toStr ? toStr(range.end) : Number(range.end), index(orgs, range.org), index(countries, range.cc)];
+  const v4Rows = v4.map((range) => {
+    const row = [Number(range.start), Number(range.end), index(orgs, range.org === null ? null : orgToken(range.org)), index(countries, range.cc)];
     if (range.region) row.push(index(regions, range.region));
     return row;
   });
-  const v4Rows = rows(v4, null);
-  const v6Rows = rows(v6, bigIntToIpv6);
   const continents = {};
   for (const cc of countries.keys()) {
     if (CONTINENTS[cc]) continents[cc] = CONTINENTS[cc];
@@ -514,7 +518,7 @@ function emit(v4, v6, sources, outPath) {
     orgs: [...orgs.keys()],
     regions: [...regions.keys()],
     v4: v4Rows,
-    v6: v6Rows,
+    v6: [],
   };
   fs.writeFileSync(outPath, `${JSON.stringify(artifact)}\n`);
   return artifact;
@@ -528,6 +532,7 @@ async function main() {
     started: new Date().toISOString(),
     malformedRows: [],
     overlaps: [],
+    mergedRows: 0,
     fleet: {},
     corrections: [],
     validation: null,
@@ -535,27 +540,30 @@ async function main() {
   const sources = {};
 
   let v4 = [];
-  let v6 = [];
   for (const rir of RIRS) {
     const text = await cachedDownload(rir.url, args.cacheDir, `delegated-${rir.registry}.txt`); // eslint-disable-line no-await-in-loop
     const parsed = parseDelegated(rir.registry, text, sources, report);
     v4.push(...parsed.v4);
-    v6.push(...parsed.v6);
   }
-  process.stderr.write(`base: ${v4.length} v4 + ${v6.length} v6 allocated ranges\n`);
+  process.stderr.write(`base: ${v4.length} v4 allocated ranges\n`);
   v4 = normaliseRanges(v4, report, 'v4');
-  v6 = normaliseRanges(v6, report, 'v6');
   if (report.overlaps.length) process.stderr.write(`resolved ${report.overlaps.length} overlaps\n`);
 
   if (args.corrections) {
     v4 = await correctFleetBlocks(v4, report);
     process.stderr.write(`corrections: ${report.corrections.length} disputed blocks processed\n`);
+  }
+
+  v4 = mergeSameOrg(v4, report);
+  process.stderr.write(`merged ${report.mergedRows} same-organisation adjacent rows, ${v4.length} remain\n`);
+
+  if (args.corrections) {
     await validate(v4, report);
     const { validation } = report;
     process.stderr.write(`validation: ${validation.agree}/${validation.joined} fleet IPs agree with self-reports\n`);
   }
 
-  const artifact = emit(v4, v6, sources, args.out);
+  const artifact = emit(v4, sources, args.out);
   report.finished = new Date().toISOString();
   report.output = {
     file: path.relative(ROOT, args.out),
