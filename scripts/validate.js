@@ -27,6 +27,7 @@ function isNodeOwnerMap(value) {
 
 const DOCUMENTS = [
   { file: 'blockedrepositories.json', check: isStringArray, shape: 'an array of strings' },
+  { file: 'vettedrepositories.json', check: isStringArray, shape: 'an array of strings' },
   { file: 'tamperingblockednodes.json', check: isStringArray, shape: 'an array of strings' },
   { file: 'enterprisenodes.json', check: isNodeOwnerMap, shape: 'an object of pubkey -> array of owner strings' },
 ];
