@@ -16,6 +16,7 @@ default branch.
 | `blockedrepositories.json` | images, app owners and app hashes that may not run anywhere | array of strings |
 | `enterprisenodes.json` | which app owners may install on which enterprise nodes | object of node pubkey → array of owner addresses |
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
+| `iplocation.json` | the IP → (organisation, country) table placement uses to count fault domains | generated artifact, see below |
 
 Entries in `blockedrepositories.json` are matched against an image reference with its tag or digest
 stripped, and also against the namespace, so `someorg` blocks everything under that organisation
@@ -42,6 +43,47 @@ Two consequences worth holding on to:
   and if it has never had one it declines to answer rather than guessing.
 - **Removing an entry takes effect on a node's next successful fetch**, so unblocking is not
   instant. Adding one is subject to the same delay.
+
+## The IP location table
+
+`iplocation.json` is different from the other documents: it is **generated, never hand-edited**.
+FluxOS uses it to answer one question locally on every node: *how many distinct fault domains does
+an app's eligible candidate set span?* — which is what turns the synced-app placement rule from a
+blind veto into arithmetic (an app pinned to a one-provider country converges instead of sticking
+below its instance count forever).
+
+Regenerate it with:
+
+```
+node scripts/build-iplocation.js
+```
+
+The build layers three sources, most-authoritative-last:
+
+1. **The five RIRs' delegated-extended files** — every allocated range's boundaries, holder
+   country, and registry-scoped organisation id. Public registry data, downloaded fresh, covering
+   all allocated address space.
+2. **RDAP object country** — queried only for ranges whose delegated country disagrees with what
+   the Flux nodes inside them self-report (hosting providers registered under a
+   different-country LIR: Hetzner's Finnish ranges are delegated DE, their database object says FI).
+3. **RFC 8805 geofeeds**, discovered per RFC 9632 from the RDAP responses — operator-published
+   per-prefix country and ISO 3166-2 region, applied to the subranges they cover.
+
+The build then joins the result against the live fleet's self-reported geolocation and writes
+`scripts/iplocation-build-report.json` with agreement numbers, the corrections applied, and every
+remaining disagreement. Read the report before merging a regeneration; agreement below the
+previous build's is a regression, not drift.
+
+The artifact is self-describing (`format`, `generated`, per-registry source serials). A node that
+cannot resolve an address in the table falls back to /16 arithmetic, which errs toward refusing
+placement — the failure mode is the pre-table status quo, never over-concentration.
+
+Two deliberate compactions, both revisitable: the artifact carries **IPv4 only** (no Flux node has
+an IPv6 address; a v6 lookup falls back strict; reinstate the `v6` section when v6 nodes can
+exist), and organisation identity is a **12-hex-char token** of the registry-scoped org id —
+nothing reads the id's content, distinctness is all that placement needs. Adjacent ranges of the
+same organisation, country and region are merged; org-less ranges keep their registry boundaries
+because for them the boundary is the fault domain.
 
 ## Changing policy
 
