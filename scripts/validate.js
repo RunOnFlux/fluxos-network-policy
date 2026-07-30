@@ -2,7 +2,8 @@
 'use strict';
 
 // Shape-checks every policy document. A malformed document is rejected by every node on the
-// network, and for the whitelist that means refusing every image — so it must never merge.
+// network, and for enterprisenodes.json that means no owner can install on any enterprise
+// node — so it must never merge.
 //
 // The checks mirror the validators in FluxOS's policyStore. Keep them in step: a document this
 // script accepts but a node rejects would be silently ignored by the whole fleet.
