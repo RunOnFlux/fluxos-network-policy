@@ -117,6 +117,14 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
       }
     }
   };
+  // A structurally valid but empty or truncated generation must not publish: every node
+  // would reject or under-resolve it and silently keep stale data, discovered only from an
+  // absence of updates. The real table holds ~230k ranges, ~240 countries, ~100k orgs;
+  // these floors are far below any legitimate build and far above any broken one.
+  if (artifact.v4.length < 100000) problems.push(`${file}: only ${artifact.v4.length} v4 ranges — truncated or empty generation`);
+  if (artifact.countries.length < 150) problems.push(`${file}: only ${artifact.countries.length} countries — truncated generation`);
+  if (artifact.orgs.length < 50000) problems.push(`${file}: only ${artifact.orgs.length} orgs — truncated generation`);
+
   checkRows(artifact.v4, 4, (v) => (Number.isInteger(v) && v >= 0 && v <= 0xFFFFFFFF ? v : null));
   checkRows(artifact.v6, 6, (v) => {
     if (typeof v !== 'string') return null;
