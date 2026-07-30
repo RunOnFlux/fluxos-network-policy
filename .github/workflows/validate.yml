@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Shape first: a malformed document is rejected by every node on the network.
+      - name: Validate policy documents
+        run: node scripts/validate.js
+
+      # Then the dual-write reminder. Separate step so a divergence failure is never confused
+      # with a malformed document.
+      - name: Check RunOnFlux/flux copies are in step
+        run: node scripts/check-mirror.js

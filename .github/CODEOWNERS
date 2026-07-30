@@ -1,0 +1,11 @@
+# Everything in this repo is fleet policy, including the workflow that validates it and this file
+# itself — so ownership is repo-wide rather than per-document. A narrower rule would let someone
+# change the rules in the same PR that changes the policy.
+#
+# CODEOWNERS is only enforced when the branch protection rule on the default branch has
+# "Require review from Code Owners" enabled. Without that toggle this file only auto-requests
+# reviewers, and does not require them.
+#
+# The team must exist and must have write access to this repo, or GitHub treats the entry as
+# unresolvable and requests nobody.
+* @RunOnFlux/policy-owners
