@@ -10,8 +10,19 @@
 
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 
 const ROOT = path.join(__dirname, '..');
+
+// A structurally valid but truncated generation must not publish: every node would
+// take it and silently under-resolve, discovered only from an absence of updates.
+// The real table holds ~2M rows, ~250 countries, ~100k orgs and ~2.5k regions;
+// these floors are far below any legitimate build and far above any broken one.
+const FLOORS = {
+  rows: 1500000, countries: 150, orgs: 50000, regions: 1000,
+};
+
+const MAX_IPV4 = 4294967295;
 
 function isStringArray(value) {
   return Array.isArray(value) && value.every((entry) => typeof entry === 'string');
@@ -66,85 +77,116 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
   console.log(`${file}: ok (${entries.length} ${Array.isArray(parsed) ? 'entries' : 'nodes'})`);
 });
 
-// iplocation.json is generated (scripts/build-iplocation.js), not hand-edited, but the same
-// contract holds: a malformed artifact would be rejected by every node's reader. These checks
-// mirror ZelBack/src/services/appPlacement/ipLocationTable.js — keep them in step.
+// iplocation.bin.gz is generated (scripts/build-iplocation.js), not hand-edited, but the same
+// contract holds: a malformed artifact would be rejected by every node's reader, which then keeps
+// the table it already had. These checks mirror the reader-validation section of
+// GEO_TABLE_BASELINE_FORMAT.md and FluxOS's ipLocationTable — keep them in step.
+//
+// Format 2: gzipped `FLXGEO` + version + u32 header length + header JSON + u32 row count +
+// rows of five unsigned LEB128 varints (gap, len, org + 1, cc + 1, region + 1).
 (() => {
-  const file = 'iplocation.json';
-  let artifact;
+  const file = 'iplocation.bin.gz';
+  let buffer;
   try {
-    artifact = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+    buffer = zlib.gunzipSync(fs.readFileSync(path.join(ROOT, file)));
   } catch (error) {
-    problems.push(`${file}: not readable as JSON — ${error.message}`);
+    problems.push(`${file}: not readable as gzip — ${error.message}`);
     return;
   }
-  if (artifact.format !== 1) {
-    problems.push(`${file}: unsupported format ${artifact.format}`);
+
+  if (buffer.length < 15 || buffer.subarray(0, 6).toString('latin1') !== 'FLXGEO') {
+    problems.push(`${file}: not a FLXGEO container`);
     return;
   }
-  if (!isStringArray(artifact.countries) || !isStringArray(artifact.orgs) || !isStringArray(artifact.regions)
-    || !Array.isArray(artifact.v4) || !Array.isArray(artifact.v6)
-    || typeof artifact.continents !== 'object' || artifact.continents === null) {
-    problems.push(`${file}: missing or malformed sections`);
+  if (buffer[6] !== 2) {
+    problems.push(`${file}: unsupported format ${buffer[6]}`);
     return;
   }
-  const badCountry = artifact.countries.find((cc) => !/^[A-Z]{2}$/.test(cc));
+
+  const headerLength = buffer.readUInt32LE(7);
+  if (11 + headerLength + 4 > buffer.length) {
+    problems.push(`${file}: header length ${headerLength} runs past the end of the artifact`);
+    return;
+  }
+  let header;
+  try {
+    header = JSON.parse(buffer.subarray(11, 11 + headerLength).toString('utf8'));
+  } catch (error) {
+    problems.push(`${file}: header is not valid JSON — ${error.message}`);
+    return;
+  }
+  if (!isStringArray(header.countries) || !isStringArray(header.orgs) || !isStringArray(header.regions)
+    || typeof header.continents !== 'object' || header.continents === null || Array.isArray(header.continents)
+    || typeof header.generated !== 'string' || typeof header.sources !== 'object' || header.sources === null) {
+    problems.push(`${file}: missing or malformed header sections`);
+    return;
+  }
+
+  const badCountry = header.countries.find((cc) => !/^[A-Z]{2}$/.test(cc));
   if (badCountry) problems.push(`${file}: invalid country code ${JSON.stringify(badCountry)}`);
-  const badContinent = Object.entries(artifact.continents)
-    .find(([cc, cont]) => !artifact.countries.includes(cc) || !/^(AF|AN|AS|EU|NA|OC|SA)$/.test(cont));
+  const badRegion = header.regions.find((region) => !/^[A-Z]{2}-[A-Z0-9]{1,3}$/.test(region));
+  if (badRegion) problems.push(`${file}: invalid region code ${JSON.stringify(badRegion)}`);
+  const badOrg = header.orgs.find((org) => !/^[0-9a-f]{12}$/.test(org));
+  if (badOrg) problems.push(`${file}: invalid organisation token ${JSON.stringify(badOrg)}`);
+  const badContinent = Object.entries(header.continents)
+    .find(([cc, continent]) => !header.countries.includes(cc) || !/^(AF|AN|AS|EU|NA|OC|SA)$/.test(continent));
   if (badContinent) problems.push(`${file}: invalid continents entry ${JSON.stringify(badContinent)}`);
 
-  const checkRows = (rows, version, toValue) => {
-    let previousEnd = null;
-    for (let i = 0; i < rows.length; i += 1) {
-      const row = rows[i];
-      if (!Array.isArray(row) || row.length < 4 || row.length > 5) {
-        problems.push(`${file}: malformed v${version} row ${i}`);
-        return;
-      }
-      const start = toValue(row[0]);
-      const end = toValue(row[1]);
-      if (start === null || end === null || end < start || (previousEnd !== null && start <= previousEnd)) {
-        problems.push(`${file}: v${version} rows invalid, unsorted or overlapping at row ${i}`);
-        return;
-      }
-      previousEnd = end;
-      const [, , org, cc] = row;
-      const region = row.length === 5 ? row[4] : null;
-      if ((org !== null && !(Number.isInteger(org) && org >= 0 && org < artifact.orgs.length))
-        || (cc !== null && !(Number.isInteger(cc) && cc >= 0 && cc < artifact.countries.length))
-        || (region !== null && !(Number.isInteger(region) && region >= 0 && region < artifact.regions.length))) {
-        problems.push(`${file}: index out of range at v${version} row ${i}`);
-        return;
-      }
+  // Index identity is positional: a duplicate would make two indices name the same domain and
+  // silently merge or split fault domains on every node.
+  ['countries', 'orgs', 'regions'].forEach((section) => {
+    if (new Set(header[section]).size !== header[section].length) {
+      problems.push(`${file}: duplicate entries in header ${section}`);
     }
-  };
-  // A structurally valid but empty or truncated generation must not publish: every node
-  // would reject or under-resolve it and silently keep stale data, discovered only from an
-  // absence of updates. The real table holds ~230k ranges, ~240 countries, ~100k orgs;
-  // these floors are far below any legitimate build and far above any broken one.
-  if (artifact.v4.length < 100000) problems.push(`${file}: only ${artifact.v4.length} v4 ranges — truncated or empty generation`);
-  if (artifact.countries.length < 150) problems.push(`${file}: only ${artifact.countries.length} countries — truncated generation`);
-  if (artifact.orgs.length < 50000) problems.push(`${file}: only ${artifact.orgs.length} orgs — truncated generation`);
-
-  checkRows(artifact.v4, 4, (v) => (Number.isInteger(v) && v >= 0 && v <= 0xFFFFFFFF ? v : null));
-  checkRows(artifact.v6, 6, (v) => {
-    if (typeof v !== 'string') return null;
-    const halves = v.split('::');
-    if (halves.length > 2) return null;
-    const head = halves[0] ? halves[0].split(':') : [];
-    const tail = halves.length > 1 && halves[1] ? halves[1].split(':') : [];
-    const missing = halves.length > 1 ? 8 - head.length - tail.length : 0;
-    if (missing < 0 || (halves.length === 1 && head.length !== 8)) return null;
-    let value = 0n;
-    for (const group of [...head, ...Array(missing).fill('0'), ...tail]) {
-      if (!/^[0-9a-fA-F]{1,4}$/.test(group)) return null;
-      value = (value << 16n) + BigInt(parseInt(group, 16));
-    }
-    return value;
   });
 
-  console.log(`${file}: ok (${artifact.v4.length} v4 + ${artifact.v6.length} v6 ranges, ${artifact.countries.length} countries, ${artifact.orgs.length} orgs, generated ${artifact.generated})`);
+  if (header.countries.length < FLOORS.countries) problems.push(`${file}: only ${header.countries.length} countries — truncated generation`);
+  if (header.orgs.length < FLOORS.orgs) problems.push(`${file}: only ${header.orgs.length} orgs — truncated generation`);
+  if (header.regions.length < FLOORS.regions) problems.push(`${file}: only ${header.regions.length} regions — truncated generation`);
+
+  const rowCount = buffer.readUInt32LE(11 + headerLength);
+  let cursor = 15 + headerLength;
+  const readVarint = () => {
+    let value = 0;
+    let scale = 1;
+    for (;;) {
+      if (cursor >= buffer.length) throw new Error('varint runs past the end of the artifact');
+      const byte = buffer[cursor];
+      cursor += 1;
+      value += (byte & 0x7f) * scale;
+      if ((byte & 0x80) === 0) return value;
+      scale *= 128;
+      if (scale > 2 ** 35) throw new Error('varint too long');
+    }
+  };
+
+  let previousEnd = -1;
+  try {
+    for (let i = 0; i < rowCount; i += 1) {
+      // Rows are sorted and non-overlapping by construction: start is derived from the previous
+      // end plus a gap that cannot be negative. Only the upper bound needs checking.
+      const start = previousEnd + 1 + readVarint();
+      const end = start + readVarint();
+      const org = readVarint();
+      const cc = readVarint();
+      const region = readVarint();
+      if (end > MAX_IPV4) throw new Error(`row ${i} ends past the IPv4 space`);
+      if (org > header.orgs.length) throw new Error(`row ${i} organisation index ${org - 1} out of range`);
+      if (cc > header.countries.length) throw new Error(`row ${i} country index ${cc - 1} out of range`);
+      if (region > header.regions.length) throw new Error(`row ${i} region index ${region - 1} out of range`);
+      previousEnd = end;
+    }
+    if (cursor !== buffer.length) {
+      throw new Error(`${buffer.length - cursor} bytes after the last of ${rowCount} rows`);
+    }
+  } catch (error) {
+    problems.push(`${file}: ${error.message}`);
+    return;
+  }
+
+  if (rowCount < FLOORS.rows) problems.push(`${file}: only ${rowCount} rows — truncated or empty generation`);
+
+  console.log(`${file}: ok (${rowCount} rows, ${header.countries.length} countries, ${header.orgs.length} orgs, ${header.regions.length} regions, generated ${header.generated})`);
 })();
 
 if (problems.length) {

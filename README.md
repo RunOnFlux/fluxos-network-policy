@@ -17,7 +17,7 @@ default branch.
 | `enterprisenodes.json` | which app owners may install on which enterprise nodes | object of node pubkey → array of owner addresses |
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
 | `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
-| `iplocation.json` | the IP → (organisation, country) table placement uses to count fault domains | generated artifact, see below |
+| `iplocation.bin.gz` | the IP → (organisation, country, region) table placement uses to count fault domains | generated binary artifact, see below |
 
 Entries in `blockedrepositories.json` are matched against an image reference with its tag or digest
 stripped, and also against the namespace, so `someorg` blocks everything under that organisation
@@ -47,11 +47,18 @@ Two consequences worth holding on to:
 
 ## The IP location table
 
-`iplocation.json` is different from the other documents: it is **generated, never hand-edited**.
-FluxOS uses it to answer one question locally on every node: *how many distinct fault domains does
-an app's eligible candidate set span?* — which is what turns the synced-app placement rule from a
-blind veto into arithmetic (an app pinned to a one-provider country converges instead of sticking
-below its instance count forever).
+`iplocation.bin.gz` is different from the other documents: it is **generated, never hand-edited**,
+and it is binary. FluxOS uses it to answer one question locally on every node: *how many distinct
+fault domains does an app's eligible candidate set span?* — which is what turns the synced-app
+placement rule from a blind veto into arithmetic (an app pinned to a one-provider country converges
+instead of sticking below its instance count forever).
+
+The wire format is **format 2**, specified in fluxModels
+`workstreams/placement-and-election/GEO_TABLE_BASELINE_FORMAT.md`: a gzipped `FLXGEO` container
+holding a JSON header (generation timestamp, source serials, and the country, continent,
+organisation and region tables) followed by varint-encoded rows of
+(gap, length, organisation, country, region). About 2.0M rows and 4.6 MB on the wire. The publisher
+here and the reader in FluxOS implement exactly that document; change neither alone.
 
 Regenerate it with:
 
@@ -59,32 +66,56 @@ Regenerate it with:
 node scripts/build-iplocation.js
 ```
 
-The build layers three sources, most-authoritative-last:
+The build has two sources, each authoritative for what it knows:
 
-1. **The five RIRs' delegated-extended files** — every allocated range's boundaries, holder
-   country, and registry-scoped organisation id. Public registry data, downloaded fresh, covering
-   all allocated address space.
-2. **RDAP object country** — queried only for ranges whose delegated country disagrees with what
-   the Flux nodes inside them self-report (hosting providers registered under a
-   different-country LIR: Hetzner's Finnish ranges are delegated DE, their database object says FI).
-3. **RFC 8805 geofeeds**, discovered per RFC 9632 from the RDAP responses — operator-published
-   per-prefix country and ISO 3166-2 region, applied to the subranges they cover.
+1. **The five RIRs' delegated-extended files** — allocation boundaries and the registry-scoped
+   organisation id. An allocation is the block rung of the fault-domain ladder, so these
+   boundaries are the artifact's structure.
+2. **DB-IP City Lite** — country and region per address range, collapsed from city granularity and
+   resolved to ISO 3166-2 through `scripts/region-map.json`. Country and region come from here
+   alone: measured against the fleet's self-reports it wins 178 disagreements to 10 against the
+   registry-plus-RDAP machinery it replaced, and it carries region data for 99% of the fleet, which
+   the registries do not have at all.
 
-The build then joins the result against the live fleet's self-reported geolocation and writes
-`scripts/iplocation-build-report.json` with agreement numbers, the corrections applied, and every
-remaining disagreement. Read the report before merging a regeneration; agreement below the
-previous build's is a regression, not drift.
+> **This product includes IP address to city data from [DB-IP](https://db-ip.com), used under the
+> [Creative Commons Attribution 4.0 International Licence](https://creativecommons.org/licenses/by/4.0/).**
+> The attribution is a licence condition: it must stay with any redistribution of this artifact.
 
-The artifact is self-describing (`format`, `generated`, per-registry source serials). A node that
-cannot resolve an address in the table falls back to /16 arithmetic, which errs toward refusing
-placement — the failure mode is the pre-table status quo, never over-concentration.
+Three sources are deliberately absent, each measured against the fleet and rejected. **RDAP object
+country** corrects a block whose delegated country the nodes inside it contradict; DB-IP is right
+more often than that correction is, and needs no per-block queries. **RFC 8805 geofeeds** and their
+**RFC 9632 discovery** were beaten or tied by DB-IP everywhere they were measured, at the cost of a
+network fetch per operator and a dependency on operators publishing at all.
+
+`scripts/region-map.json` maps a (country, DB-IP region name) pair to its ISO 3166-2 code. It is
+generated too, from the iso-codes dataset, the fleet's own self-reports, and
+`scripts/region-aliases.json` — a small curated table for names no rule reaches:
+
+```
+node scripts/build-region-map.js
+```
+
+Regenerate it when DB-IP's region names change or the fleet moves into a region the table does not
+cover; the script prints its unmatched names with fleet presence, which is what an alias entry is
+for. A name with no mapping is not an error: its addresses answer at country granularity, and a
+missing region can only make placement more conservative.
+
+The build joins the result against the live fleet's self-reported geolocation and writes
+`scripts/iplocation-build-report.json` with country and region agreement numbers and every
+remaining disagreement. Read the report before merging a regeneration; country agreement is
+~98.5% and materially below that is a regression, not drift.
+
+The artifact is self-describing (format version, `generated`, per-registry source serials and the
+DB-IP vintage). A node that cannot resolve an address in the table falls back to /16 arithmetic,
+which errs toward refusing placement — the failure mode is the pre-table status quo, never
+over-concentration.
 
 Two deliberate compactions, both revisitable: the artifact carries **IPv4 only** (no Flux node has
-an IPv6 address; a v6 lookup falls back strict; reinstate the `v6` section when v6 nodes can
-exist), and organisation identity is a **12-hex-char token** of the registry-scoped org id —
-nothing reads the id's content, distinctness is all that placement needs. Adjacent ranges of the
-same organisation, country and region are merged; org-less ranges keep their registry boundaries
-because for them the boundary is the fault domain.
+an IPv6 address; a v6 lookup falls back strict; add a v6 section when v6 nodes can exist), and
+organisation identity is a **12-hex-char token** of the registry-scoped org id — nothing reads the
+id's content, distinctness is all that placement needs. Adjacent rows agreeing on organisation,
+country and region collapse into one: with all three equal there is no boundary between them that
+placement can see.
 
 ## Changing policy
 
