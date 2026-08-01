@@ -1,0 +1,81 @@
+name: monthly-baseline
+
+# Builds the month's location baseline from the public sources (the five RIR
+# delegated-extended files + DB-IP City Lite) and opens a PR carrying the new
+# artifact and its build report. The merge stays human: the report's
+# unmatched-regions section is the monthly curation checkpoint.
+#
+# Change detection compares the report's `sources` serials against the
+# published baseline's, NOT artifact bytes - the header's `generated`
+# timestamp makes every build byte-unique, and a late DB-IP month falls back
+# to the previous file, which must not produce a no-op PR.
+#
+# The PR is opened with BASELINE_PR_TOKEN (a fine-grained PAT with contents
+# and pull-requests write on this repo). The default GITHUB_TOKEN works as a
+# fallback, but PRs it creates never trigger the validate workflow (GitHub
+# suppresses workflow runs for events created with it), and branch protection
+# requires that check - so keep the secret populated.
+
+on:
+  schedule:
+    - cron: '30 6 2 * *' # 06:30 UTC on the 2nd; DB-IP's monthly file appears on the 1st
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.BASELINE_PR_TOKEN || github.token }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Build the baseline
+        run: node scripts/build-iplocation.js
+
+      - name: Validate the artifact
+        run: node scripts/validate.js
+
+      - name: Compare source serials with the published baseline
+        id: delta
+        run: |
+          node -e '
+            const fs = require("fs");
+            const { execSync } = require("child_process");
+            const now = JSON.parse(fs.readFileSync("scripts/iplocation-build-report.json", "utf8")).sources;
+            const prev = JSON.parse(execSync("git show HEAD:scripts/iplocation-build-report.json", { encoding: "utf8" })).sources;
+            const changed = JSON.stringify(now) !== JSON.stringify(prev);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
+            console.log(changed ? "sources moved" : "sources unchanged - no PR");
+            console.log(JSON.stringify({ prev, now }, null, 1));
+          '
+
+      - name: Open the monthly PR
+        if: steps.delta.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.BASELINE_PR_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          MONTH="$(date -u +%Y-%m)"
+          BRANCH="auto/baseline-${MONTH}"
+          SUMMARY="$(node -e '
+            const r = JSON.parse(require("fs").readFileSync("scripts/iplocation-build-report.json", "utf8"));
+            console.log(JSON.stringify({ sources: r.sources, output: r.output, validation: r.validation, regionNamesUnmapped: r.dbip.namesWithoutRegion }, null, 2));
+          ')"
+          git config user.name "flux-baseline-bot"
+          git config user.email "baseline-bot@runonflux.io"
+          git checkout -b "$BRANCH"
+          git add iplocation.bin.gz scripts/iplocation-build-report.json
+          git commit -m "Monthly baseline ${MONTH}"
+          # a leftover branch from a rerun of the same month is bot-owned scratch
+          git push origin ":refs/heads/${BRANCH}" 2>/dev/null || true
+          git push -u origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "Monthly baseline ${MONTH}" \
+            --body "$(printf 'Automated monthly rebuild from the RIR delegated files and DB-IP City Lite. Review the numbers below - region disagreements and unmapped names are the curation checkpoint - then merge. The fleet picks the new baseline up on its next daily conditional fetch.\n\n```json\n%s\n```\n\nFull report in the diff: `scripts/iplocation-build-report.json`.' "$SUMMARY")"
