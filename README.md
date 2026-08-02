@@ -117,6 +117,58 @@ id's content, distinctness is all that placement needs. Adjacent rows agreeing o
 country and region collapse into one: with all three equal there is no boundary between them that
 placement can see.
 
+## Correcting the location table
+
+DB-IP is right about far more of the address space than anything measured against it, but it is not
+right about all of it, and where it is wrong it is usually wrong about a whole block: a dozen nodes
+inside one allocation all self-reporting a country the table disagrees with is the vendor
+mis-attributing that allocation, not a dozen nodes lying. `scripts/iplocation-overrides.json` is the
+ledger of those corrections. They are applied **build-side**, between the merge and the artifact, so
+every node fetches a corrected table and there is nothing to override node-side.
+
+The build report is what an entry is written from. `validation.disagreementBlocks` and
+`validation.regionDisagreementBlocks` name the address ranges the fleet contradicts, with the
+organisation token and the node count — the country and region pair tables say *what* is disputed,
+these say *where*.
+
+An entry looks like this:
+
+```json
+{
+  "range": "203.0.113.0/24",
+  "country": "FR",
+  "region": null,
+  "evidence": "12 nodes self-report FR; RIPE db inetnum country: FR — https://…",
+  "added": "2026-08-02"
+}
+```
+
+- `range` is an IPv4 CIDR on its own boundary. Entries are sorted ascending by range start and may
+  not overlap.
+- At least one of `country` and `region` must say something. `country` is an ISO 3166-1 alpha-2 code
+  that the build knows a continent for; `region` is an ISO 3166-2 code whose country prefix matches.
+  A region-only entry keeps whatever country the table already has, and the prefix is checked
+  against it when the entry is applied — a mismatch fails the build.
+- **`country` set with `region: null` clears the region** on every row the range covers. A block in
+  the wrong country was also given the wrong region, and there is nothing to salvage; leave `region`
+  out and it means the same thing.
+- `evidence` is required and is meant to be read by whoever finds the entry in a year. Say what
+  showed the vendor wrong — node self-reports, the RIR record, an operator's own statement — with a
+  URL where there is one. `added` is the ISO date the entry went in.
+- Organisation is never overridden. The allocation boundary is the registries' fact; it is the
+  vendor's attribution that is in dispute.
+
+Entries are effectively write-once. There is no expiry and no review date, because the build
+detects retirement on its own: when the vendor catches up and every row a range covers already
+carries the entry's values, the build marks it `noop` and it is then deleted, nothing more. A range
+no table row covers at all is marked `noop` too, which is what a typo'd range looks like. Both
+counts land in `overrides` in the build report, `node scripts/validate.js` prints a `WARNING` line
+per retirable entry, and the monthly PR body carries the block — so the signal to write one and the
+signal to delete one both arrive in the same place, once a month.
+
+A stale entry never fails CI. It is inert by definition, and blocking an unrelated policy merge on
+somebody else's tidy-up is the rule that gets bypassed.
+
 ## Changing policy
 
 Open a PR. `main` refuses direct pushes, including from admins, because the `validate` check has to
