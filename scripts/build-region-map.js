@@ -2,14 +2,14 @@
 
 'use strict';
 
-// Builds scripts/region-map.json - the (country, DB-IP region name) -> ISO 3166-2
+// Builds data/region-map.json - the (country, DB-IP region name) -> ISO 3166-2
 // table build-iplocation.js applies when it turns the DB-IP database into the
 // geo layer of the artifact.
 //
 // DB-IP names regions in English exonyms and informal short forms; the artifact
 // carries ISO 3166-2 codes. The two are matched by a cascade, most-authoritative
 // first:
-//   1. scripts/region-aliases.json - curated, for names no rule reaches.
+//   1. data/region-aliases.json - curated, for names no rule reaches.
 //   2. Fleet empirical - ip-api pairs a region name with its ISO suffix on every
 //      node's self-report, which settles the exonyms the fleet actually lives in.
 //   3. iso-codes, exact on the normalised name.
@@ -25,8 +25,8 @@
 // database are read from the cache.
 //
 // Usage:
-//   node scripts/build-region-map.js [--out scripts/region-map.json]
-//     [--cache-dir .cache] [--aliases scripts/region-aliases.json]
+//   node scripts/build-region-map.js [--out data/region-map.json]
+//     [--cache-dir .cache] [--aliases data/region-aliases.json]
 
 const fs = require('fs');
 const path = require('path');
@@ -53,9 +53,9 @@ const ISO_3166_2 = /^[A-Z]{2}-[A-Z0-9]{1,3}$/;
 
 function parseArgs(argv) {
   const args = {
-    out: path.join(ROOT, 'scripts', 'region-map.json'),
+    out: path.join(ROOT, 'data', 'region-map.json'),
     cacheDir: path.join(ROOT, '.cache'),
-    aliases: path.join(ROOT, 'scripts', 'region-aliases.json'),
+    aliases: path.join(ROOT, 'data', 'region-aliases.json'),
   };
   for (let i = 2; i < argv.length; i += 1) {
     const flag = argv[i];

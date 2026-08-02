@@ -1,6 +1,6 @@
 'use strict';
 
-// scripts/iplocation-overrides.json - the ledger of hand-entered corrections the
+// data/iplocation-overrides.json - the ledger of hand-entered corrections the
 // build applies to the merged location table before it validates and emits it.
 //
 // It exists because the vendor's attribution is sometimes wrong for a whole

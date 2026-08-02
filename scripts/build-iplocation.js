@@ -13,11 +13,11 @@
 //      registry-scoped organisation id. An allocation is the block rung of the
 //      fault-domain ladder, so these boundaries are the artifact's structure.
 //   2. DB-IP City Lite: country and region per address range, the region name
-//      resolved to ISO 3166-2 through scripts/region-map.json. Country and region
+//      resolved to ISO 3166-2 through data/region-map.json. Country and region
 //      come from here alone - measured against the fleet's self-reports it is
 //      right where the registries' holder country is not.
 //
-// scripts/iplocation-overrides.json then corrects the blocks where neither source
+// data/iplocation-overrides.json then corrects the blocks where neither source
 // is right and the fleet says so; see scripts/overrides.js.
 //
 // The build then validates the result against the live fleet's self-reported
@@ -28,7 +28,7 @@
 //
 // Usage:
 //   node scripts/build-iplocation.js [--out iplocation.bin.gz]
-//     [--cache-dir .cache] [--offline] [--report scripts/iplocation-build-report.json]
+//     [--cache-dir .cache] [--offline] [--report data/iplocation-build-report.json]
 
 const crypto = require('crypto');
 const fs = require('fs');
@@ -83,9 +83,9 @@ function parseArgs(argv) {
   const args = {
     out: path.join(ROOT, 'iplocation.bin.gz'),
     cacheDir: path.join(ROOT, '.cache'),
-    regionMap: path.join(ROOT, 'scripts', 'region-map.json'),
-    overrides: path.join(ROOT, 'scripts', 'iplocation-overrides.json'),
-    report: path.join(ROOT, 'scripts', 'iplocation-build-report.json'),
+    regionMap: path.join(ROOT, 'data', 'region-map.json'),
+    overrides: path.join(ROOT, 'data', 'iplocation-overrides.json'),
+    report: path.join(ROOT, 'data', 'iplocation-build-report.json'),
     offline: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
@@ -340,7 +340,7 @@ function merge(orgRanges, geoLayer, report) {
 }
 
 // ---------------------------------------------------------------------------
-// overrides: the corrections in scripts/iplocation-overrides.json
+// overrides: the corrections in data/iplocation-overrides.json
 
 // Rebuilds the table with the ledger applied. The entries are few and the table
 // is two million rows, so one sweep is cheaper than any indexed edit: every row
