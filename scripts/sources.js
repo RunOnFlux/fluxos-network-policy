@@ -58,6 +58,10 @@ function ipv4ToInt(ip) {
   return value;
 }
 
+function intToIpv4(value) {
+  return `${(value >>> 24) & 255}.${(value >>> 16) & 255}.${(value >>> 8) & 255}.${value & 255}`;
+}
+
 function monthStamp(date) {
   return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, '0')}`;
 }
@@ -164,5 +168,5 @@ async function streamDbipRows(file, onRow) {
 }
 
 module.exports = {
-  fetchJson, cachedText, ipv4ToInt, resolveDbipCsv, streamDbipRows,
+  fetchJson, cachedText, ipv4ToInt, intToIpv4, resolveDbipCsv, streamDbipRows,
 };

@@ -17,6 +17,9 @@
 //      come from here alone - measured against the fleet's self-reports it is
 //      right where the registries' holder country is not.
 //
+// scripts/iplocation-overrides.json then corrects the blocks where neither source
+// is right and the fleet says so; see scripts/overrides.js.
+//
 // The build then validates the result against the live fleet's self-reported
 // geolocation and writes a report. Only the fleet fetches need the network;
 // `--offline` builds from the cached files alone.
@@ -32,6 +35,8 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
+const { CONTINENTS } = require('./continents');
+const overrides = require('./overrides');
 const sources = require('./sources');
 
 const ROOT = path.join(__dirname, '..');
@@ -54,36 +59,21 @@ const MAX_IPV4 = 4294967295;
 // the input, not a new normal.
 const EXPECTED_COUNTRY_AGREEMENT = 98.5;
 
-// Country -> continent, the geonames assignment ip-api follows. Nodes
-// self-report ip-api continents, and app geolocation specs were written against
-// them, so eligibility must use the same convention. The build report flags any
-// live (country, continent) pair that disagrees with this map.
-const CONTINENTS = {
-  AF: 'AS', AL: 'EU', DZ: 'AF', AS: 'OC', AD: 'EU', AO: 'AF', AI: 'NA', AQ: 'AN', AG: 'NA', AR: 'SA',
-  AM: 'AS', AW: 'NA', AU: 'OC', AT: 'EU', AZ: 'AS', BS: 'NA', BH: 'AS', BD: 'AS', BB: 'NA', BY: 'EU',
-  BE: 'EU', BZ: 'NA', BJ: 'AF', BM: 'NA', BT: 'AS', BO: 'SA', BQ: 'NA', BA: 'EU', BW: 'AF', BV: 'AN',
-  BR: 'SA', IO: 'AS', BN: 'AS', BG: 'EU', BF: 'AF', BI: 'AF', CV: 'AF', KH: 'AS', CM: 'AF', CA: 'NA',
-  KY: 'NA', CF: 'AF', TD: 'AF', CL: 'SA', CN: 'AS', CX: 'OC', CC: 'AS', CO: 'SA', KM: 'AF', CG: 'AF',
-  CD: 'AF', CK: 'OC', CR: 'NA', CI: 'AF', HR: 'EU', CU: 'NA', CW: 'NA', CY: 'EU', CZ: 'EU', DK: 'EU',
-  DJ: 'AF', DM: 'NA', DO: 'NA', EC: 'SA', EG: 'AF', SV: 'NA', GQ: 'AF', ER: 'AF', EE: 'EU', SZ: 'AF',
-  ET: 'AF', FK: 'SA', FO: 'EU', FJ: 'OC', FI: 'EU', FR: 'EU', GF: 'SA', PF: 'OC', TF: 'AN', GA: 'AF',
-  GM: 'AF', GE: 'AS', DE: 'EU', GH: 'AF', GI: 'EU', GR: 'EU', GL: 'NA', GD: 'NA', GP: 'NA', GU: 'OC',
-  GT: 'NA', GG: 'EU', GN: 'AF', GW: 'AF', GY: 'SA', HT: 'NA', HM: 'AN', VA: 'EU', HN: 'NA', HK: 'AS',
-  HU: 'EU', IS: 'EU', IN: 'AS', ID: 'AS', IR: 'AS', IQ: 'AS', IE: 'EU', IM: 'EU', IL: 'AS', IT: 'EU',
-  JM: 'NA', JP: 'AS', JE: 'EU', JO: 'AS', KZ: 'AS', KE: 'AF', KI: 'OC', KP: 'AS', KR: 'AS', KW: 'AS',
-  KG: 'AS', LA: 'AS', LV: 'EU', LB: 'AS', LS: 'AF', LR: 'AF', LY: 'AF', LI: 'EU', LT: 'EU', LU: 'EU',
-  MO: 'AS', MG: 'AF', MW: 'AF', MY: 'AS', MV: 'AS', ML: 'AF', MT: 'EU', MH: 'OC', MQ: 'NA', MR: 'AF',
-  MU: 'AF', YT: 'AF', MX: 'NA', FM: 'OC', MD: 'EU', MC: 'EU', MN: 'AS', ME: 'EU', MS: 'NA', MA: 'AF',
-  MZ: 'AF', MM: 'AS', NA: 'AF', NR: 'OC', NP: 'AS', NL: 'EU', NC: 'OC', NZ: 'OC', NI: 'NA', NE: 'AF',
-  NG: 'AF', NU: 'OC', NF: 'OC', MK: 'EU', MP: 'OC', NO: 'EU', OM: 'AS', PK: 'AS', PW: 'OC', PS: 'AS',
-  PA: 'NA', PG: 'OC', PY: 'SA', PE: 'SA', PH: 'AS', PN: 'OC', PL: 'EU', PT: 'EU', PR: 'NA', QA: 'AS',
-  RE: 'AF', RO: 'EU', RU: 'EU', RW: 'AF', BL: 'NA', SH: 'AF', KN: 'NA', LC: 'NA', MF: 'NA', PM: 'NA',
-  VC: 'NA', WS: 'OC', SM: 'EU', ST: 'AF', SA: 'AS', SN: 'AF', RS: 'EU', SC: 'AF', SL: 'AF', SG: 'AS',
-  SX: 'NA', SK: 'EU', SI: 'EU', SB: 'OC', SO: 'AF', ZA: 'AF', GS: 'AN', SS: 'AF', ES: 'EU', LK: 'AS',
-  SD: 'AF', SR: 'SA', SJ: 'EU', SE: 'EU', CH: 'EU', SY: 'AS', TW: 'AS', TJ: 'AS', TZ: 'AF', TH: 'AS',
-  TL: 'AS', TG: 'AF', TK: 'OC', TO: 'OC', TT: 'NA', TN: 'AF', TR: 'AS', TM: 'AS', TC: 'NA', TV: 'OC',
-  UG: 'AF', UA: 'EU', AE: 'AS', GB: 'EU', US: 'NA', UM: 'OC', UY: 'SA', UZ: 'AS', VU: 'OC', VE: 'SA',
-  VN: 'AS', VG: 'NA', VI: 'NA', WF: 'OC', EH: 'AF', YE: 'AS', ZM: 'AF', ZW: 'AF', AX: 'EU', XK: 'EU',
+// How many disputed blocks the report names. The list is what an overrides entry
+// is written from, and a month's worth of real disputes is a couple of dozen.
+const MAX_DISAGREEMENT_BLOCKS = 30;
+
+// ip-api still speaks Norway's pre-2020 county codes, while the artifact speaks
+// current ISO 3166-2: Norway restored Østfold, Akershus and Buskerud in 2024 with
+// new codes, and ISO never brought the old ones back. A node self-reporting the
+// retired code is naming the same county the table names with the current one, so
+// on the fleet side of the join a retired report counts as agreement with its
+// successor. This is never applied to the artifact - the table carries current ISO
+// alone.
+const SELF_REPORT_REGION_ALIASES = {
+  'NO-01': 'NO-31', // Østfold
+  'NO-02': 'NO-32', // Akershus
+  'NO-06': 'NO-33', // Buskerud
 };
 
 // ---------------------------------------------------------------------------
@@ -94,12 +84,13 @@ function parseArgs(argv) {
     out: path.join(ROOT, 'iplocation.bin.gz'),
     cacheDir: path.join(ROOT, '.cache'),
     regionMap: path.join(ROOT, 'scripts', 'region-map.json'),
+    overrides: path.join(ROOT, 'scripts', 'iplocation-overrides.json'),
     report: path.join(ROOT, 'scripts', 'iplocation-build-report.json'),
     offline: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const flag = argv[i];
-    if (flag === '--out') { args.out = argv[i += 1]; } else if (flag === '--cache-dir') { args.cacheDir = argv[i += 1]; } else if (flag === '--region-map') { args.regionMap = argv[i += 1]; } else if (flag === '--report') { args.report = argv[i += 1]; } else if (flag === '--offline') { args.offline = true; } else { throw new Error(`Unknown argument ${flag}`); }
+    if (flag === '--out') { args.out = argv[i += 1]; } else if (flag === '--cache-dir') { args.cacheDir = argv[i += 1]; } else if (flag === '--region-map') { args.regionMap = argv[i += 1]; } else if (flag === '--overrides') { args.overrides = argv[i += 1]; } else if (flag === '--report') { args.report = argv[i += 1]; } else if (flag === '--offline') { args.offline = true; } else { throw new Error(`Unknown argument ${flag}`); }
   }
   return args;
 }
@@ -349,6 +340,95 @@ function merge(orgRanges, geoLayer, report) {
 }
 
 // ---------------------------------------------------------------------------
+// overrides: the corrections in scripts/iplocation-overrides.json
+
+// Rebuilds the table with the ledger applied. The entries are few and the table
+// is two million rows, so one sweep is cheaper than any indexed edit: every row
+// an override covers is split at the override's boundaries, the covered segment
+// takes the override's country and region, and rows that come out identical
+// collapse exactly as merge() collapses them. Organisation is never overridden -
+// the allocation boundary is the registries' fact, and it is the vendor's
+// attribution that is in dispute, not theirs.
+//
+// A range no row covers changes nothing: the table has no row there to carry the
+// correction, and an override that invents one would be asserting coverage the
+// sources do not have. It is reported as a no-op, which is also what a typo'd
+// range looks like.
+function applyOverrides(table, entries, report) {
+  report.overrides = {
+    entries: [], applied: 0, retirable: 0,
+  };
+  if (!entries.length) return table;
+
+  const { rows } = table;
+  const countries = interner();
+  const regions = interner();
+  for (const value of table.countries) countries.of(value);
+  for (const value of table.regions) regions.of(value);
+
+  const stats = entries.map(() => ({ rowsTouched: 0, noop: true }));
+  const next = createColumns(rows.length + entries.length * 2, ['org', 'cc', 'region']);
+  const push = (start, end, org, cc, region) => {
+    const last = next.length - 1;
+    if (last >= 0 && next.end[last] + 1 === start
+      && next.org[last] === org && next.cc[last] === cc && next.region[last] === region) {
+      next.end[last] = end;
+      return;
+    }
+    appendRow(next, start, end, [org, cc, region]);
+  };
+
+  let ei = 0;
+  for (let i = 0; i < rows.length; i += 1) {
+    while (ei < entries.length && entries[ei].end < rows.start[i]) ei += 1;
+    let cursor = rows.start[i];
+    let e = ei;
+    while (cursor <= rows.end[i]) {
+      while (e < entries.length && entries[e].end < cursor) e += 1;
+      const entry = e < entries.length && entries[e].start <= cursor ? entries[e] : null;
+      let end = rows.end[i];
+      if (entry) end = Math.min(end, entry.end);
+      else if (e < entries.length) end = Math.min(end, entries[e].start - 1);
+
+      if (!entry) {
+        push(cursor, end, rows.org[i], rows.cc[i], rows.region[i]);
+      } else {
+        const rowCc = rows.cc[i] === -1 ? null : table.countries[rows.cc[i]];
+        const rowRegion = rows.region[i] === -1 ? null : table.regions[rows.region[i]];
+        const cc = entry.country ?? rowCc;
+        // A country correction that states no region says the vendor put the block
+        // in the wrong country, which makes whatever region it assigned there
+        // meaningless - so the covered rows lose it.
+        const { region } = entry;
+        if (region !== null && !region.startsWith(`${cc}-`)) {
+          throw new Error(`override ${entry.range}: region ${region} is not in country ${cc ?? 'none'}, which is what the table says at ${sources.intToIpv4(cursor)} — give the entry an explicit country or narrow its range`);
+        }
+        stats[e].rowsTouched += 1;
+        if (cc !== rowCc || region !== rowRegion) stats[e].noop = false;
+        push(cursor, end, rows.org[i], countries.of(cc), regions.of(region));
+      }
+      cursor = end + 1;
+    }
+  }
+
+  report.overrides = {
+    entries: entries.map((entry, i) => ({
+      range: entry.range,
+      country: entry.country,
+      region: entry.region,
+      added: entry.added,
+      rowsTouched: stats[i].rowsTouched,
+      noop: stats[i].noop,
+    })),
+    applied: stats.filter((stat) => !stat.noop).length,
+    retirable: stats.filter((stat) => stat.noop).length,
+  };
+  return {
+    rows: next, orgs: table.orgs, countries: countries.values, regions: regions.values,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // validation join against the live fleet
 
 async function validate(table, report) {
@@ -372,6 +452,23 @@ async function validate(table, report) {
   const disagreements = new Map();
   const regionDisagreements = new Map();
   const continentMismatches = new Map();
+
+  // The pair tables say what is disputed; these say where. A disagreement is
+  // almost never one node - it is every node inside one allocation contradicting
+  // the vendor's attribution of that allocation, and the block is the unit an
+  // overrides entry corrects. Keyed by table row and reported value, so one entry
+  // per (block, claim).
+  const countryBlocks = new Map();
+  const regionBlocks = new Map();
+  const bumpBlock = (blocks, row, tableValue, fleetValue) => {
+    const key = `${row}|${fleetValue}`;
+    const existing = blocks.get(key);
+    if (existing) { existing.nodes += 1; return; }
+    blocks.set(key, {
+      row, table: tableValue, fleet: fleetValue, nodes: 1,
+    });
+  };
+
   for (const ip of ips) {
     const value = sources.ipv4ToInt(ip);
     const geo = selfGeo.get(ip);
@@ -389,20 +486,35 @@ async function validate(table, report) {
     } else {
       const key = `${cc}->${geo.countryCode}`;
       disagreements.set(key, (disagreements.get(key) ?? 0) + 1);
+      bumpBlock(countryBlocks, row, cc, geo.countryCode);
     }
     if (geo.region) {
-      const expected = `${geo.countryCode}-${geo.region}`;
+      const reported = `${geo.countryCode}-${geo.region}`;
+      const expected = SELF_REPORT_REGION_ALIASES[reported] ?? reported;
       const tableRegion = table.rows.region[row] === -1 ? null : table.regions[table.rows.region[row]];
       if (tableRegion === null) regionTableNull += 1;
       else if (tableRegion === expected) regionAgree += 1;
       else {
         const key = `${tableRegion}->${expected}`;
         regionDisagreements.set(key, (regionDisagreements.get(key) ?? 0) + 1);
+        bumpBlock(regionBlocks, row, tableRegion, expected);
       }
     }
   }
 
   const top = (map) => Object.fromEntries([...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20));
+  const topBlocks = (blocks) => [...blocks.values()]
+    .sort((a, b) => b.nodes - a.nodes)
+    .slice(0, MAX_DISAGREEMENT_BLOCKS)
+    .map(({
+      row, table: tableValue, fleet, nodes,
+    }) => ({
+      range: `${sources.intToIpv4(table.rows.start[row])}-${sources.intToIpv4(table.rows.end[row])}`,
+      org: table.rows.org[row] === -1 ? null : table.orgs[table.rows.org[row]],
+      table: tableValue,
+      fleet,
+      nodes,
+    }));
   const disagree = [...disagreements.values()].reduce((a, b) => a + b, 0);
   const regionDisagree = [...regionDisagreements.values()].reduce((a, b) => a + b, 0);
   report.validation = {
@@ -411,11 +523,13 @@ async function validate(table, report) {
     agree,
     expectedAgreement: EXPECTED_COUNTRY_AGREEMENT,
     disagreements: top(disagreements),
+    disagreementBlocks: topBlocks(countryBlocks),
     regionJoined: regionAgree + regionDisagree + regionTableNull,
     regionAgree,
     regionDisagree,
     regionTableNull,
     regionDisagreements: top(regionDisagreements),
+    regionDisagreementBlocks: topBlocks(regionBlocks),
     continentMismatches: Object.fromEntries(continentMismatches),
   };
 }
@@ -485,6 +599,7 @@ async function main() {
     overlaps: [],
     dbip: null,
     collapsedRows: 0,
+    overrides: null,
     validation: null,
   };
   const sourceSerials = {};
@@ -507,8 +622,20 @@ async function main() {
   const geoLayer = await buildGeoLayer(database.file, regionMap, report);
   process.stderr.write(`dbip ${database.month}: ${report.dbip.databaseRows} database rows -> ${report.dbip.geoRows} region-granular ranges, ${report.dbip.namesWithoutRegion} region names unmapped\n`);
 
-  const table = merge(orgRanges, geoLayer, report);
-  process.stderr.write(`merged: ${table.rows.length} rows (${report.collapsedRows} collapsed), ${table.orgs.length} orgs, ${table.countries.length} countries, ${table.regions.length} regions\n`);
+  const merged = merge(orgRanges, geoLayer, report);
+  process.stderr.write(`merged: ${merged.rows.length} rows (${report.collapsedRows} collapsed), ${merged.orgs.length} orgs, ${merged.countries.length} countries, ${merged.regions.length} regions\n`);
+
+  const ledger = overrides.load(args.overrides);
+  if (ledger.problems.length) {
+    throw new Error(`${path.relative(ROOT, args.overrides)}:\n  ${ledger.problems.join('\n  ')}`);
+  }
+  const table = applyOverrides(merged, ledger.entries, report);
+  if (ledger.entries.length) {
+    process.stderr.write(`overrides: ${report.overrides.applied} applied, ${report.overrides.retirable} retirable, ${table.rows.length} rows\n`);
+    for (const entry of report.overrides.entries) {
+      process.stderr.write(`  ${entry.range} -> ${entry.country ?? 'country unchanged'} / ${entry.region ?? 'no region'}: ${entry.rowsTouched} rows${entry.noop ? ', no-op - retire it' : ''}\n`);
+    }
+  }
 
   if (!args.offline) {
     await validate(table, report);

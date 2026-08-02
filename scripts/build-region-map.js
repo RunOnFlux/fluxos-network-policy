@@ -49,6 +49,8 @@ const TYPE_WORDS = new Set([
 
 const MIN_STEM = 4;
 
+const ISO_3166_2 = /^[A-Z]{2}-[A-Z0-9]{1,3}$/;
+
 function parseArgs(argv) {
   const args = {
     out: path.join(ROOT, 'scripts', 'region-map.json'),
@@ -127,13 +129,18 @@ function loadAliases(file, isoCodes, notes) {
   let kept = 0;
   for (const [key, code] of Object.entries(table)) {
     const [cc, name] = key.split('|');
-    if (!isoCodes.has(code)) {
-      notes.push(`alias ${key} -> ${code}: no such ISO 3166-2 code, ignored`);
+    if (!cc || !name || !ISO_3166_2.test(code) || !code.startsWith(`${cc}-`)) {
+      notes.push(`alias ${key} -> ${code}: not an ISO 3166-2 code in country ${cc}, ignored`);
       continue;
     }
-    if (!cc || !name || !code.startsWith(`${cc}-`)) {
-      notes.push(`alias ${key} -> ${code}: code is not in country ${cc}, ignored`);
-      continue;
+    // The iso-codes dataset trails the ISO register: Norway's 2024 restoration of
+    // Akershus, Buskerud and Østfold (NO-32, NO-33, NO-31) is still absent from it.
+    // A curated entry is how a person states a code no rule and no dataset reaches,
+    // so a well-formed code the dataset does not know is kept and flagged rather
+    // than dropped - dropping it would leave those addresses at country granularity
+    // with no visible reason.
+    if (!isoCodes.has(code)) {
+      notes.push(`alias ${key} -> ${code}: not in the iso-codes dataset, kept - check it against the ISO register`);
     }
     kept += 1;
     const normalised = normalise(name);

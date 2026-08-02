@@ -12,6 +12,8 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
+const overrides = require('./overrides');
+
 const ROOT = path.join(__dirname, '..');
 
 // A structurally valid but truncated generation must not publish: every node would
@@ -187,6 +189,39 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
   if (rowCount < FLOORS.rows) problems.push(`${file}: only ${rowCount} rows — truncated or empty generation`);
 
   console.log(`${file}: ok (${rowCount} rows, ${header.countries.length} countries, ${header.orgs.length} orgs, ${header.regions.length} regions, generated ${header.generated})`);
+})();
+
+// scripts/iplocation-overrides.json is the one hand-edited input to the artifact:
+// the corrections the build applies where the vendor's attribution of a block is
+// wrong and the fleet inside it says so. It is checked through the same loader the
+// build uses, so a bad entry fails the PR rather than the monthly build.
+(() => {
+  const file = 'scripts/iplocation-overrides.json';
+  const ledger = overrides.load(path.join(ROOT, file));
+  if (ledger.problems.length) {
+    ledger.problems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+  console.log(`${file}: ok (${ledger.entries.length} ${ledger.entries.length === 1 ? 'entry' : 'entries'})`);
+
+  // The build marks an entry no-op when the rows it covers already carry its
+  // values: the vendor has caught up and the correction now corrects nothing.
+  // Retiring it is a person's edit, so this is a notice and never a failure - a
+  // stale entry is inert, and failing CI on one would block unrelated policy
+  // changes until somebody tidied up.
+  let report;
+  try {
+    report = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/iplocation-build-report.json'), 'utf8'));
+  } catch {
+    return;
+  }
+  (report.overrides?.entries ?? []).filter((entry) => entry.noop).forEach((entry) => {
+    const claim = `${entry.country ?? 'country unchanged'} / ${entry.region ?? 'no region'}`;
+    const why = entry.rowsTouched === 0
+      ? 'no table row covers the range — check it for a typo'
+      : 'the table already carries its values — the vendor has caught up';
+    console.log(`WARNING ${file}: ${entry.range} (${claim}, added ${entry.added}) is retirable: ${why}; delete the entry`);
+  });
 })();
 
 if (problems.length) {
