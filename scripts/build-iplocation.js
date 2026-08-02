@@ -86,6 +86,19 @@ const CONTINENTS = {
   VN: 'AS', VG: 'NA', VI: 'NA', WF: 'OC', EH: 'AF', YE: 'AS', ZM: 'AF', ZW: 'AF', AX: 'EU', XK: 'EU',
 };
 
+// ip-api still speaks Norway's pre-2020 county codes, while the artifact speaks
+// current ISO 3166-2: Norway restored Østfold, Akershus and Buskerud in 2024 with
+// new codes, and ISO never brought the old ones back. A node self-reporting the
+// retired code is naming the same county the table names with the current one, so
+// on the fleet side of the join a retired report counts as agreement with its
+// successor. This is never applied to the artifact - the table carries current ISO
+// alone.
+const SELF_REPORT_REGION_ALIASES = {
+  'NO-01': 'NO-31', // Østfold
+  'NO-02': 'NO-32', // Akershus
+  'NO-06': 'NO-33', // Buskerud
+};
+
 // ---------------------------------------------------------------------------
 // small utilities
 
@@ -391,7 +404,8 @@ async function validate(table, report) {
       disagreements.set(key, (disagreements.get(key) ?? 0) + 1);
     }
     if (geo.region) {
-      const expected = `${geo.countryCode}-${geo.region}`;
+      const reported = `${geo.countryCode}-${geo.region}`;
+      const expected = SELF_REPORT_REGION_ALIASES[reported] ?? reported;
       const tableRegion = table.rows.region[row] === -1 ? null : table.regions[table.rows.region[row]];
       if (tableRegion === null) regionTableNull += 1;
       else if (tableRegion === expected) regionAgree += 1;
