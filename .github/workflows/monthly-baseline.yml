@@ -10,6 +10,11 @@ name: monthly-baseline
 # timestamp makes every build byte-unique, and a late DB-IP month falls back
 # to the previous file, which must not produce a no-op PR.
 #
+# A published baseline younger than a week also suppresses the PR: the RIR
+# delegated files move daily, so serials alone cannot tell a new month from
+# day-old drift, and a baseline merged by hand days earlier already serves
+# the month the cron exists to cover.
+#
 # The PR is opened with BASELINE_PR_TOKEN (a fine-grained PAT with contents
 # and pull-requests write on this repo). The default GITHUB_TOKEN works as a
 # fallback, but PRs it creates never trigger the validate workflow (GitHub
@@ -49,10 +54,16 @@ jobs:
             const fs = require("fs");
             const { execSync } = require("child_process");
             const now = JSON.parse(fs.readFileSync("data/iplocation-build-report.json", "utf8")).sources;
-            const prev = JSON.parse(execSync("git show HEAD:data/iplocation-build-report.json", { encoding: "utf8" })).sources;
-            const changed = JSON.stringify(now) !== JSON.stringify(prev);
+            const head = JSON.parse(execSync("git show HEAD:data/iplocation-build-report.json", { encoding: "utf8" }));
+            const prev = head.sources;
+            const sourcesMoved = JSON.stringify(now) !== JSON.stringify(prev);
+            const publishedAgeDays = (Date.now() - Date.parse(head.finished)) / 86400000;
+            const monthAlreadyServed = publishedAgeDays < 7;
+            const changed = sourcesMoved && !monthAlreadyServed;
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
-            console.log(changed ? "sources moved" : "sources unchanged - no PR");
+            if (!sourcesMoved) console.log("sources unchanged - no PR");
+            else if (monthAlreadyServed) console.log(`published baseline is ${publishedAgeDays.toFixed(1)} days old - the month is already served, no PR`);
+            else console.log("sources moved");
             console.log(JSON.stringify({ prev, now }, null, 1));
           '
 
