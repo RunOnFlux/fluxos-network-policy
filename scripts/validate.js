@@ -191,12 +191,12 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
   console.log(`${file}: ok (${rowCount} rows, ${header.countries.length} countries, ${header.orgs.length} orgs, ${header.regions.length} regions, generated ${header.generated})`);
 })();
 
-// scripts/iplocation-overrides.json is the one hand-edited input to the artifact:
+// data/iplocation-overrides.json is the one hand-edited input to the artifact:
 // the corrections the build applies where the vendor's attribution of a block is
 // wrong and the fleet inside it says so. It is checked through the same loader the
 // build uses, so a bad entry fails the PR rather than the monthly build.
 (() => {
-  const file = 'scripts/iplocation-overrides.json';
+  const file = 'data/iplocation-overrides.json';
   const ledger = overrides.load(path.join(ROOT, file));
   if (ledger.problems.length) {
     ledger.problems.forEach((problem) => problems.push(`${file}: ${problem}`));
@@ -211,7 +211,7 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
   // changes until somebody tidied up.
   let report;
   try {
-    report = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/iplocation-build-report.json'), 'utf8'));
+    report = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/iplocation-build-report.json'), 'utf8'));
   } catch {
     return;
   }

@@ -1,0 +1,38 @@
+[
+  {
+    "range": "46.250.240.0/21",
+    "country": "GB",
+    "evidence": "Fleet reports GB. The address holder's own RIPE object YorkshireTech (46.250.240.0 - 46.250.255.255) carries geoloc: 51.50695934709921 -0.13581826238943562 and geofeed: https://geofeed.ipxo.com/geofeed.txt, which lists `46.250.240.0/20,GB,GB-ENG,London`. DB-IP has said AU / New South Wales in every month from 2026-06, and no source places the block in Australia.",
+    "added": "2026-08-02"
+  },
+  {
+    "range": "71.172.179.0/24",
+    "region": "US-NJ",
+    "evidence": "2 fleet nodes report US-NJ. Every PTR that answers across the /24 is *.nwrknj.fios.verizon.net (Verizon FiOS, Newark, New Jersey) and the router at .1 is CMDNNJ-VFTTP-301.verizon-gni.net (Camden, New Jersey); both codes carry the state. DB-IP said US / Massachusetts in 2026-06 and 2026-07 and US / New York in 2026-08, and has never named New Jersey.",
+    "added": "2026-08-02"
+  },
+  {
+    "range": "84.247.160.0/19",
+    "country": "DE",
+    "evidence": "2 fleet nodes report DE. The RIPE object covering exactly this /19 is TT-20240115, descr: Contabo GmbH, country: DE, inside DE-TERRATRANSIT-20041012 which is also DE. Contabo states a non-German country where one applies - 6 of its 444 inetnums are SG, FR, GB, US and DK - so DE here is a statement and not a default. DB-IP moved the block from DE to GB in 2026-07 and nothing else places it in Britain.",
+    "added": "2026-08-02"
+  },
+  {
+    "range": "94.130.14.0/26",
+    "region": "DE-SN",
+    "evidence": "2 fleet nodes report DE-SN. The RIPE object covering exactly this /26 is netname HETZNER-fsn1-dc1, descr: Hetzner Online GmbH / Datacenter fsn1-dc1. Hetzner's published data center parks are Nuremberg, Falkenstein/Vogtland and Helsinki (https://www.hetzner.com/unternehmen/rechenzentrum/); Falkenstein is in Saxony and it is Nuremberg that is in Bavaria. DB-IP has said Bavaria since 2026-06, which is Hetzner's other German park.",
+    "added": "2026-08-02"
+  },
+  {
+    "range": "135.181.226.0/24",
+    "country": "FI",
+    "evidence": "4 fleet nodes report FI. Hetzner registers the covering 135.181.0.0/16 as DE-HETZNER-19931109 with country: FI, and all 231 of its hel1-named objects carry FI while its 19,226 fsn1 and 1,342 nbg1 objects carry DE. The customer assignment inside this /24 says DE, as every Hetzner customer object inside the Finnish /16 does, so it locates nothing. DB-IP has said DE / Hesse since 2026-06 and Hetzner has no Hesse site.",
+    "added": "2026-08-02"
+  },
+  {
+    "range": "188.165.26.0/24",
+    "country": "FR",
+    "evidence": "3 fleet nodes report FR. The covering RIPE allocation is FR-OVH-20090605 (188.165.0.0/16, country: FR); the /21 inside it is LT-OVH, descr: UAB OVH, which names the registering OVH entity and not a site. DB-IP itself said FR / Île-de-France in 2026-06 and 2026-07 and flipped to PL / Mazovia in 2026-08.",
+    "added": "2026-08-02"
+  }
+]

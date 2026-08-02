@@ -48,8 +48,8 @@ jobs:
           node -e '
             const fs = require("fs");
             const { execSync } = require("child_process");
-            const now = JSON.parse(fs.readFileSync("scripts/iplocation-build-report.json", "utf8")).sources;
-            const prev = JSON.parse(execSync("git show HEAD:scripts/iplocation-build-report.json", { encoding: "utf8" })).sources;
+            const now = JSON.parse(fs.readFileSync("data/iplocation-build-report.json", "utf8")).sources;
+            const prev = JSON.parse(execSync("git show HEAD:data/iplocation-build-report.json", { encoding: "utf8" })).sources;
             const changed = JSON.stringify(now) !== JSON.stringify(prev);
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
             console.log(changed ? "sources moved" : "sources unchanged - no PR");
@@ -65,17 +65,17 @@ jobs:
           MONTH="$(date -u +%Y-%m)"
           BRANCH="auto/baseline-${MONTH}"
           SUMMARY="$(node -e '
-            const r = JSON.parse(require("fs").readFileSync("scripts/iplocation-build-report.json", "utf8"));
+            const r = JSON.parse(require("fs").readFileSync("data/iplocation-build-report.json", "utf8"));
             console.log(JSON.stringify({ sources: r.sources, output: r.output, overrides: r.overrides, validation: r.validation, regionNamesUnmapped: r.dbip.namesWithoutRegion }, null, 2));
           ')"
           git config user.name "flux-baseline-bot"
           git config user.email "baseline-bot@runonflux.io"
           git checkout -b "$BRANCH"
-          git add iplocation.bin.gz scripts/iplocation-build-report.json
+          git add iplocation.bin.gz data/iplocation-build-report.json
           git commit -m "Monthly baseline ${MONTH}"
           # a leftover branch from a rerun of the same month is bot-owned scratch
           git push origin ":refs/heads/${BRANCH}" 2>/dev/null || true
           git push -u origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" \
             --title "Monthly baseline ${MONTH}" \
-            --body "$(printf 'Automated monthly rebuild from the RIR delegated files and DB-IP City Lite. Review the numbers below - region disagreements and unmapped names are the curation checkpoint - then merge. The fleet picks the new baseline up on its next daily conditional fetch.\n\n```json\n%s\n```\n\nFull report in the diff: `scripts/iplocation-build-report.json`.' "$SUMMARY")"
+            --body "$(printf 'Automated monthly rebuild from the RIR delegated files and DB-IP City Lite. Review the numbers below - region disagreements and unmapped names are the curation checkpoint - then merge. The fleet picks the new baseline up on its next daily conditional fetch.\n\n```json\n%s\n```\n\nFull report in the diff: `data/iplocation-build-report.json`.' "$SUMMARY")"

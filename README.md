@@ -72,7 +72,7 @@ The build has two sources, each authoritative for what it knows:
    organisation id. An allocation is the block rung of the fault-domain ladder, so these
    boundaries are the artifact's structure.
 2. **DB-IP City Lite** — country and region per address range, collapsed from city granularity and
-   resolved to ISO 3166-2 through `scripts/region-map.json`. Country and region come from here
+   resolved to ISO 3166-2 through `data/region-map.json`. Country and region come from here
    alone: measured against the fleet's self-reports it wins 178 disagreements to 10 against the
    registry-plus-RDAP machinery it replaced, and it carries region data for 99% of the fleet, which
    the registries do not have at all.
@@ -87,9 +87,9 @@ more often than that correction is, and needs no per-block queries. **RFC 8805 g
 **RFC 9632 discovery** were beaten or tied by DB-IP everywhere they were measured, at the cost of a
 network fetch per operator and a dependency on operators publishing at all.
 
-`scripts/region-map.json` maps a (country, DB-IP region name) pair to its ISO 3166-2 code. It is
+`data/region-map.json` maps a (country, DB-IP region name) pair to its ISO 3166-2 code. It is
 generated too, from the iso-codes dataset, the fleet's own self-reports, and
-`scripts/region-aliases.json` — a small curated table for names no rule reaches:
+`data/region-aliases.json` — a small curated table for names no rule reaches:
 
 ```
 node scripts/build-region-map.js
@@ -101,7 +101,7 @@ for. A name with no mapping is not an error: its addresses answer at country gra
 missing region can only make placement more conservative.
 
 The build joins the result against the live fleet's self-reported geolocation and writes
-`scripts/iplocation-build-report.json` with country and region agreement numbers and every
+`data/iplocation-build-report.json` with country and region agreement numbers and every
 remaining disagreement. Read the report before merging a regeneration; country agreement is
 ~98.5% and materially below that is a regression, not drift.
 
@@ -122,7 +122,7 @@ placement can see.
 DB-IP is right about far more of the address space than anything measured against it, but it is not
 right about all of it, and where it is wrong it is usually wrong about a whole block: a dozen nodes
 inside one allocation all self-reporting a country the table disagrees with is the vendor
-mis-attributing that allocation, not a dozen nodes lying. `scripts/iplocation-overrides.json` is the
+mis-attributing that allocation, not a dozen nodes lying. `data/iplocation-overrides.json` is the
 ledger of those corrections. They are applied **build-side**, between the merge and the artifact, so
 every node fetches a corrected table and there is nothing to override node-side.
 
