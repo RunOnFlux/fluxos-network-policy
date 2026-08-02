@@ -1,9 +1,7 @@
 {
-  "started": "2026-08-02T08:40:50.089Z",
+  "started": "2026-08-02T08:56:14.138Z",
   "malformedRows": [],
-  "overlaps": [
-    "[3497658880-3497659391] vs [3497659136-3497659391]"
-  ],
+  "overlaps": [],
   "dbip": {
     "databaseRows": 3652151,
     "malformedRows": 0,
@@ -15,7 +13,7 @@
     "rowsWithoutRegion": 391064,
     "namesWithoutRegion": 897
   },
-  "collapsedRows": 22300,
+  "collapsedRows": 22303,
   "overrides": {
     "entries": [
       {
@@ -305,9 +303,9 @@
       "DE-HE->FR-GES": 12,
       "DK-84->DK-85": 9,
       "FR-HDF->NL-ZH": 6,
-      "TW-TPE->TW-NWT": 4,
       "FR-IDF->FR-HDF": 4,
       "FR-ARA->FR-IDF": 4,
+      "TW-TPE->TW-NWT": 4,
       "BG-23->BG-22": 3,
       "FR-ARA->FR-PAC": 3,
       "FR-IDF->FR-PAC": 3,
@@ -379,13 +377,6 @@
         "nodes": 2
       },
       {
-        "range": "161.97.116.0-161.97.121.255",
-        "org": "2c0415d0a7fd",
-        "table": "DE-BY",
-        "fleet": "FR-GES",
-        "nodes": 2
-      },
-      {
         "range": "202.61.199.0-202.61.207.255",
         "org": "16078a843f71",
         "table": "DE-BW",
@@ -397,6 +388,13 @@
         "org": "47c987e434d5",
         "table": "MD-SN",
         "fleet": "MD-AN",
+        "nodes": 2
+      },
+      {
+        "range": "161.97.116.0-161.97.121.255",
+        "org": "2c0415d0a7fd",
+        "table": "DE-BY",
+        "fleet": "FR-GES",
         "nodes": 2
       },
       {
@@ -428,20 +426,6 @@
         "nodes": 2
       },
       {
-        "range": "68.69.224.0-68.69.242.255",
-        "org": "93575badb3d3",
-        "table": "US-MN",
-        "fleet": "US-ND",
-        "nodes": 1
-      },
-      {
-        "range": "114.45.0.0-114.45.1.255",
-        "org": "1ecd71d7bf55",
-        "table": "TW-TPE",
-        "fleet": "TW-NWT",
-        "nodes": 1
-      },
-      {
         "range": "81.172.240.0-81.172.243.255",
         "org": "f31d5faef0b4",
         "table": "NL-NH",
@@ -453,6 +437,13 @@
         "org": "aebabe53c135",
         "table": "AE-FU",
         "fleet": "AE-DU",
+        "nodes": 1
+      },
+      {
+        "range": "68.69.224.0-68.69.242.255",
+        "org": "93575badb3d3",
+        "table": "US-MN",
+        "fleet": "US-ND",
         "nodes": 1
       },
       {
@@ -531,26 +522,33 @@
         "table": "FR-IDF",
         "fleet": "FR-PAC",
         "nodes": 1
+      },
+      {
+        "range": "51.178.192.192-51.178.198.255",
+        "org": "9acd20d75bad",
+        "table": "FR-HDF",
+        "fleet": "FR-IDF",
+        "nodes": 1
       }
     ],
     "continentMismatches": {}
   },
-  "finished": "2026-08-02T08:41:06.071Z",
+  "finished": "2026-08-02T08:56:41.787Z",
   "sources": {
-    "ripencc": "1785362399",
-    "arin": "1785330020512",
-    "apnic": "20260730",
-    "lacnic": "20260729",
-    "afrinic": "20260730",
+    "ripencc": "1785621599",
+    "arin": "1785589221338",
+    "apnic": "20260802",
+    "lacnic": "20260801",
+    "afrinic": "20260802",
     "dbip": "2026-08"
   },
   "output": {
     "file": "iplocation.bin.gz",
-    "rows": 2009253,
+    "rows": 2009296,
     "countries": 247,
-    "orgs": 103366,
+    "orgs": 103382,
     "regions": 2497,
-    "uncompressedBytes": 17432189,
-    "bytes": 4797368
+    "uncompressedBytes": 17433041,
+    "bytes": 4797333
   }
 }
