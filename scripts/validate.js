@@ -134,6 +134,26 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
     .find(([cc, continent]) => !header.countries.includes(cc) || !/^(AF|AN|AS|EU|NA|OC|SA)$/.test(continent));
   if (badContinent) problems.push(`${file}: invalid continents entry ${JSON.stringify(badContinent)}`);
 
+  // The region-name vocabulary is optional: a baseline built before it existed
+  // carries none, and a node without it answers a named region at country
+  // granularity, which is the safe direction. Present, it must be well formed -
+  // a key naming a country the artifact does not carry could never resolve, and
+  // a value that is not a region code would resolve to nothing.
+  if (header.regionNames !== undefined) {
+    if (typeof header.regionNames !== 'object' || header.regionNames === null || Array.isArray(header.regionNames)) {
+      problems.push(`${file}: header regionNames is not an object`);
+    } else {
+      const carried = new Set(header.countries);
+      const badEntry = Object.entries(header.regionNames).find(([key, code]) => {
+        const [cc, ...rest] = key.split('|');
+        return !carried.has(cc) || rest.join('|').length === 0
+          || typeof code !== 'string' || !/^[A-Z]{2}-[A-Z0-9]{1,3}$/.test(code)
+          || code.slice(0, 2) !== cc;
+      });
+      if (badEntry) problems.push(`${file}: invalid regionNames entry ${JSON.stringify(badEntry)}`);
+    }
+  }
+
   // Index identity is positional: a duplicate would make two indices name the same domain and
   // silently merge or split fault domains on every node.
   ['countries', 'orgs', 'regions'].forEach((section) => {

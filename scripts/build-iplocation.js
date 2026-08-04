@@ -15,7 +15,9 @@
 //   2. DB-IP City Lite: country and region per address range, the region name
 //      resolved to ISO 3166-2 through data/region-map.json. Country and region
 //      come from here alone - measured against the fleet's self-reports it is
-//      right where the registries' holder country is not.
+//      right where the registries' holder country is not. That same map is
+//      carried in the artifact's header, so a node can resolve a region an app
+//      names the way ip-api does back to the code the rows use.
 //
 // data/iplocation-overrides.json then corrects the blocks where neither source
 // is right and the fleet says so; see scripts/overrides.js.
@@ -549,11 +551,26 @@ function writeVarint(buffer, offset, value) {
   return cursor + 1;
 }
 
-function emit(table, sourceSerials, outPath) {
+function emit(table, sourceSerials, outPath, regionMap) {
   const { rows } = table;
   const continents = {};
   for (const cc of table.countries) {
     if (CONTINENTS[cc]) continents[cc] = CONTINENTS[cc];
+  }
+  // The region-name vocabulary, carried so a node can read it too.
+  //
+  // The rows hold ISO 3166-2, but an app's geolocation may name a region the
+  // way ip-api does - 'acEU_DE_Bavaria' - and a node has no way to tell that
+  // Bavaria is DE-BY. Without this it answers such an entry at country
+  // granularity, which counts the whole of Germany as eligible for a spec that
+  // asked for one state.
+  //
+  // Scoped to the countries the artifact carries, like continents above: a
+  // vocabulary entry naming a country the rows do not have could never resolve.
+  const regionNames = {};
+  const carried = new Set(table.countries);
+  for (const [key, code] of Object.entries(regionMap)) {
+    if (carried.has(key.slice(0, 2))) regionNames[key] = code;
   }
   const header = Buffer.from(JSON.stringify({
     generated: new Date().toISOString(),
@@ -562,6 +579,7 @@ function emit(table, sourceSerials, outPath) {
     continents,
     orgs: table.orgs,
     regions: table.regions,
+    regionNames,
   }), 'utf8');
 
   const prefix = Buffer.allocUnsafe(15 + header.length);
@@ -586,7 +604,7 @@ function emit(table, sourceSerials, outPath) {
   const raw = Buffer.concat([prefix, body.subarray(0, offset)]);
   const compressed = zlib.gzipSync(raw, { level: 9 });
   fs.writeFileSync(outPath, compressed);
-  return { uncompressedBytes: raw.length, bytes: compressed.length };
+  return { uncompressedBytes: raw.length, bytes: compressed.length, regionNames: Object.keys(regionNames).length };
 }
 
 // ---------------------------------------------------------------------------
@@ -648,7 +666,7 @@ async function main() {
     }
   }
 
-  const artifact = emit(table, sourceSerials, args.out);
+  const artifact = emit(table, sourceSerials, args.out, regionMap);
   report.finished = new Date().toISOString();
   report.sources = sourceSerials;
   report.output = {
@@ -657,6 +675,7 @@ async function main() {
     countries: table.countries.length,
     orgs: table.orgs.length,
     regions: table.regions.length,
+    regionNames: artifact.regionNames,
     uncompressedBytes: artifact.uncompressedBytes,
     bytes: artifact.bytes,
   };
