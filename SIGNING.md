@@ -13,7 +13,7 @@ in. That is also why the set is any-of-N rather than a single key.
 | key | public key (raw ed25519, hex) | custody | use |
 |---|---|---|---|
 | 1 | `911620580c708b80bdb97afc01ec529c5d4655727ec87a277838a1f6b7f123c0` | CI — `hashlist-signing` environment secret `HASHLIST_SIGNING_SEED_B64` | day to day |
-| 2 | _not yet generated_ | cold, offline | continuity only |
+| 2 | `fee7b0ccf2323954af68a249eaa61f957239eb222329e08a5b6a50ced649bae8` | cold, offline | continuity only |
 
 ### Key 1
 
@@ -26,8 +26,8 @@ that do not declare that environment — `validate.yml`, `monthly-baseline.yml` 
 
 ### Key 2
 
-To be generated **offline**, private half never on a networked machine, stored with the same process
-that holds the ISO signing material. It is not used in normal operation. Its purpose is continuity:
+Generated **offline** 2026-08-14, private half never on a networked machine, stored with the same
+process that holds the ISO signing material. It is not used in normal operation. Its purpose is continuity:
 without a second pinned key, losing key 1 means no new FluxOS release can be blessed until a
 fluxbench release ships a replacement, and with the fail-open deleted every upgrading node would
 fail closed.

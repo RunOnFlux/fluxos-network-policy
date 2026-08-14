@@ -20,7 +20,8 @@ const SPKI_ED25519_PREFIX = Buffer.from('302a300506032b6570032100', 'hex');
 // Must match SIGNING.md and fluxbench's PINNED_HASHLIST_PUBKEYS. Any of them verifying is enough,
 // which is how a second key can take over without a fluxbench release.
 const PINNED_PUBLIC_KEYS = [
-  '911620580c708b80bdb97afc01ec529c5d4655727ec87a277838a1f6b7f123c0',
+  '911620580c708b80bdb97afc01ec529c5d4655727ec87a277838a1f6b7f123c0',   // 1, CI
+  'fee7b0ccf2323954af68a249eaa61f957239eb222329e08a5b6a50ced649bae8',   // 2, cold
 ];
 
 function verifyDocument(document, publicKeysHex) {
