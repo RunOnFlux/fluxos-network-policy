@@ -72,12 +72,15 @@ jobs:
       # [skip ci] because this commit touches data/hashlist-source.json, which is a trigger above.
       - name: Publish
         run: |
-          if git diff --quiet -- hashlist.json data/hashlist-source.json; then
+          git config user.email 'runonfluxbot@gmail.com'
+          git config user.name 'policy-bot'
+          # Staged, not `git diff`: on the first run hashlist.json does not exist yet, and an
+          # untracked file is invisible to a working-tree diff. That would have reported nothing to
+          # do on precisely the run that publishes the first document.
+          git add hashlist.json data/hashlist-source.json
+          if git diff --cached --quiet; then
             echo "nothing changed, not publishing"
             exit 0
           fi
-          git config user.email 'runonfluxbot@gmail.com'
-          git config user.name 'policy-bot'
-          git add hashlist.json data/hashlist-source.json
           git commit -m "Sign FluxOS hash list seq $(node -p "require('./data/hashlist-source.json').seq") [skip ci]"
           git push
