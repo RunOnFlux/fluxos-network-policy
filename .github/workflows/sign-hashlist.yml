@@ -1,0 +1,86 @@
+name: sign-hashlist
+
+# Signs the list of known-good FluxOS tree hashes that fluxbench checks a node against.
+#
+# Runs unattended. RunOnFlux/flux CI reports every tree it builds, the same population fluxhashes
+# holds today, so a node running an official branch keeps confirming without anyone approving
+# anything. Because CI reports on every push, a tree's hash is signed long before a release is cut
+# from it -- which is the publish-before-release ordering fluxbench needs, for free.
+#
+# Deliberately NOT triggered by pull_request_target, and not by pull_request. This repository is
+# public: either would expose the signing key to a fork.
+
+on:
+  # From RunOnFlux/flux CI, carrying a newly built tree hash.
+  repository_dispatch:
+    types: [fluxos-tree-hash]
+  # And when the source list is edited directly on main.
+  push:
+    branches: [main]
+    paths: ['data/hashlist-source.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# The sequence must advance by one per published document. Two runs signing at once would both read
+# the same sequence and one would overwrite the other, publishing a document whose sequence had
+# already been used.
+concurrency:
+  group: sign-hashlist
+  cancel-in-progress: false
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    # Scopes the signing key to this job. Workflows that do not name this environment -- validate,
+    # monthly-baseline -- cannot read it.
+    environment: hashlist-signing
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      # Through the environment, never interpolated into the command: client_payload comes from
+      # another repository's CI, and ${{ }} inside a run block is executed by the shell before the
+      # script ever sees it. update-hashlist.js checks the shape.
+      - name: Add the reported tree hash
+        if: github.event_name == 'repository_dispatch'
+        env:
+          TREE_HASH: ${{ github.event.client_payload.hash }}
+        run: node scripts/update-hashlist.js "$TREE_HASH"
+
+      - name: Sign
+        env:
+          HASHLIST_SIGNING_SEED_B64: ${{ secrets.HASHLIST_SIGNING_SEED_B64 }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const source = JSON.parse(fs.readFileSync("data/hashlist-source.json", "utf8"));
+            fs.writeFileSync("/tmp/hashes.json", JSON.stringify(source.hashes));
+            fs.writeFileSync("/tmp/seq", String(source.seq));
+          '
+          node scripts/sign-hashlist.js --hashes /tmp/hashes.json --seq "$(cat /tmp/seq)" --out hashlist.json
+
+      # Against the published public key, not the signing key. A mangled secret produces a
+      # well-formed document that no node will ever accept; this makes that a failed run rather
+      # than a fleet that stops confirming as it upgrades.
+      - name: Verify what was just signed
+        run: node scripts/verify-hashlist.js hashlist.json
+
+      # [skip ci] because this commit touches data/hashlist-source.json, which is a trigger above.
+      - name: Publish
+        run: |
+          git config user.email 'runonfluxbot@gmail.com'
+          git config user.name 'policy-bot'
+          # Staged, not `git diff`: on the first run hashlist.json does not exist yet, and an
+          # untracked file is invisible to a working-tree diff. That would have reported nothing to
+          # do on precisely the run that publishes the first document.
+          git add hashlist.json data/hashlist-source.json
+          if git diff --cached --quiet; then
+            echo "nothing changed, not publishing"
+            exit 0
+          fi
+          git commit -m "Sign FluxOS hash list seq $(node -p "require('./data/hashlist-source.json').seq") [skip ci]"
+          git push
