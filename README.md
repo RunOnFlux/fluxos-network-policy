@@ -138,6 +138,13 @@ entry carries the evidence it was decided on, the number of fleet hosts that evi
 and a date. A malformed entry stops the build — publishing a verdict nobody can check is worse than
 publishing none, and none is a state the readers already handle.
 
+The ledger is written to stay **diffable**, because a ledger nobody can review is a ledger nobody
+has reviewed. Evidence is sorted and capped per kind rather than sampled, and `decided` is carried
+forward from the existing entry whenever the verdict is unchanged, so it means the day the verdict
+was reached rather than the day the file was last written. Two consecutive builds against the same
+fleet leave 1,566 of 1,599 entries byte-identical; before that, an unsorted eight-host sample and a
+fresh date on every entry rewrote all 1,600 of them and buried the handful that actually moved.
+
 **The ledger keys ADDRESS RANGES, not organisation tokens**, and that is load-bearing. The token is
 a hash of the registries' opaque-id, and the registries regenerate those on every publication:
 measured across eleven days, **1,919 of 2,510 fleet hosts changed token**. It groups ranges
@@ -155,11 +162,24 @@ is named in the build output and recorded in the report; it is stale, not absent
 silence is how verdicts vanish unnoticed.
 
 **The rule** (`scripts/orgclasses.js`, the single definition both the gatherer and the build read):
-an organisation is residential when at least one of its fleet hosts gives positive evidence and
-**no** host in it contradicts; hosting when there are contradictions and no positive evidence;
-and unclassified otherwise. Evidence is reverse DNS, the RDAP object's netname and registrant, the
+each fleet host in the organisation is decided on its own evidence — residential when something
+positively says access network and **nothing** contradicts, hosting when something contradicts and
+nothing says access, and no vote at all when its own signals disagree or it has none. The
+organisation then takes the verdict its decided hosts agree on: unanimous decides at any size,
+which keeps the many one- and two-host organisations answerable, and short of unanimous it needs
+at least three decided hosts and 80% agreement — the thresholds `ADJUDICATION.md` already uses to
+settle a location dispute. Evidence is reverse DNS, the RDAP object's netname and registrant, the
 ip-api `hosting`/`proxy`/`mobile` flags, and whether the operator is a known host — read from
 `isp`/`as` and never from `org`, which is the block registrant and frequently a reseller.
+
+**Unanimity was the first rule here, and it has a size bias that runs exactly backwards.** Across a
+real consumer ISP's customers something always trips a flag, so four of Free SAS's 55 addresses
+flagged `proxy` vetoed a verdict its other 51 plainly supported. The bigger the access network, the
+less classifiable it became: what unanimity left undecided was Cogent, Free SAS, Frontier, Bouygues
+and Comcast — the large consumer and transit networks, which is precisely the population this table
+exists to name. Under the vote each of those is now decided, and each the obvious way: Cogent,
+Hetzner, Contabo, OVH, netcup and Linode `hosting`; Free SAS, Frontier, Bouygues and Comcast
+`residential`.
 
 Link asymmetry is recorded but **decides nothing**. A bench figure is a speed test's result, not a
 property of the link, and Hetzner nodes measure 183/621 often enough that counting it as evidence
@@ -171,28 +191,37 @@ The contradiction rule is what earns the accuracy, and it is measured, not asser
 1,569 fleet hosts ip-api positively calls hosting, spanning all 29 hosting ASNs the fleet uses, the
 per-host form of this rule calls **none** of them residential — and the 39 that do trip an access
 signal are each caught by a contradiction. Applying it across the organisation rather than per host
-is deliberate: an operator running both consumer lines and a hosting arm contradicts itself and
-comes out unclassified, which is the honest answer for a block whose addresses are not all the same
-kind of thing.
+is deliberate: an operator running both consumer lines and a hosting arm reaches no majority either
+way and comes out unclassified, which is the honest answer for a block whose addresses are not all
+the same kind of thing.
+
+Because the majority no longer has to be unanimous, **up to a fifth of an organisation's addresses
+may be the other kind**, and the table alone cannot tell which. FluxOS closes that on the node: one
+holding a published `residential` verdict that can see hosting evidence about its OWN address
+declines it. Measured on the 2026-08-19 fleet, exactly one of the 1,587 hosts ip-api positively
+calls hosting carries a published `residential` verdict — `213.44.137.57`, in Bouygues' consumer
+space — and the node-side veto is what stops it being acted on, along with six others. Local
+evidence only ever removes a node from enforcement; it can never impose one the table did not give.
 
 Only organisations the fleet actually occupies are considered. The artifact names over 103,000;
 enforcement will only ever ask about the few hundred holding Flux nodes, and a verdict nobody will
-read is a verdict nobody has checked. On the 2026-08-18 fleet that is 261 organisations behind
-2,511 hosts, written as 1,296 ranges: **107 residential, 49 hosting, 105 unclassified**.
+read is a verdict nobody has checked. On the 2026-08-19 fleet that is 260 organisations behind
+2,514 hosts, written as 1,599 ranges: **112 residential, 51 hosting, 97 unclassified**.
 
-Checked against the deterministic node list on the day it was built — 2,508 host addresses, 15%
-residential, 63% hosting, 21% unclassified:
+Checked against the deterministic node list on the day it was built — 2,514 host addresses, 21%
+residential, 71% hosting, 8% unclassified:
 
-- Of the 1,575 hosts ip-api positively calls hosting, **none** came out residential.
-- Hetzner (1,156), OVH, Contabo, netcup and Linode nodes carry **no** residential verdict.
+- Of the 1,587 hosts ip-api positively calls hosting, **one** came out residential, and the node
+  declines it (above).
+- Hetzner (1,099), OVH, Contabo, netcup and Linode nodes carry **no** residential verdict.
 - The hosts PR #1784's classifier wrongly targeted — the University of Latvia, Infomaniak, the
   `*.dedicated.static.tds.net` block — all come out `hosting` or unclassified.
 
-Of the organisations left unclassified, most have no evidence at all; the rest are genuine
-disagreements worth leaving alone. Cogent's space holds both transit customers and a fibre ISP;
-Free SAS, Bouygues and Frontier carry consumer PTRs and consumer registry objects while ip-api flags
-them `proxy` or `hosting`. Weighting one source over another to break those ties is a judgement
-nobody has measured, and unclassified costs only enforcement — so they stay unclassified.
+**Every one of the 97 organisations left unclassified is unclassified for want of evidence, not
+because its signals fought** — the conflicted bucket is empty. The largest are YWNET (27 hosts),
+TalkTalk (20) and Consolidated Telephone (7): addresses with no PTR, no access or hosting vocabulary
+in their registry object, and no vendor flag either way. Nothing is the honest answer for them, and
+it costs only enforcement.
 
 `orgClasses` is optional, like `regionNames`, and for the same reason: an organisation absent from
 the map has no verdict, and nothing enforces without one. A build carrying none costs enforcement
