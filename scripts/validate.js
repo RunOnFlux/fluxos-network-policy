@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
+const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
 
 const ROOT = path.join(__dirname, '..');
@@ -134,9 +135,9 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
     .find(([cc, continent]) => !header.countries.includes(cc) || !/^(AF|AN|AS|EU|NA|OC|SA)$/.test(continent));
   if (badContinent) problems.push(`${file}: invalid continents entry ${JSON.stringify(badContinent)}`);
 
-  // The region-name vocabulary is optional: a baseline built before it existed
-  // carries none, and a node without it answers a named region at country
-  // granularity, which is the safe direction. Present, it must be well formed -
+  // The region-name vocabulary is optional because its absence degrades safely:
+  // a node without it answers a named region at country granularity, the same
+  // place an unresolvable name lands. Present, it must be well formed -
   // a key naming a country the artifact does not carry could never resolve, and
   // a value that is not a region code would resolve to nothing.
   if (header.regionNames !== undefined) {
@@ -151,6 +152,24 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
           || code.slice(0, 2) !== cc;
       });
       if (badEntry) problems.push(`${file}: invalid regionNames entry ${JSON.stringify(badEntry)}`);
+    }
+  }
+
+  // The organisation classes are optional for the same reason: an organisation
+  // absent from the map has no verdict, and nothing enforces without one, so a
+  // build carrying none costs enforcement rather than misdirecting it. Present,
+  // every key must name an organisation the artifact actually carries - a verdict
+  // about one it does not could never be looked up - and every value must be a
+  // class code the reader knows.
+  if (header.orgClasses !== undefined) {
+    if (typeof header.orgClasses !== 'object' || header.orgClasses === null || Array.isArray(header.orgClasses)) {
+      problems.push(`${file}: header orgClasses is not an object`);
+    } else {
+      const carriedOrgs = new Set(header.orgs);
+      const codes = new Set(Object.values(orgclasses.CLASS_CODES));
+      const badClass = Object.entries(header.orgClasses)
+        .find(([token, code]) => !carriedOrgs.has(token) || !codes.has(code));
+      if (badClass) problems.push(`${file}: invalid orgClasses entry ${JSON.stringify(badClass)}`);
     }
   }
 
@@ -208,7 +227,39 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
 
   if (rowCount < FLOORS.rows) problems.push(`${file}: only ${rowCount} rows — truncated or empty generation`);
 
-  console.log(`${file}: ok (${rowCount} rows, ${header.countries.length} countries, ${header.orgs.length} orgs, ${header.regions.length} regions, generated ${header.generated})`);
+  const classCount = Object.keys(header.orgClasses ?? {}).length;
+  console.log(`${file}: ok (${rowCount} rows, ${header.countries.length} countries, ${header.orgs.length} orgs, ${header.regions.length} regions, ${classCount} classified, generated ${header.generated})`);
+})();
+
+// data/orgclasses.json - the reviewed ledger of which organisations run access
+// networks and which sell hosting. Checked here as well as in the build so a
+// malformed entry is a red PR check rather than a build that stops after the
+// expensive sources have already been pulled.
+(function checkOrgClasses() {
+  const file = 'data/orgclasses.json';
+  const full = path.join(ROOT, file);
+  if (!fs.existsSync(full)) {
+    console.log(`${file}: absent (no organisation is classified, which enforces nothing)`);
+    return;
+  }
+  let ledger;
+  try {
+    ledger = JSON.parse(fs.readFileSync(full, 'utf8'));
+  } catch (error) {
+    problems.push(`${file}: not readable as JSON - ${error.message}`);
+    return;
+  }
+  const entries = Object.entries(ledger.entries ?? {});
+  const entryProblems = entries.flatMap(([token, entry]) => orgclasses.entryProblems(token, entry));
+  if (entryProblems.length) {
+    entryProblems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+  const tally = entries.reduce((acc, [, entry]) => {
+    acc[entry.class] = (acc[entry.class] ?? 0) + 1;
+    return acc;
+  }, {});
+  console.log(`${file}: ok (${entries.length} entries - ${orgclasses.CLASSES.map((c) => `${tally[c] ?? 0} ${c}`).join(', ')})`);
 })();
 
 // data/iplocation-overrides.json is the one hand-edited input to the artifact:

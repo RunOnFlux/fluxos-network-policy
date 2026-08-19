@@ -41,6 +41,11 @@ jobs:
         with:
           node-version: '24'
 
+      # Deliberately does NOT run build-orgclasses.js. The organisation classes
+      # are a reviewed judgement about real operators, carried forward from the
+      # committed ledger; regenerating them unattended would let a month's drift
+      # in a vendor flag change who gets enforced against with nobody reading it.
+      # Refresh them by hand, as their own PR.
       - name: Build the baseline
         run: node scripts/build-iplocation.js
 

@@ -38,6 +38,7 @@ const path = require('path');
 const zlib = require('zlib');
 
 const { CONTINENTS } = require('./continents');
+const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
 const sources = require('./sources');
 
@@ -87,12 +88,13 @@ function parseArgs(argv) {
     cacheDir: path.join(ROOT, '.cache'),
     regionMap: path.join(ROOT, 'data', 'region-map.json'),
     overrides: path.join(ROOT, 'data', 'iplocation-overrides.json'),
+    orgclasses: path.join(ROOT, 'data', 'orgclasses.json'),
     report: path.join(ROOT, 'data', 'iplocation-build-report.json'),
     offline: false,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const flag = argv[i];
-    if (flag === '--out') { args.out = argv[i += 1]; } else if (flag === '--cache-dir') { args.cacheDir = argv[i += 1]; } else if (flag === '--region-map') { args.regionMap = argv[i += 1]; } else if (flag === '--overrides') { args.overrides = argv[i += 1]; } else if (flag === '--report') { args.report = argv[i += 1]; } else if (flag === '--offline') { args.offline = true; } else { throw new Error(`Unknown argument ${flag}`); }
+    if (flag === '--out') { args.out = argv[i += 1]; } else if (flag === '--cache-dir') { args.cacheDir = argv[i += 1]; } else if (flag === '--region-map') { args.regionMap = argv[i += 1]; } else if (flag === '--overrides') { args.overrides = argv[i += 1]; } else if (flag === '--orgclasses') { args.orgclasses = argv[i += 1]; } else if (flag === '--report') { args.report = argv[i += 1]; } else if (flag === '--offline') { args.offline = true; } else { throw new Error(`Unknown argument ${flag}`); }
   }
   return args;
 }
@@ -274,6 +276,25 @@ async function buildGeoLayer(file, regionMap, report) {
 // to be distinct per organisation. 48 bits across ~110k orgs gives ~1e-5 odds
 // of any collision, and a collision merely merges two orgs into one domain.
 const orgTokens = new Map();
+
+/**
+ * The reviewed organisation-class ledger, or an empty one when there is none.
+ *
+ * A malformed entry stops the build: publishing a verdict nobody can check is
+ * worse than publishing none, and none is a state the readers already handle.
+ * @param {string} file Path to data/orgclasses.json.
+ * @returns {{entries: object}}
+ */
+function loadOrgClasses(file) {
+  if (!fs.existsSync(file)) return { entries: {} };
+  const ledger = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const problems = Object.entries(ledger.entries || {})
+    .flatMap(([token, entry]) => orgclasses.entryProblems(token, entry));
+  if (problems.length) {
+    throw new Error(`${path.relative(ROOT, file)}:\n  ${problems.join('\n  ')}`);
+  }
+  return ledger;
+}
 
 function orgToken(org) {
   let token = orgTokens.get(org);
@@ -551,7 +572,7 @@ function writeVarint(buffer, offset, value) {
   return cursor + 1;
 }
 
-function emit(table, sourceSerials, outPath, regionMap) {
+function emit(table, sourceSerials, outPath, regionMap, orgClassLedger) {
   const { rows } = table;
   const continents = {};
   for (const cc of table.countries) {
@@ -572,6 +593,22 @@ function emit(table, sourceSerials, outPath, regionMap) {
   for (const [key, code] of Object.entries(regionMap)) {
     if (carried.has(key.slice(0, 2))) regionNames[key] = code;
   }
+  // Which organisations run access networks and which sell hosting, resolved
+  // from the reviewed ledger in data/orgclasses.json. The ledger names address
+  // ranges; which organisation holds a range is a fact about THIS build, so it
+  // is looked up here rather than stored.
+  //
+  // Sparse and optional by design. An organisation that is absent has no
+  // verdict, and nothing enforces without one, so a build that carries none
+  // costs enforcement rather than misdirecting it - the safe direction, and the
+  // same reason regionNames is optional.
+  const resolved = orgclasses.resolveHeaderMap(orgClassLedger, (address) => {
+    const row = findRow(rows, address);
+    if (row === -1 || rows.org[row] < 0) return null;
+    return table.orgs[rows.org[row]];
+  });
+  const orgClasses = resolved.map;
+
   const header = Buffer.from(JSON.stringify({
     generated: new Date().toISOString(),
     sources: sourceSerials,
@@ -580,6 +617,7 @@ function emit(table, sourceSerials, outPath, regionMap) {
     orgs: table.orgs,
     regions: table.regions,
     regionNames,
+    orgClasses,
   }), 'utf8');
 
   const prefix = Buffer.allocUnsafe(15 + header.length);
@@ -604,7 +642,14 @@ function emit(table, sourceSerials, outPath, regionMap) {
   const raw = Buffer.concat([prefix, body.subarray(0, offset)]);
   const compressed = zlib.gzipSync(raw, { level: 9 });
   fs.writeFileSync(outPath, compressed);
-  return { uncompressedBytes: raw.length, bytes: compressed.length, regionNames: Object.keys(regionNames).length };
+  return {
+    uncompressedBytes: raw.length,
+    bytes: compressed.length,
+    regionNames: Object.keys(regionNames).length,
+    orgClasses: Object.keys(orgClasses).length,
+    unresolvedRanges: resolved.unresolved,
+    conflictedOrgs: resolved.conflicted,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -666,7 +711,20 @@ async function main() {
     }
   }
 
-  const artifact = emit(table, sourceSerials, args.out, regionMap);
+  const orgClassLedger = loadOrgClasses(args.orgclasses);
+  const artifact = emit(table, sourceSerials, args.out, regionMap, orgClassLedger);
+  if (artifact.orgClasses || artifact.unresolvedRanges.length) {
+    process.stderr.write(`org classes: ${artifact.orgClasses} organisations carried a verdict\n`);
+    // A ledger range in no allocation this build knows is stale, not absent
+    // evidence, and it is named rather than dropped - silence is how verdicts
+    // disappear without anyone noticing they have.
+    if (artifact.unresolvedRanges.length) {
+      process.stderr.write(`  ${artifact.unresolvedRanges.length} ledger range(s) resolve to no organisation - retire or recheck them: ${artifact.unresolvedRanges.slice(0, 5).join(', ')}\n`);
+    }
+    if (artifact.conflictedOrgs.length) {
+      process.stderr.write(`  ${artifact.conflictedOrgs.length} organisation(s) carry ledger ranges that disagree, so they get no verdict\n`);
+    }
+  }
   report.finished = new Date().toISOString();
   report.sources = sourceSerials;
   report.output = {
@@ -676,6 +734,9 @@ async function main() {
     orgs: table.orgs.length,
     regions: table.regions.length,
     regionNames: artifact.regionNames,
+    orgClasses: artifact.orgClasses,
+    orgClassRangesUnresolved: artifact.unresolvedRanges,
+    orgClassConflicts: artifact.conflictedOrgs.length,
     uncompressedBytes: artifact.uncompressedBytes,
     bytes: artifact.bytes,
   };

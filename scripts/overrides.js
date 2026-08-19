@@ -138,4 +138,4 @@ function load(file) {
   return { entries, problems };
 }
 
-module.exports = { load };
+module.exports = { load, parseCidr };
