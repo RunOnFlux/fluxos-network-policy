@@ -163,6 +163,34 @@ function toCidrs(start, end) {
   return out;
 }
 
+/**
+ * The evidence an entry records, as a stable and varied sample.
+ *
+ * Sorted, because the raw order follows the order hosts came back from the
+ * fleet endpoint - so an unsorted sample rewrites itself on every build and
+ * buries the entries that genuinely changed. Capped per KIND rather than
+ * overall, because eight consecutive PTRs out of one /23 tell a reviewer no
+ * more than one does, while the registry object and the vendor flags each say
+ * something the others do not.
+ * @param {string[]} reasons Evidence for the winning verdict.
+ * @param {number} [perKind] Most entries to keep of any one kind.
+ * @param {number} [total] Most entries to keep overall.
+ * @returns {string[]}
+ */
+function summariseEvidence(reasons, perKind = 2, total = 8) {
+  const kept = [];
+  const seen = new Map();
+  for (const reason of [...reasons].sort()) {
+    const kind = reason.split(' ')[0];
+    const count = seen.get(kind) ?? 0;
+    if (count >= perKind) continue;
+    seen.set(kind, count + 1);
+    kept.push(reason);
+    if (kept.length >= total) break;
+  }
+  return kept;
+}
+
 // -- evidence sources ---------------------------------------------------------
 
 /**
@@ -406,6 +434,13 @@ async function main() {
   process.stderr.write(`  ${byOrg.size} organisations hold fleet hosts (${unattributed} hosts in no allocation)\n`);
 
   const decided = new Date().toISOString().slice(0, 10);
+  // The ledger as it stands, so an unchanged verdict keeps the date it was
+  // actually reached. Re-stamping every entry on every build would make
+  // `decided` mean "when this file was last written", and would churn all 1,600
+  // entries in a diff whose whole purpose is to show which handful moved.
+  const previous = fs.existsSync(args.out)
+    ? (JSON.parse(fs.readFileSync(args.out, 'utf8')).entries ?? {})
+    : {};
   const entries = {};
   const tally = { residential: 0, hosting: 0, unclassified: 0 };
   // Why each undecided organisation was undecided. "No evidence at all" is a
@@ -441,13 +476,14 @@ async function main() {
     // `evidence` carries the reasons of whichever side won the vote, whatever
     // that side was; `contradictions` carries the dissenting minority's, which is
     // recorded in the report rather than the ledger.
-    const reasons = verdict.evidence;
+    const reasons = summariseEvidence(verdict.evidence);
     for (const cidr of rangesByOrg.get(token).keys()) {
+      const carried = previous[cidr];
       entries[cidr] = {
         class: verdict.class,
-        evidence: reasons.slice(0, 8),
+        evidence: reasons,
         hosts: orgHosts.length,
-        decided,
+        decided: carried && carried.class === verdict.class ? carried.decided : decided,
       };
     }
   }
