@@ -117,6 +117,89 @@ id's content, distinctness is all that placement needs. Adjacent rows agreeing o
 country and region collapse into one: with all three equal there is no boundary between them that
 placement can see.
 
+## Which organisations run access networks
+
+The artifact also answers *is this address on a consumer connection, or in a data centre?* FluxOS
+needs it to enforce anything against a residential node, and a node cannot decide it well enough
+alone: the strongest evidence is the registry's own record of what a block was assigned for, and
+six thousand nodes cannot each query the RIRs.
+
+So it is decided here and carried in the header as `orgClasses` — a sparse map from the 12-hex
+organisation token to `1` (residential) or `2` (hosting). The rows are untouched; the unit is the
+**organisation**, which is what a row already names and what the evidence actually describes.
+
+```
+node scripts/build-orgclasses.js     # gather evidence, write data/orgclasses.json
+node scripts/build-iplocation.js     # embed the ledger in the header
+```
+
+`data/orgclasses.json` is the reviewable ledger, in the same spirit as the overrides file: every
+entry carries the evidence it was decided on, the number of fleet hosts that evidence came from,
+and a date. A malformed entry stops the build — publishing a verdict nobody can check is worse than
+publishing none, and none is a state the readers already handle.
+
+**The ledger keys ADDRESS RANGES, not organisation tokens**, and that is load-bearing. The token is
+a hash of the registries' opaque-id, and the registries regenerate those on every publication:
+measured across eleven days, **1,919 of 2,510 fleet hosts changed token**. It groups ranges
+correctly *within* one artifact and means nothing between two — so a ledger keyed on it loses its
+verdicts at the next build, silently, because a token that no longer exists is indistinguishable
+from an organisation the table does not carry. Keyed on ranges, the same ledger resolved cleanly
+against a registry vintage eleven days older: 160 organisations in, 160 out, nothing unresolved.
+A range is the thing itself rather than a name for it, and it is something a reviewer can check.
+
+The organisation grouping is therefore a build-time derivation: `build-iplocation.js` looks up which
+organisation holds each ledger range *in today's registry files* and tags it. An organisation whose
+ledger ranges disagree gets **no** verdict — that is an operator running consumer lines and a
+hosting arm, and nothing is the honest answer for it. A ledger range that resolves to no allocation
+is named in the build output and recorded in the report; it is stale, not absent evidence, and
+silence is how verdicts vanish unnoticed.
+
+**The rule** (`scripts/orgclasses.js`, the single definition both the gatherer and the build read):
+an organisation is residential when at least one of its fleet hosts gives positive evidence and
+**no** host in it contradicts; hosting when there are contradictions and no positive evidence;
+and unclassified otherwise. Evidence is reverse DNS, the RDAP object's netname and registrant, the
+ip-api `hosting`/`proxy`/`mobile` flags, and whether the operator is a known host — read from
+`isp`/`as` and never from `org`, which is the block registrant and frequently a reseller.
+
+Link asymmetry is recorded but **decides nothing**. A bench figure is a speed test's result, not a
+property of the link, and Hetzner nodes measure 183/621 often enough that counting it as evidence
+let one noisy benchmark veto an operator whose own PTR, registry object and vendor flag all said
+hosting — 1,102 hosts left unclassified by an instrument reading. It can support a verdict the real
+signals already reached; it can never reach one, and never fight one.
+
+The contradiction rule is what earns the accuracy, and it is measured, not asserted: against the
+1,569 fleet hosts ip-api positively calls hosting, spanning all 29 hosting ASNs the fleet uses, the
+per-host form of this rule calls **none** of them residential — and the 39 that do trip an access
+signal are each caught by a contradiction. Applying it across the organisation rather than per host
+is deliberate: an operator running both consumer lines and a hosting arm contradicts itself and
+comes out unclassified, which is the honest answer for a block whose addresses are not all the same
+kind of thing.
+
+Only organisations the fleet actually occupies are considered. The artifact names over 103,000;
+enforcement will only ever ask about the few hundred holding Flux nodes, and a verdict nobody will
+read is a verdict nobody has checked. On the 2026-08-18 fleet that is 261 organisations behind
+2,511 hosts, written as 1,296 ranges: **107 residential, 49 hosting, 105 unclassified**.
+
+Checked against the deterministic node list on the day it was built — 2,508 host addresses, 15%
+residential, 63% hosting, 21% unclassified:
+
+- Of the 1,575 hosts ip-api positively calls hosting, **none** came out residential.
+- Hetzner (1,156), OVH, Contabo, netcup and Linode nodes carry **no** residential verdict.
+- The hosts PR #1784's classifier wrongly targeted — the University of Latvia, Infomaniak, the
+  `*.dedicated.static.tds.net` block — all come out `hosting` or unclassified.
+
+Of the organisations left unclassified, most have no evidence at all; the rest are genuine
+disagreements worth leaving alone. Cogent's space holds both transit customers and a fibre ISP;
+Free SAS, Bouygues and Frontier carry consumer PTRs and consumer registry objects while ip-api flags
+them `proxy` or `hosting`. Weighting one source over another to break those ties is a judgement
+nobody has measured, and unclassified costs only enforcement — so they stay unclassified.
+
+`orgClasses` is optional, like `regionNames`, and for the same reason: an organisation absent from
+the map has no verdict, and nothing enforces without one. A build carrying none costs enforcement
+rather than misdirecting it. Do **not** raise the format version to add a section — a bump makes
+every node on the current release reject the artifact and fall back to /16 arithmetic until it
+upgrades, degrading placement fleet-wide across the rollout.
+
 ## Correcting the location table
 
 DB-IP is right about far more of the address space than anything measured against it, but it is not
