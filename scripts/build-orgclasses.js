@@ -31,6 +31,7 @@ const path = require('path');
 const zlib = require('zlib');
 
 const orgclasses = require('./orgclasses');
+const orgclassOverrides = require('./orgclass-overrides');
 const sources = require('./sources');
 
 const ROOT = path.join(__dirname, '..');
@@ -60,6 +61,7 @@ function parseArgs(argv) {
     artifact: path.join(ROOT, 'iplocation.bin.gz'),
     out: path.join(ROOT, 'data', 'orgclasses.json'),
     cacheDir: path.join(ROOT, '.cache'),
+    classOverrides: path.join(ROOT, 'data', 'orgclass-overrides.json'),
     report: null,
   };
   for (let i = 2; i < argv.length; i += 1) {
@@ -67,6 +69,7 @@ function parseArgs(argv) {
     if (flag === '--artifact') args.artifact = argv[i += 1];
     else if (flag === '--out') args.out = argv[i += 1];
     else if (flag === '--cache-dir') args.cacheDir = argv[i += 1];
+    else if (flag === '--class-overrides') args.classOverrides = argv[i += 1];
     else if (flag === '--report') args.report = argv[i += 1];
     else throw new Error(`Unknown argument ${flag}`);
   }
@@ -488,6 +491,43 @@ async function main() {
     }
   }
 
+  // Hand-entered corrections, applied to the derived verdicts rather than folded
+  // into the vote. Two populations need them and neither is reachable by
+  // gathering more evidence: the minority tail of a mixed organisation, which
+  // the majority is designed to outvote, and an allocation with too few fleet
+  // hosts to hold a vote at all. Applying them here keeps them visible as a
+  // deliberate act - an entry says `override: true` in the ledger and the counts
+  // below name them separately from what the evidence decided.
+  const overrideFile = args.classOverrides;
+  const { entries: classOverrides, problems: overrideProblems } = orgclassOverrides.load(overrideFile);
+  if (overrideProblems.length) {
+    throw new Error(`${path.relative(ROOT, overrideFile)}:\n  ${overrideProblems.join('\n  ')}`);
+  }
+  const applied = { set: 0, withdrawn: 0, noop: 0 };
+  for (const entry of classOverrides) {
+    const existing = entries[entry.range];
+    if (entry.class === 'none') {
+      // Withdrawing a verdict we no longer stand behind. Unclassified enforces
+      // nothing, so this is the brake that does not wait for a rebuild.
+      if (existing) { delete entries[entry.range]; applied.withdrawn += 1; } else { applied.noop += 1; }
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+    if (existing && existing.class === entry.class && existing.override !== true) {
+      // The evidence already says this. Recorded so a correction the vote has
+      // caught up with is visible as retirable rather than sitting here forever.
+      applied.noop += 1;
+    }
+    entries[entry.range] = {
+      class: entry.class,
+      evidence: [`override ${entry.added}: ${entry.evidence}`],
+      hosts: existing ? existing.hosts : 0,
+      decided: entry.added,
+      override: true,
+    };
+    applied.set += 1;
+  }
+
   const ledger = { generated: new Date().toISOString(), entries };
   const problems = Object.entries(entries).flatMap(([t, e]) => orgclasses.entryProblems(t, e));
   if (problems.length) throw new Error(`refusing to write a malformed ledger:\n  ${problems.join('\n  ')}`);
@@ -496,6 +536,10 @@ async function main() {
   process.stderr.write(`\nwrote ${path.relative(ROOT, args.out)}\n`);
   process.stderr.write(`  organisations: residential ${tally.residential}, hosting ${tally.hosting}, unclassified ${tally.unclassified}\n`);
   process.stderr.write(`  ranges written: ${Object.keys(entries).length}\n`);
+  if (classOverrides.length) {
+    process.stderr.write(`  class overrides: ${applied.set} set, ${applied.withdrawn} withdrawn`
+      + `${applied.noop ? `, ${applied.noop} the evidence already agrees with (retirable)` : ''}\n`);
+  }
 
   if (args.report) {
     const hostTally = { residential: 0, hosting: 0, unclassified: 0 };

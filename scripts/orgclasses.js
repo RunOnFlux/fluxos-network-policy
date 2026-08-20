@@ -246,8 +246,15 @@ function entryProblems(range, entry) {
   if (!Array.isArray(entry.evidence) || !entry.evidence.length) {
     problems.push(`${range}: evidence must be a non-empty array - an entry with no reason is a guess`);
   }
-  if (!Number.isInteger(entry.hosts) || entry.hosts < 1) {
+  // A hand-entered verdict may cover a range with no fleet hosts at all - one of
+  // the two populations the vote cannot reach is exactly "too few hosts to hold
+  // one" - so it may say 0, but only while declaring itself an override.
+  const floor = entry.override === true ? 0 : 1;
+  if (!Number.isInteger(entry.hosts) || entry.hosts < floor) {
     problems.push(`${range}: hosts must be the number of fleet hosts the verdict was drawn from`);
+  }
+  if ('override' in entry && entry.override !== true) {
+    problems.push(`${range}: override, when present, must be true - a derived entry omits it`);
   }
   if (typeof entry.decided !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(entry.decided)) {
     problems.push(`${range}: decided must be a YYYY-MM-DD date`);

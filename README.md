@@ -181,6 +181,17 @@ exists to name. Under the vote each of those is now decided, and each the obviou
 Hetzner, Contabo, OVH, netcup and Linode `hosting`; Free SAS, Frontier, Bouygues and Comcast
 `residential`.
 
+**Where the vote cannot reach, a person decides.** Two populations are unreachable by gathering
+more of the same evidence: the minority tail of a mixed organisation, which the vote is designed to
+outvote, and an allocation with too few fleet hosts to hold a vote at all.
+`data/orgclass-overrides.json` carries hand-entered verdicts for those, keyed by CIDR range — never
+by organisation, whose tokens are reissued on every publication — under the same evidence
+discipline as the location ledger. `"class": "none"` withdraws a verdict rather than asserting one -
+a range we no longer stand behind returns to unclassified, which enforces nothing, without
+having to re-gather the evidence and hope an 80% vote comes out differently. An overridden range carries `"override": true`
+in the ledger, so a hand-entered verdict never reads as something the evidence decided. The
+procedure is [`data/ADJUDICATION_CLASS.md`](data/ADJUDICATION_CLASS.md).
+
 Link asymmetry is recorded but **decides nothing**. A bench figure is a speed test's result, not a
 property of the link, and Hetzner nodes measure 183/621 often enough that counting it as evidence
 let one noisy benchmark veto an operator whose own PTR, registry object and vendor flag all said

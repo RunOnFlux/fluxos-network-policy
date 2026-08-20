@@ -5,6 +5,12 @@ How to work the dispute lists in `data/iplocation-build-report.json`
 `data/iplocation-overrides.json` entries. This is the procedure that produced the
 first six entries (PR #9); follow it and the ledger stays evidence-backed.
 
+This document covers **where** a block is. For **what kind of network** it is -
+access network or hosting, which is what decides whether FluxOS drains a node's
+apps - see [`ADJUDICATION_CLASS.md`](ADJUDICATION_CLASS.md) and
+`data/orgclass-overrides.json`. The signals overlap and the evidence discipline
+is the same; the bar is higher there, because that verdict deletes data.
+
 Every disputed block ends in exactly one of three states:
 
 - **vendor-wrong** — enter a correction, with the evidence in the entry;

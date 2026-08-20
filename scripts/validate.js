@@ -14,6 +14,7 @@ const zlib = require('zlib');
 
 const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
+const orgclassOverrides = require('./orgclass-overrides');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -259,7 +260,29 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
     acc[entry.class] = (acc[entry.class] ?? 0) + 1;
     return acc;
   }, {});
-  console.log(`${file}: ok (${entries.length} entries - ${orgclasses.CLASSES.map((c) => `${tally[c] ?? 0} ${c}`).join(', ')})`);
+  const overridden = entries.filter(([, entry]) => entry.override === true).length;
+  console.log(`${file}: ok (${entries.length} entries - ${orgclasses.CLASSES.map((c) => `${tally[c] ?? 0} ${c}`).join(', ')}`
+    + `${overridden ? `; ${overridden} hand-entered` : ''})`);
+})();
+
+// data/orgclass-overrides.json - the hand-entered class corrections. A wrong
+// class is the input to draining a node's apps and DOSing it, and unlike a wrong
+// country there is nothing node-side that declines it, so the entries are held
+// to the same evidence discipline as the location ledger and checked here too.
+(function checkOrgClassOverrides() {
+  const file = 'data/orgclass-overrides.json';
+  const full = path.join(ROOT, file);
+  if (!fs.existsSync(full)) {
+    console.log(`${file}: absent (no class has been corrected by hand)`);
+    return;
+  }
+  const { entries, problems: loadProblems } = orgclassOverrides.load(full);
+  if (loadProblems.length) {
+    loadProblems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+  const withdrawn = entries.filter((entry) => entry.class === 'none').length;
+  console.log(`${file}: ok (${entries.length} entries - ${entries.length - withdrawn} set, ${withdrawn} withdrawn)`);
 })();
 
 // data/iplocation-overrides.json is the one hand-edited input to the artifact:
