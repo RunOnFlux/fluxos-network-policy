@@ -5,6 +5,13 @@ How to work an organisation's network class — access network or hosting — in
 [`ADJUDICATION.md`](ADJUDICATION.md), which covers *where* a block is; this
 covers *what kind of network* it is.
 
+The two classes are `residential` and `datacenter`, and `datacenter` over-claims
+slightly: every signal here establishes that a range is run as INFRASTRUCTURE
+rather than where the machines physically are, and a university's range lands in
+it while selling nothing. What the pair separates is whether someone's home is
+behind the address. The word matches FluxOS, which reads the same wire codes and
+has `isDataCenter()` and a `datacenter` field on app specs.
+
 **This one deletes data.** A wrong country moves an app to a worse node. A wrong
 class of `residential` tells FluxOS a node is on a domestic line, which drains
 the apps it holds and then DOSes it, and there is nothing node-side that will
@@ -99,7 +106,7 @@ FTTH is ordinary consumer service in France and Sweden.
 - **Keyed by range, never by organisation.** The organisation tokens in the
   artifact are opaque and are reissued on every publication, so an override keyed
   to one would match today and silently stop matching after the next build.
-- **`class`** is `residential`, `hosting`, or `none`. `none` withdraws a verdict
+- **`class`** is `residential`, `datacenter`, or `none`. `none` withdraws a verdict
   and leaves the range unclassified.
 - **`evidence`** states the concrete finding with its source, so the entry can be
   re-examined without redoing the work. "PTRs look residential" is not evidence;

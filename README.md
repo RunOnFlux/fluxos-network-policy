@@ -178,7 +178,7 @@ flagged `proxy` vetoed a verdict its other 51 plainly supported. The bigger the 
 less classifiable it became: what unanimity left undecided was Cogent, Free SAS, Frontier, Bouygues
 and Comcast — the large consumer and transit networks, which is precisely the population this table
 exists to name. Under the vote each of those is now decided, and each the obvious way: Cogent,
-Hetzner, Contabo, OVH, netcup and Linode `hosting`; Free SAS, Frontier, Bouygues and Comcast
+Hetzner, Contabo, OVH, netcup and Linode `datacenter`; Free SAS, Frontier, Bouygues and Comcast
 `residential`.
 
 **Where the vote cannot reach, a person decides.** Two populations are unreachable by gathering
@@ -226,7 +226,7 @@ residential, 71% hosting, 8% unclassified:
   declines it (above).
 - Hetzner (1,099), OVH, Contabo, netcup and Linode nodes carry **no** residential verdict.
 - The hosts PR #1784's classifier wrongly targeted — the University of Latvia, Infomaniak, the
-  `*.dedicated.static.tds.net` block — all come out `hosting` or unclassified.
+  `*.dedicated.static.tds.net` block — all come out `datacenter` or unclassified.
 
 **Every one of the 97 organisations left unclassified is unclassified for want of evidence, not
 because its signals fought** — the conflicted bucket is empty. The largest are YWNET (27 hosts),
