@@ -16,7 +16,7 @@
 //
 // Entry shape, keyed by ADDRESS RANGE:
 //   "82.66.80.0/20": {
-//     "class": "residential" | "hosting",
+//     "class": "residential" | "datacenter",
 //     "evidence": ["ptr 82-66-83-104.subs.proxad.net", "rdap FR-PROXAD-ADSL"],
 //     "hosts": 8,                      fleet hosts the verdict was drawn from
 //     "decided": "2026-08-18"
@@ -37,7 +37,19 @@
 
 const overrides = require('./overrides');
 
-const CLASS_CODES = Object.freeze({ residential: 1, hosting: 2 });
+// The published vocabulary, and the wire codes the artifact carries. FluxOS
+// reads the same two codes and names code 2 DATACENTER - it has CLASSIFICATION
+// .DATACENTER, isDataCenter(), and a `datacenter` field on app specs - so the
+// word is aligned here rather than there.
+//
+// It over-claims slightly and it is worth knowing how. The evidence is RDAP
+// netnames, PTR vocabulary, the ip-api hosting flag and a list of operators
+// that sell hosting: all of it establishes that a range is run as
+// infrastructure, none of it establishes where the machines physically are. A
+// university's range lands here and it sells nothing. What the pair really
+// separates is whether someone's home is behind the address, which is what the
+// consumer of this verdict acts on.
+const CLASS_CODES = Object.freeze({ residential: 1, datacenter: 2 });
 const CLASSES = Object.freeze(Object.keys(CLASS_CODES));
 
 // Access-network vocabulary. Generic across operators worldwide, which is what
@@ -184,7 +196,7 @@ function classifyOrg(hosts) {
   // every host's evidence into one bag, as this used to, meant a single
   // contradicting address spoke for the whole organisation.
   const verdicts = [];
-  const reasons = { residential: new Set(), hosting: new Set() };
+  const reasons = { residential: new Set(), datacenter: new Set() };
   const corroborating = new Set();
   for (const host of hosts) {
     const evidence = hostEvidence(host);
@@ -193,7 +205,7 @@ function classifyOrg(hosts) {
       verdicts.push('residential');
       evidence.for.forEach((item) => reasons.residential.add(item));
     } else if (evidence.against.length && !evidence.for.length) {
-      verdicts.push('hosting');
+      verdicts.push('datacenter');
       evidence.against.forEach((item) => reasons.hosting.add(item));
     }
     // A host whose own signals disagree, or that has none, casts no vote.
@@ -203,10 +215,10 @@ function classifyOrg(hosts) {
   if (!decidable) return { class: null, evidence: [], contradictions: [], decidable: 0, share: 0 };
 
   const counts = verdicts.reduce((acc, v) => ({ ...acc, [v]: (acc[v] ?? 0) + 1 }), {});
-  const winner = (counts.residential ?? 0) >= (counts.hosting ?? 0) ? 'residential' : 'hosting';
+  const winner = (counts.residential ?? 0) >= (counts.datacenter ?? 0) ? 'residential' : 'datacenter';
   const share = counts[winner] / decidable;
   const evidence = [...reasons[winner]];
-  const contradictions = [...reasons[winner === 'residential' ? 'hosting' : 'residential']];
+  const contradictions = [...reasons[winner === 'residential' ? 'datacenter' : 'residential']];
 
   // Unanimous is decided at any size, which keeps the many one- and two-host
   // organisations answerable. Short of unanimous it takes a real population and

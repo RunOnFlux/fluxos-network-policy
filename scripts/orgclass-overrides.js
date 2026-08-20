@@ -29,7 +29,7 @@
 // Entry shape:
 //   {
 //     "range": "203.0.113.0/24",    IPv4 CIDR, on its own boundary
-//     "class": "residential",       "residential" | "hosting" | "none"
+//     "class": "residential",       "residential" | "datacenter" | "none"
 //     "evidence": "why, with its source",
 //     "added": "2026-08-20"
 //   }

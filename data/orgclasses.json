@@ -2,7 +2,7 @@
   "generated": "2026-08-19T08:01:24.009Z",
   "entries": {
     "142.132.176.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17,7 +17,7 @@
       "decided": "2026-08-18"
     },
     "142.132.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -32,7 +32,7 @@
       "decided": "2026-08-18"
     },
     "65.108.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -47,7 +47,7 @@
       "decided": "2026-08-18"
     },
     "65.109.0.0/16": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -62,7 +62,7 @@
       "decided": "2026-08-18"
     },
     "95.216.252.224/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -77,7 +77,7 @@
       "decided": "2026-08-18"
     },
     "95.216.253.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -92,7 +92,7 @@
       "decided": "2026-08-18"
     },
     "95.216.254.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -107,7 +107,7 @@
       "decided": "2026-08-18"
     },
     "95.217.0.0/16": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -122,7 +122,7 @@
       "decided": "2026-08-18"
     },
     "78.46.24.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -137,7 +137,7 @@
       "decided": "2026-08-18"
     },
     "78.46.25.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -152,7 +152,7 @@
       "decided": "2026-08-18"
     },
     "78.46.26.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -167,7 +167,7 @@
       "decided": "2026-08-18"
     },
     "78.46.26.128/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -182,7 +182,7 @@
       "decided": "2026-08-18"
     },
     "65.21.171.240/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -197,7 +197,7 @@
       "decided": "2026-08-18"
     },
     "65.21.172.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -212,7 +212,7 @@
       "decided": "2026-08-18"
     },
     "65.21.176.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -227,7 +227,7 @@
       "decided": "2026-08-18"
     },
     "65.21.192.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -242,7 +242,7 @@
       "decided": "2026-08-18"
     },
     "65.21.208.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -257,7 +257,7 @@
       "decided": "2026-08-18"
     },
     "65.21.216.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -272,7 +272,7 @@
       "decided": "2026-08-18"
     },
     "65.21.220.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -287,7 +287,7 @@
       "decided": "2026-08-18"
     },
     "65.21.222.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -302,7 +302,7 @@
       "decided": "2026-08-18"
     },
     "176.9.21.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -317,7 +317,7 @@
       "decided": "2026-08-18"
     },
     "176.9.22.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -332,7 +332,7 @@
       "decided": "2026-08-18"
     },
     "176.9.24.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -347,7 +347,7 @@
       "decided": "2026-08-18"
     },
     "176.9.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -362,7 +362,7 @@
       "decided": "2026-08-18"
     },
     "176.9.48.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -377,7 +377,7 @@
       "decided": "2026-08-18"
     },
     "176.9.50.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -392,7 +392,7 @@
       "decided": "2026-08-18"
     },
     "176.9.50.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -407,7 +407,7 @@
       "decided": "2026-08-18"
     },
     "157.90.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -422,7 +422,7 @@
       "decided": "2026-08-18"
     },
     "65.108.0.0/17": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -437,7 +437,7 @@
       "decided": "2026-08-18"
     },
     "65.108.128.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -452,7 +452,7 @@
       "decided": "2026-08-18"
     },
     "176.9.87.200/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -467,7 +467,7 @@
       "decided": "2026-08-18"
     },
     "176.9.87.208/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -482,7 +482,7 @@
       "decided": "2026-08-18"
     },
     "176.9.87.224/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -497,7 +497,7 @@
       "decided": "2026-08-18"
     },
     "176.9.88.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -512,7 +512,7 @@
       "decided": "2026-08-18"
     },
     "176.9.92.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -527,7 +527,7 @@
       "decided": "2026-08-18"
     },
     "176.9.94.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -542,7 +542,7 @@
       "decided": "2026-08-18"
     },
     "176.9.94.32/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -557,7 +557,7 @@
       "decided": "2026-08-18"
     },
     "176.9.134.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -572,7 +572,7 @@
       "decided": "2026-08-18"
     },
     "176.9.135.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -587,7 +587,7 @@
       "decided": "2026-08-18"
     },
     "176.9.136.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -602,7 +602,7 @@
       "decided": "2026-08-18"
     },
     "176.9.144.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -617,7 +617,7 @@
       "decided": "2026-08-18"
     },
     "176.9.160.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -632,7 +632,7 @@
       "decided": "2026-08-18"
     },
     "176.9.162.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -647,7 +647,7 @@
       "decided": "2026-08-18"
     },
     "176.9.162.64/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -662,7 +662,7 @@
       "decided": "2026-08-18"
     },
     "176.9.110.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -677,7 +677,7 @@
       "decided": "2026-08-18"
     },
     "176.9.112.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -692,7 +692,7 @@
       "decided": "2026-08-18"
     },
     "176.9.128.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -707,7 +707,7 @@
       "decided": "2026-08-18"
     },
     "176.9.130.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -722,7 +722,7 @@
       "decided": "2026-08-18"
     },
     "65.21.119.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -737,7 +737,7 @@
       "decided": "2026-08-18"
     },
     "65.21.120.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -752,7 +752,7 @@
       "decided": "2026-08-18"
     },
     "65.21.128.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -767,7 +767,7 @@
       "decided": "2026-08-18"
     },
     "65.21.160.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -782,7 +782,7 @@
       "decided": "2026-08-18"
     },
     "167.235.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -797,7 +797,7 @@
       "decided": "2026-08-18"
     },
     "46.4.0.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -812,7 +812,7 @@
       "decided": "2026-08-18"
     },
     "46.4.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -827,7 +827,7 @@
       "decided": "2026-08-18"
     },
     "46.4.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -842,7 +842,7 @@
       "decided": "2026-08-18"
     },
     "46.4.88.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -857,7 +857,7 @@
       "decided": "2026-08-18"
     },
     "46.4.92.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -872,7 +872,7 @@
       "decided": "2026-08-18"
     },
     "46.4.93.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -887,7 +887,7 @@
       "decided": "2026-08-18"
     },
     "46.4.93.64/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -902,7 +902,7 @@
       "decided": "2026-08-18"
     },
     "5.9.91.8/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -917,7 +917,7 @@
       "decided": "2026-08-18"
     },
     "5.9.91.16/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -932,7 +932,7 @@
       "decided": "2026-08-18"
     },
     "5.9.91.32/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -947,7 +947,7 @@
       "decided": "2026-08-18"
     },
     "5.9.91.64/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -962,7 +962,7 @@
       "decided": "2026-08-18"
     },
     "5.9.91.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -977,7 +977,7 @@
       "decided": "2026-08-18"
     },
     "5.9.92.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -992,7 +992,7 @@
       "decided": "2026-08-18"
     },
     "5.9.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1007,7 +1007,7 @@
       "decided": "2026-08-18"
     },
     "5.9.128.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1022,7 +1022,7 @@
       "decided": "2026-08-18"
     },
     "5.9.136.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1037,7 +1037,7 @@
       "decided": "2026-08-18"
     },
     "5.9.140.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1052,7 +1052,7 @@
       "decided": "2026-08-18"
     },
     "5.9.142.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1067,7 +1067,7 @@
       "decided": "2026-08-18"
     },
     "5.9.143.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1082,7 +1082,7 @@
       "decided": "2026-08-18"
     },
     "94.130.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1097,7 +1097,7 @@
       "decided": "2026-08-18"
     },
     "94.130.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1112,7 +1112,7 @@
       "decided": "2026-08-18"
     },
     "5.9.53.32/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1127,7 +1127,7 @@
       "decided": "2026-08-18"
     },
     "5.9.53.64/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1142,7 +1142,7 @@
       "decided": "2026-08-18"
     },
     "5.9.53.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1157,7 +1157,7 @@
       "decided": "2026-08-18"
     },
     "5.9.54.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1172,7 +1172,7 @@
       "decided": "2026-08-18"
     },
     "5.9.56.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1187,7 +1187,7 @@
       "decided": "2026-08-18"
     },
     "5.9.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1202,7 +1202,7 @@
       "decided": "2026-08-18"
     },
     "5.9.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1217,7 +1217,7 @@
       "decided": "2026-08-18"
     },
     "5.9.88.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1232,7 +1232,7 @@
       "decided": "2026-08-18"
     },
     "5.9.90.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1247,7 +1247,7 @@
       "decided": "2026-08-18"
     },
     "162.55.231.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1262,7 +1262,7 @@
       "decided": "2026-08-18"
     },
     "162.55.232.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1277,7 +1277,7 @@
       "decided": "2026-08-18"
     },
     "162.55.240.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1292,7 +1292,7 @@
       "decided": "2026-08-18"
     },
     "168.119.48.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1307,7 +1307,7 @@
       "decided": "2026-08-18"
     },
     "168.119.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1322,7 +1322,7 @@
       "decided": "2026-08-18"
     },
     "168.119.80.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1337,7 +1337,7 @@
       "decided": "2026-08-18"
     },
     "167.235.168.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1352,7 +1352,7 @@
       "decided": "2026-08-18"
     },
     "167.235.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1367,7 +1367,7 @@
       "decided": "2026-08-18"
     },
     "167.235.184.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1382,7 +1382,7 @@
       "decided": "2026-08-18"
     },
     "167.235.188.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1397,7 +1397,7 @@
       "decided": "2026-08-18"
     },
     "95.216.95.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1412,7 +1412,7 @@
       "decided": "2026-08-18"
     },
     "95.216.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1427,7 +1427,7 @@
       "decided": "2026-08-18"
     },
     "95.216.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1442,7 +1442,7 @@
       "decided": "2026-08-18"
     },
     "95.216.192.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1457,7 +1457,7 @@
       "decided": "2026-08-18"
     },
     "95.216.224.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1472,7 +1472,7 @@
       "decided": "2026-08-18"
     },
     "95.216.240.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1487,7 +1487,7 @@
       "decided": "2026-08-18"
     },
     "95.216.248.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1502,7 +1502,7 @@
       "decided": "2026-08-18"
     },
     "95.216.252.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1517,7 +1517,7 @@
       "decided": "2026-08-18"
     },
     "65.21.0.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1532,7 +1532,7 @@
       "decided": "2026-08-18"
     },
     "65.21.64.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1547,7 +1547,7 @@
       "decided": "2026-08-18"
     },
     "65.21.96.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1562,7 +1562,7 @@
       "decided": "2026-08-18"
     },
     "65.21.100.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1577,7 +1577,7 @@
       "decided": "2026-08-18"
     },
     "176.9.57.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1592,7 +1592,7 @@
       "decided": "2026-08-18"
     },
     "176.9.58.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1607,7 +1607,7 @@
       "decided": "2026-08-18"
     },
     "176.9.60.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1622,7 +1622,7 @@
       "decided": "2026-08-18"
     },
     "176.9.64.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1637,7 +1637,7 @@
       "decided": "2026-08-18"
     },
     "78.46.57.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1652,7 +1652,7 @@
       "decided": "2026-08-18"
     },
     "78.46.58.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1667,7 +1667,7 @@
       "decided": "2026-08-18"
     },
     "78.46.60.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1682,7 +1682,7 @@
       "decided": "2026-08-18"
     },
     "78.46.64.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1697,7 +1697,7 @@
       "decided": "2026-08-18"
     },
     "78.46.96.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1712,7 +1712,7 @@
       "decided": "2026-08-18"
     },
     "78.46.112.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1727,7 +1727,7 @@
       "decided": "2026-08-18"
     },
     "78.46.114.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1742,7 +1742,7 @@
       "decided": "2026-08-18"
     },
     "78.46.115.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1757,7 +1757,7 @@
       "decided": "2026-08-18"
     },
     "78.46.115.64/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1772,7 +1772,7 @@
       "decided": "2026-08-18"
     },
     "78.46.115.96/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1787,7 +1787,7 @@
       "decided": "2026-08-18"
     },
     "138.199.138.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1802,7 +1802,7 @@
       "decided": "2026-08-18"
     },
     "138.199.140.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1817,7 +1817,7 @@
       "decided": "2026-08-18"
     },
     "138.199.144.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1832,7 +1832,7 @@
       "decided": "2026-08-18"
     },
     "138.199.160.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1847,7 +1847,7 @@
       "decided": "2026-08-18"
     },
     "138.199.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1862,7 +1862,7 @@
       "decided": "2026-08-18"
     },
     "138.199.184.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1877,7 +1877,7 @@
       "decided": "2026-08-18"
     },
     "138.199.188.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1892,7 +1892,7 @@
       "decided": "2026-08-18"
     },
     "138.199.190.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1907,7 +1907,7 @@
       "decided": "2026-08-18"
     },
     "138.199.190.64/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1922,7 +1922,7 @@
       "decided": "2026-08-18"
     },
     "91.99.224.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1937,7 +1937,7 @@
       "decided": "2026-08-18"
     },
     "91.99.240.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1952,7 +1952,7 @@
       "decided": "2026-08-18"
     },
     "91.99.248.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1967,7 +1967,7 @@
       "decided": "2026-08-18"
     },
     "91.99.248.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1982,7 +1982,7 @@
       "decided": "2026-08-18"
     },
     "78.46.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -1997,7 +1997,7 @@
       "decided": "2026-08-18"
     },
     "78.46.48.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2012,7 +2012,7 @@
       "decided": "2026-08-18"
     },
     "135.181.16.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2027,7 +2027,7 @@
       "decided": "2026-08-18"
     },
     "135.181.32.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2042,7 +2042,7 @@
       "decided": "2026-08-18"
     },
     "135.181.64.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2057,7 +2057,7 @@
       "decided": "2026-08-18"
     },
     "135.181.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2072,7 +2072,7 @@
       "decided": "2026-08-18"
     },
     "135.181.192.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2087,7 +2087,7 @@
       "decided": "2026-08-18"
     },
     "135.181.224.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2102,7 +2102,7 @@
       "decided": "2026-08-18"
     },
     "94.130.112.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2117,7 +2117,7 @@
       "decided": "2026-08-18"
     },
     "94.130.128.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2132,7 +2132,7 @@
       "decided": "2026-08-18"
     },
     "94.130.144.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2147,7 +2147,7 @@
       "decided": "2026-08-18"
     },
     "135.181.226.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2162,7 +2162,7 @@
       "decided": "2026-08-18"
     },
     "95.216.0.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2177,7 +2177,7 @@
       "decided": "2026-08-18"
     },
     "95.216.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2192,7 +2192,7 @@
       "decided": "2026-08-18"
     },
     "95.216.48.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2207,7 +2207,7 @@
       "decided": "2026-08-18"
     },
     "95.216.52.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2222,7 +2222,7 @@
       "decided": "2026-08-18"
     },
     "46.225.0.0/17": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2237,7 +2237,7 @@
       "decided": "2026-08-18"
     },
     "46.225.128.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2252,7 +2252,7 @@
       "decided": "2026-08-18"
     },
     "142.132.128.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2267,7 +2267,7 @@
       "decided": "2026-08-18"
     },
     "37.27.73.32/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2282,7 +2282,7 @@
       "decided": "2026-08-18"
     },
     "37.27.73.64/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2297,7 +2297,7 @@
       "decided": "2026-08-18"
     },
     "37.27.73.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2312,7 +2312,7 @@
       "decided": "2026-08-18"
     },
     "37.27.74.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2327,7 +2327,7 @@
       "decided": "2026-08-18"
     },
     "37.27.76.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2342,7 +2342,7 @@
       "decided": "2026-08-18"
     },
     "37.27.80.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2357,7 +2357,7 @@
       "decided": "2026-08-18"
     },
     "37.27.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2372,7 +2372,7 @@
       "decided": "2026-08-18"
     },
     "37.27.128.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2387,7 +2387,7 @@
       "decided": "2026-08-18"
     },
     "37.27.160.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2402,7 +2402,7 @@
       "decided": "2026-08-18"
     },
     "37.27.162.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2417,7 +2417,7 @@
       "decided": "2026-08-18"
     },
     "37.27.162.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2432,7 +2432,7 @@
       "decided": "2026-08-18"
     },
     "168.119.32.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2447,7 +2447,7 @@
       "decided": "2026-08-18"
     },
     "78.46.15.96/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2462,7 +2462,7 @@
       "decided": "2026-08-18"
     },
     "78.46.15.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2477,7 +2477,7 @@
       "decided": "2026-08-18"
     },
     "78.46.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2492,7 +2492,7 @@
       "decided": "2026-08-18"
     },
     "78.46.24.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2507,7 +2507,7 @@
       "decided": "2026-08-18"
     },
     "78.46.24.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2522,7 +2522,7 @@
       "decided": "2026-08-18"
     },
     "78.46.24.160/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2537,7 +2537,7 @@
       "decided": "2026-08-18"
     },
     "78.46.24.176/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2552,7 +2552,7 @@
       "decided": "2026-08-18"
     },
     "157.90.70.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2567,7 +2567,7 @@
       "decided": "2026-08-18"
     },
     "157.90.72.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2582,7 +2582,7 @@
       "decided": "2026-08-18"
     },
     "157.90.80.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2597,7 +2597,7 @@
       "decided": "2026-08-18"
     },
     "168.119.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2612,7 +2612,7 @@
       "decided": "2026-08-18"
     },
     "168.119.24.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2627,7 +2627,7 @@
       "decided": "2026-08-18"
     },
     "95.216.52.240/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2642,7 +2642,7 @@
       "decided": "2026-08-18"
     },
     "95.216.53.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2657,7 +2657,7 @@
       "decided": "2026-08-18"
     },
     "95.216.54.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2672,7 +2672,7 @@
       "decided": "2026-08-18"
     },
     "95.216.56.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2687,7 +2687,7 @@
       "decided": "2026-08-18"
     },
     "95.216.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2702,7 +2702,7 @@
       "decided": "2026-08-18"
     },
     "95.216.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2717,7 +2717,7 @@
       "decided": "2026-08-18"
     },
     "95.216.88.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2732,7 +2732,7 @@
       "decided": "2026-08-18"
     },
     "95.216.92.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2747,7 +2747,7 @@
       "decided": "2026-08-18"
     },
     "95.216.94.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2762,7 +2762,7 @@
       "decided": "2026-08-18"
     },
     "95.216.94.128/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2777,7 +2777,7 @@
       "decided": "2026-08-18"
     },
     "168.119.136.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2792,7 +2792,7 @@
       "decided": "2026-08-18"
     },
     "168.119.144.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2807,7 +2807,7 @@
       "decided": "2026-08-18"
     },
     "157.90.128.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2822,7 +2822,7 @@
       "decided": "2026-08-18"
     },
     "157.90.136.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2837,7 +2837,7 @@
       "decided": "2026-08-18"
     },
     "176.9.50.224/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2852,7 +2852,7 @@
       "decided": "2026-08-18"
     },
     "176.9.51.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2867,7 +2867,7 @@
       "decided": "2026-08-18"
     },
     "176.9.52.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2882,7 +2882,7 @@
       "decided": "2026-08-18"
     },
     "176.9.56.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2897,7 +2897,7 @@
       "decided": "2026-08-18"
     },
     "188.40.32.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2912,7 +2912,7 @@
       "decided": "2026-08-18"
     },
     "188.40.64.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2927,7 +2927,7 @@
       "decided": "2026-08-18"
     },
     "188.40.128.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2942,7 +2942,7 @@
       "decided": "2026-08-18"
     },
     "188.40.144.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2957,7 +2957,7 @@
       "decided": "2026-08-18"
     },
     "188.40.152.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2972,7 +2972,7 @@
       "decided": "2026-08-18"
     },
     "188.40.154.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -2987,7 +2987,7 @@
       "decided": "2026-08-18"
     },
     "162.55.80.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3002,7 +3002,7 @@
       "decided": "2026-08-18"
     },
     "162.55.96.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3017,7 +3017,7 @@
       "decided": "2026-08-18"
     },
     "162.55.104.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3032,7 +3032,7 @@
       "decided": "2026-08-18"
     },
     "162.55.108.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3047,7 +3047,7 @@
       "decided": "2026-08-18"
     },
     "49.12.154.184/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3062,7 +3062,7 @@
       "decided": "2026-08-18"
     },
     "49.12.154.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3077,7 +3077,7 @@
       "decided": "2026-08-18"
     },
     "49.12.155.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3092,7 +3092,7 @@
       "decided": "2026-08-18"
     },
     "49.12.156.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3107,7 +3107,7 @@
       "decided": "2026-08-18"
     },
     "49.12.160.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3122,7 +3122,7 @@
       "decided": "2026-08-18"
     },
     "168.119.112.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3137,7 +3137,7 @@
       "decided": "2026-08-18"
     },
     "168.119.128.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3152,7 +3152,7 @@
       "decided": "2026-08-18"
     },
     "116.202.149.144/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3167,7 +3167,7 @@
       "decided": "2026-08-18"
     },
     "116.202.149.160/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3182,7 +3182,7 @@
       "decided": "2026-08-18"
     },
     "116.202.149.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3197,7 +3197,7 @@
       "decided": "2026-08-18"
     },
     "116.202.150.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3212,7 +3212,7 @@
       "decided": "2026-08-18"
     },
     "116.202.152.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3227,7 +3227,7 @@
       "decided": "2026-08-18"
     },
     "116.202.160.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3242,7 +3242,7 @@
       "decided": "2026-08-18"
     },
     "116.202.164.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3257,7 +3257,7 @@
       "decided": "2026-08-18"
     },
     "116.202.166.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3272,7 +3272,7 @@
       "decided": "2026-08-18"
     },
     "116.202.167.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3287,7 +3287,7 @@
       "decided": "2026-08-18"
     },
     "116.202.167.32/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3302,7 +3302,7 @@
       "decided": "2026-08-18"
     },
     "91.99.250.136/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3317,7 +3317,7 @@
       "decided": "2026-08-18"
     },
     "91.99.250.144/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3332,7 +3332,7 @@
       "decided": "2026-08-18"
     },
     "91.99.250.160/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3347,7 +3347,7 @@
       "decided": "2026-08-18"
     },
     "91.99.250.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3362,7 +3362,7 @@
       "decided": "2026-08-18"
     },
     "91.99.251.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3377,7 +3377,7 @@
       "decided": "2026-08-18"
     },
     "91.99.252.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3392,7 +3392,7 @@
       "decided": "2026-08-18"
     },
     "46.4.172.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3407,7 +3407,7 @@
       "decided": "2026-08-18"
     },
     "167.233.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3422,7 +3422,7 @@
       "decided": "2026-08-18"
     },
     "46.225.194.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3437,7 +3437,7 @@
       "decided": "2026-08-18"
     },
     "46.225.196.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3452,7 +3452,7 @@
       "decided": "2026-08-18"
     },
     "46.225.200.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3467,7 +3467,7 @@
       "decided": "2026-08-18"
     },
     "46.225.208.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3482,7 +3482,7 @@
       "decided": "2026-08-18"
     },
     "46.225.224.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3497,7 +3497,7 @@
       "decided": "2026-08-18"
     },
     "46.225.240.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3512,7 +3512,7 @@
       "decided": "2026-08-18"
     },
     "46.225.242.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3527,7 +3527,7 @@
       "decided": "2026-08-18"
     },
     "46.225.242.64/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3542,7 +3542,7 @@
       "decided": "2026-08-18"
     },
     "88.198.219.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3557,7 +3557,7 @@
       "decided": "2026-08-18"
     },
     "176.9.13.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3572,7 +3572,7 @@
       "decided": "2026-08-18"
     },
     "176.9.14.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3587,7 +3587,7 @@
       "decided": "2026-08-18"
     },
     "176.9.14.128/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3602,7 +3602,7 @@
       "decided": "2026-08-18"
     },
     "176.9.14.144/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3617,7 +3617,7 @@
       "decided": "2026-08-18"
     },
     "23.88.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3632,7 +3632,7 @@
       "decided": "2026-08-18"
     },
     "77.42.0.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3647,7 +3647,7 @@
       "decided": "2026-08-18"
     },
     "77.42.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3662,7 +3662,7 @@
       "decided": "2026-08-18"
     },
     "77.42.48.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3677,7 +3677,7 @@
       "decided": "2026-08-18"
     },
     "77.42.52.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3692,7 +3692,7 @@
       "decided": "2026-08-18"
     },
     "77.42.53.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3707,7 +3707,7 @@
       "decided": "2026-08-18"
     },
     "88.198.45.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3722,7 +3722,7 @@
       "decided": "2026-08-18"
     },
     "88.198.46.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3737,7 +3737,7 @@
       "decided": "2026-08-18"
     },
     "88.198.48.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3752,7 +3752,7 @@
       "decided": "2026-08-18"
     },
     "88.198.56.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3767,7 +3767,7 @@
       "decided": "2026-08-18"
     },
     "88.198.60.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3782,7 +3782,7 @@
       "decided": "2026-08-18"
     },
     "162.55.0.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3797,7 +3797,7 @@
       "decided": "2026-08-18"
     },
     "162.55.8.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3812,7 +3812,7 @@
       "decided": "2026-08-18"
     },
     "23.88.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3827,7 +3827,7 @@
       "decided": "2026-08-18"
     },
     "23.88.16.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3842,7 +3842,7 @@
       "decided": "2026-08-18"
     },
     "23.88.18.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3857,7 +3857,7 @@
       "decided": "2026-08-18"
     },
     "23.88.18.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3872,7 +3872,7 @@
       "decided": "2026-08-18"
     },
     "65.21.165.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3887,7 +3887,7 @@
       "decided": "2026-08-18"
     },
     "65.21.166.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3902,7 +3902,7 @@
       "decided": "2026-08-18"
     },
     "65.21.168.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3917,7 +3917,7 @@
       "decided": "2026-08-18"
     },
     "65.21.170.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3932,7 +3932,7 @@
       "decided": "2026-08-18"
     },
     "65.21.171.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3947,7 +3947,7 @@
       "decided": "2026-08-18"
     },
     "65.21.171.128/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3962,7 +3962,7 @@
       "decided": "2026-08-18"
     },
     "65.21.171.144/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3977,7 +3977,7 @@
       "decided": "2026-08-18"
     },
     "49.12.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -3992,7 +3992,7 @@
       "decided": "2026-08-18"
     },
     "49.12.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4007,7 +4007,7 @@
       "decided": "2026-08-18"
     },
     "135.181.227.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4022,7 +4022,7 @@
       "decided": "2026-08-18"
     },
     "135.181.228.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4037,7 +4037,7 @@
       "decided": "2026-08-18"
     },
     "135.181.232.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4052,7 +4052,7 @@
       "decided": "2026-08-18"
     },
     "135.181.240.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4067,7 +4067,7 @@
       "decided": "2026-08-18"
     },
     "135.181.244.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4082,7 +4082,7 @@
       "decided": "2026-08-18"
     },
     "135.181.246.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4097,7 +4097,7 @@
       "decided": "2026-08-18"
     },
     "157.90.50.240/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4112,7 +4112,7 @@
       "decided": "2026-08-18"
     },
     "157.90.51.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4127,7 +4127,7 @@
       "decided": "2026-08-18"
     },
     "88.99.232.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4142,7 +4142,7 @@
       "decided": "2026-08-18"
     },
     "88.99.232.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4157,7 +4157,7 @@
       "decided": "2026-08-18"
     },
     "88.99.232.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4172,7 +4172,7 @@
       "decided": "2026-08-18"
     },
     "178.63.163.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4187,7 +4187,7 @@
       "decided": "2026-08-18"
     },
     "178.63.164.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4202,7 +4202,7 @@
       "decided": "2026-08-18"
     },
     "178.63.165.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4217,7 +4217,7 @@
       "decided": "2026-08-18"
     },
     "88.99.208.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4232,7 +4232,7 @@
       "decided": "2026-08-18"
     },
     "88.99.216.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4247,7 +4247,7 @@
       "decided": "2026-08-18"
     },
     "88.99.220.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4262,7 +4262,7 @@
       "decided": "2026-08-18"
     },
     "88.99.221.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4277,7 +4277,7 @@
       "decided": "2026-08-18"
     },
     "88.99.221.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4292,7 +4292,7 @@
       "decided": "2026-08-18"
     },
     "88.99.221.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4307,7 +4307,7 @@
       "decided": "2026-08-18"
     },
     "38.83.160.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4319,7 +4319,7 @@
       "decided": "2026-08-18"
     },
     "38.247.82.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4331,7 +4331,7 @@
       "decided": "2026-08-18"
     },
     "149.22.120.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4343,7 +4343,7 @@
       "decided": "2026-08-18"
     },
     "149.22.128.0/17": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4355,7 +4355,7 @@
       "decided": "2026-08-18"
     },
     "38.126.101.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4367,7 +4367,7 @@
       "decided": "2026-08-18"
     },
     "38.126.102.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4379,7 +4379,7 @@
       "decided": "2026-08-18"
     },
     "154.61.59.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4391,7 +4391,7 @@
       "decided": "2026-08-18"
     },
     "154.61.60.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4403,7 +4403,7 @@
       "decided": "2026-08-18"
     },
     "38.59.0.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4415,7 +4415,7 @@
       "decided": "2026-08-18"
     },
     "38.59.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4427,7 +4427,7 @@
       "decided": "2026-08-18"
     },
     "38.240.225.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4439,7 +4439,7 @@
       "decided": "2026-08-18"
     },
     "38.240.226.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4451,7 +4451,7 @@
       "decided": "2026-08-18"
     },
     "38.242.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4463,7 +4463,7 @@
       "decided": "2026-08-18"
     },
     "38.106.154.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4475,7 +4475,7 @@
       "decided": "2026-08-18"
     },
     "38.162.131.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4487,7 +4487,7 @@
       "decided": "2026-08-18"
     },
     "38.162.132.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4499,7 +4499,7 @@
       "decided": "2026-08-18"
     },
     "149.40.2.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4511,7 +4511,7 @@
       "decided": "2026-08-18"
     },
     "149.40.4.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -4523,7 +4523,7 @@
       "decided": "2026-08-18"
     },
     "91.226.198.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -4531,7 +4531,7 @@
       "decided": "2026-08-18"
     },
     "185.248.24.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -4539,7 +4539,7 @@
       "decided": "2026-08-18"
     },
     "195.3.220.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -4547,7 +4547,7 @@
       "decided": "2026-08-18"
     },
     "149.154.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy"
@@ -4556,7 +4556,7 @@
       "decided": "2026-08-18"
     },
     "64.32.48.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy"
@@ -7097,7 +7097,7 @@
       "decided": "2026-08-18"
     },
     "144.76.78.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7110,7 +7110,7 @@
       "decided": "2026-08-18"
     },
     "144.76.80.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7123,7 +7123,7 @@
       "decided": "2026-08-18"
     },
     "144.76.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7136,7 +7136,7 @@
       "decided": "2026-08-18"
     },
     "144.76.128.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7149,7 +7149,7 @@
       "decided": "2026-08-18"
     },
     "144.76.136.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7162,7 +7162,7 @@
       "decided": "2026-08-18"
     },
     "144.76.137.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7175,7 +7175,7 @@
       "decided": "2026-08-18"
     },
     "144.76.137.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7188,7 +7188,7 @@
       "decided": "2026-08-18"
     },
     "144.76.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7201,7 +7201,7 @@
       "decided": "2026-08-18"
     },
     "144.76.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7214,7 +7214,7 @@
       "decided": "2026-08-18"
     },
     "144.76.24.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7227,7 +7227,7 @@
       "decided": "2026-08-18"
     },
     "144.76.28.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7240,7 +7240,7 @@
       "decided": "2026-08-18"
     },
     "144.76.30.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7253,7 +7253,7 @@
       "decided": "2026-08-18"
     },
     "144.76.31.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7266,7 +7266,7 @@
       "decided": "2026-08-18"
     },
     "144.76.31.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7279,7 +7279,7 @@
       "decided": "2026-08-18"
     },
     "144.76.31.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7292,7 +7292,7 @@
       "decided": "2026-08-18"
     },
     "144.76.55.248/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7305,7 +7305,7 @@
       "decided": "2026-08-18"
     },
     "144.76.56.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7318,7 +7318,7 @@
       "decided": "2026-08-18"
     },
     "144.76.64.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7331,7 +7331,7 @@
       "decided": "2026-08-18"
     },
     "144.76.72.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7344,7 +7344,7 @@
       "decided": "2026-08-18"
     },
     "144.76.76.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7357,7 +7357,7 @@
       "decided": "2026-08-18"
     },
     "144.76.77.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7370,7 +7370,7 @@
       "decided": "2026-08-18"
     },
     "144.76.77.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7383,7 +7383,7 @@
       "decided": "2026-08-18"
     },
     "144.76.77.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7396,7 +7396,7 @@
       "decided": "2026-08-18"
     },
     "144.76.77.224/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7409,7 +7409,7 @@
       "decided": "2026-08-18"
     },
     "144.76.77.240/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7422,7 +7422,7 @@
       "decided": "2026-08-18"
     },
     "144.76.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7435,7 +7435,7 @@
       "decided": "2026-08-18"
     },
     "144.76.48.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7448,7 +7448,7 @@
       "decided": "2026-08-18"
     },
     "144.76.52.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7461,7 +7461,7 @@
       "decided": "2026-08-18"
     },
     "144.76.54.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7474,7 +7474,7 @@
       "decided": "2026-08-18"
     },
     "144.76.55.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7487,7 +7487,7 @@
       "decided": "2026-08-18"
     },
     "144.76.55.64/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7500,7 +7500,7 @@
       "decided": "2026-08-18"
     },
     "144.76.55.96/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -7513,7 +7513,7 @@
       "decided": "2026-08-18"
     },
     "144.76.55.112/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8286,7 +8286,7 @@
       "decided": "2026-08-18"
     },
     "5.196.190.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8300,7 +8300,7 @@
       "decided": "2026-08-18"
     },
     "57.131.0.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8314,7 +8314,7 @@
       "decided": "2026-08-18"
     },
     "57.131.32.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8328,7 +8328,7 @@
       "decided": "2026-08-18"
     },
     "46.105.46.198/31": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8342,7 +8342,7 @@
       "decided": "2026-08-18"
     },
     "46.105.46.200/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8356,7 +8356,7 @@
       "decided": "2026-08-18"
     },
     "46.105.46.208/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8370,7 +8370,7 @@
       "decided": "2026-08-18"
     },
     "46.105.46.224/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8384,7 +8384,7 @@
       "decided": "2026-08-18"
     },
     "46.105.47.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8398,7 +8398,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8412,7 +8412,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8426,7 +8426,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8440,7 +8440,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.224/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8454,7 +8454,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.240/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8468,7 +8468,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.248/30": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8482,7 +8482,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.252/31": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8496,7 +8496,7 @@
       "decided": "2026-08-18"
     },
     "46.105.48.254/32": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8510,7 +8510,7 @@
       "decided": "2026-08-18"
     },
     "213.32.14.232/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8524,7 +8524,7 @@
       "decided": "2026-08-18"
     },
     "213.32.14.240/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8538,7 +8538,7 @@
       "decided": "2026-08-18"
     },
     "213.32.15.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8552,7 +8552,7 @@
       "decided": "2026-08-18"
     },
     "213.32.16.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8566,7 +8566,7 @@
       "decided": "2026-08-18"
     },
     "51.178.192.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8580,7 +8580,7 @@
       "decided": "2026-08-18"
     },
     "51.178.193.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8594,7 +8594,7 @@
       "decided": "2026-08-18"
     },
     "51.178.194.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8608,7 +8608,7 @@
       "decided": "2026-08-18"
     },
     "51.178.196.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8622,7 +8622,7 @@
       "decided": "2026-08-18"
     },
     "51.178.198.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8636,7 +8636,7 @@
       "decided": "2026-08-18"
     },
     "37.187.64.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8650,7 +8650,7 @@
       "decided": "2026-08-18"
     },
     "37.187.128.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8664,7 +8664,7 @@
       "decided": "2026-08-18"
     },
     "37.187.160.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8678,7 +8678,7 @@
       "decided": "2026-08-18"
     },
     "37.187.176.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8692,7 +8692,7 @@
       "decided": "2026-08-18"
     },
     "51.91.233.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8706,7 +8706,7 @@
       "decided": "2026-08-18"
     },
     "51.91.234.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8720,7 +8720,7 @@
       "decided": "2026-08-18"
     },
     "51.91.236.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8734,7 +8734,7 @@
       "decided": "2026-08-18"
     },
     "51.91.240.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8748,7 +8748,7 @@
       "decided": "2026-08-18"
     },
     "145.239.144.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8762,7 +8762,7 @@
       "decided": "2026-08-18"
     },
     "51.178.13.172/30": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8776,7 +8776,7 @@
       "decided": "2026-08-18"
     },
     "51.178.13.176/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8790,7 +8790,7 @@
       "decided": "2026-08-18"
     },
     "51.178.13.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8804,7 +8804,7 @@
       "decided": "2026-08-18"
     },
     "51.178.14.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8818,7 +8818,7 @@
       "decided": "2026-08-18"
     },
     "51.178.16.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8832,7 +8832,7 @@
       "decided": "2026-08-18"
     },
     "188.165.26.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8846,7 +8846,7 @@
       "decided": "2026-08-18"
     },
     "87.98.233.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8860,7 +8860,7 @@
       "decided": "2026-08-18"
     },
     "87.98.234.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8874,7 +8874,7 @@
       "decided": "2026-08-18"
     },
     "87.98.236.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8888,7 +8888,7 @@
       "decided": "2026-08-18"
     },
     "149.202.56.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8902,7 +8902,7 @@
       "decided": "2026-08-18"
     },
     "149.202.64.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8916,7 +8916,7 @@
       "decided": "2026-08-18"
     },
     "188.165.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8930,7 +8930,7 @@
       "decided": "2026-08-18"
     },
     "94.23.0.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8944,7 +8944,7 @@
       "decided": "2026-08-18"
     },
     "94.23.191.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8958,7 +8958,7 @@
       "decided": "2026-08-18"
     },
     "94.23.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8972,7 +8972,7 @@
       "decided": "2026-08-18"
     },
     "94.23.169.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -8986,7 +8986,7 @@
       "decided": "2026-08-18"
     },
     "141.95.223.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9000,7 +9000,7 @@
       "decided": "2026-08-18"
     },
     "141.95.224.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9014,7 +9014,7 @@
       "decided": "2026-08-18"
     },
     "141.95.226.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9028,7 +9028,7 @@
       "decided": "2026-08-18"
     },
     "178.32.40.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9042,7 +9042,7 @@
       "decided": "2026-08-18"
     },
     "159.195.48.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9057,7 +9057,7 @@
       "decided": "2026-08-18"
     },
     "159.195.64.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9072,7 +9072,7 @@
       "decided": "2026-08-18"
     },
     "159.195.80.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9087,7 +9087,7 @@
       "decided": "2026-08-18"
     },
     "46.38.224.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9102,7 +9102,7 @@
       "decided": "2026-08-18"
     },
     "46.38.232.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9117,7 +9117,7 @@
       "decided": "2026-08-18"
     },
     "46.38.234.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9132,7 +9132,7 @@
       "decided": "2026-08-18"
     },
     "45.9.60.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9147,7 +9147,7 @@
       "decided": "2026-08-18"
     },
     "89.58.47.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9162,7 +9162,7 @@
       "decided": "2026-08-18"
     },
     "89.58.48.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9177,7 +9177,7 @@
       "decided": "2026-08-18"
     },
     "89.58.56.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9192,7 +9192,7 @@
       "decided": "2026-08-18"
     },
     "188.68.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9207,7 +9207,7 @@
       "decided": "2026-08-18"
     },
     "188.68.48.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9222,7 +9222,7 @@
       "decided": "2026-08-18"
     },
     "188.68.56.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9237,7 +9237,7 @@
       "decided": "2026-08-18"
     },
     "188.68.60.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9252,7 +9252,7 @@
       "decided": "2026-08-18"
     },
     "185.163.118.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9267,7 +9267,7 @@
       "decided": "2026-08-18"
     },
     "37.120.189.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9282,7 +9282,7 @@
       "decided": "2026-08-18"
     },
     "46.38.236.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9297,7 +9297,7 @@
       "decided": "2026-08-18"
     },
     "46.38.240.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9312,7 +9312,7 @@
       "decided": "2026-08-18"
     },
     "46.38.244.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9327,7 +9327,7 @@
       "decided": "2026-08-18"
     },
     "46.38.246.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9342,7 +9342,7 @@
       "decided": "2026-08-18"
     },
     "185.207.104.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9357,7 +9357,7 @@
       "decided": "2026-08-18"
     },
     "92.60.36.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9372,7 +9372,7 @@
       "decided": "2026-08-18"
     },
     "89.58.0.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9387,7 +9387,7 @@
       "decided": "2026-08-18"
     },
     "89.58.8.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9402,7 +9402,7 @@
       "decided": "2026-08-18"
     },
     "89.58.12.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9417,7 +9417,7 @@
       "decided": "2026-08-18"
     },
     "89.58.24.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9432,7 +9432,7 @@
       "decided": "2026-08-18"
     },
     "89.58.32.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9447,7 +9447,7 @@
       "decided": "2026-08-18"
     },
     "89.58.40.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9462,7 +9462,7 @@
       "decided": "2026-08-18"
     },
     "89.58.44.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9477,7 +9477,7 @@
       "decided": "2026-08-18"
     },
     "46.38.249.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9492,7 +9492,7 @@
       "decided": "2026-08-18"
     },
     "46.38.250.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9507,7 +9507,7 @@
       "decided": "2026-08-18"
     },
     "46.38.252.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9522,7 +9522,7 @@
       "decided": "2026-08-18"
     },
     "194.13.80.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -9537,7 +9537,7 @@
       "decided": "2026-08-18"
     },
     "148.251.21.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9550,7 +9550,7 @@
       "decided": "2026-08-18"
     },
     "148.251.22.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9563,7 +9563,7 @@
       "decided": "2026-08-18"
     },
     "148.251.24.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9576,7 +9576,7 @@
       "decided": "2026-08-18"
     },
     "148.251.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9589,7 +9589,7 @@
       "decided": "2026-08-18"
     },
     "148.251.48.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9602,7 +9602,7 @@
       "decided": "2026-08-18"
     },
     "148.251.52.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9615,7 +9615,7 @@
       "decided": "2026-08-18"
     },
     "148.251.54.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9628,7 +9628,7 @@
       "decided": "2026-08-18"
     },
     "148.251.55.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9641,7 +9641,7 @@
       "decided": "2026-08-18"
     },
     "148.251.65.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9654,7 +9654,7 @@
       "decided": "2026-08-18"
     },
     "148.251.66.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9667,7 +9667,7 @@
       "decided": "2026-08-18"
     },
     "148.251.68.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9680,7 +9680,7 @@
       "decided": "2026-08-18"
     },
     "148.251.72.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9693,7 +9693,7 @@
       "decided": "2026-08-18"
     },
     "148.251.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9706,7 +9706,7 @@
       "decided": "2026-08-18"
     },
     "148.251.88.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9719,7 +9719,7 @@
       "decided": "2026-08-18"
     },
     "148.251.92.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9732,7 +9732,7 @@
       "decided": "2026-08-18"
     },
     "148.251.92.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9745,7 +9745,7 @@
       "decided": "2026-08-18"
     },
     "148.251.171.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9758,7 +9758,7 @@
       "decided": "2026-08-18"
     },
     "148.251.172.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9771,7 +9771,7 @@
       "decided": "2026-08-18"
     },
     "148.251.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9784,7 +9784,7 @@
       "decided": "2026-08-18"
     },
     "148.251.184.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9797,7 +9797,7 @@
       "decided": "2026-08-18"
     },
     "148.251.185.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9810,7 +9810,7 @@
       "decided": "2026-08-18"
     },
     "148.251.185.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -9823,7 +9823,7 @@
       "decided": "2026-08-18"
     },
     "96.60.98.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ptr h96-60-107-11.mdsnwi.dedicated.static.tds.net",
         "ptr h96-60-107-23.mdsnwi.dedicated.static.tds.net"
@@ -9832,7 +9832,7 @@
       "decided": "2026-08-18"
     },
     "96.60.100.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ptr h96-60-107-11.mdsnwi.dedicated.static.tds.net",
         "ptr h96-60-107-23.mdsnwi.dedicated.static.tds.net"
@@ -9841,7 +9841,7 @@
       "decided": "2026-08-18"
     },
     "96.60.104.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ptr h96-60-107-11.mdsnwi.dedicated.static.tds.net",
         "ptr h96-60-107-23.mdsnwi.dedicated.static.tds.net"
@@ -10180,7 +10180,7 @@
       "decided": "2026-08-18"
     },
     "87.106.1.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10192,7 +10192,7 @@
       "decided": "2026-08-18"
     },
     "87.106.2.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10204,7 +10204,7 @@
       "decided": "2026-08-18"
     },
     "87.106.4.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10216,7 +10216,7 @@
       "decided": "2026-08-18"
     },
     "87.106.8.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10228,7 +10228,7 @@
       "decided": "2026-08-18"
     },
     "87.106.10.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10240,7 +10240,7 @@
       "decided": "2026-08-18"
     },
     "82.165.174.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10252,7 +10252,7 @@
       "decided": "2026-08-18"
     },
     "217.154.13.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10264,7 +10264,7 @@
       "decided": "2026-08-18"
     },
     "217.154.14.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10276,7 +10276,7 @@
       "decided": "2026-08-18"
     },
     "217.154.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10288,7 +10288,7 @@
       "decided": "2026-08-18"
     },
     "217.154.24.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10300,7 +10300,7 @@
       "decided": "2026-08-18"
     },
     "82.165.180.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10312,7 +10312,7 @@
       "decided": "2026-08-18"
     },
     "82.165.52.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10324,7 +10324,7 @@
       "decided": "2026-08-18"
     },
     "82.165.54.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10336,7 +10336,7 @@
       "decided": "2026-08-18"
     },
     "82.165.134.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10348,7 +10348,7 @@
       "decided": "2026-08-18"
     },
     "82.165.136.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10360,7 +10360,7 @@
       "decided": "2026-08-18"
     },
     "87.106.213.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10372,7 +10372,7 @@
       "decided": "2026-08-18"
     },
     "82.165.165.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10384,7 +10384,7 @@
       "decided": "2026-08-18"
     },
     "82.165.216.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10396,7 +10396,7 @@
       "decided": "2026-08-18"
     },
     "217.160.120.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -10408,7 +10408,7 @@
       "decided": "2026-08-18"
     },
     "212.227.131.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS",
@@ -11481,7 +11481,7 @@
       "decided": "2026-08-18"
     },
     "84.247.128.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11496,7 +11496,7 @@
       "decided": "2026-08-18"
     },
     "84.247.160.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11511,7 +11511,7 @@
       "decided": "2026-08-18"
     },
     "217.76.49.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11526,7 +11526,7 @@
       "decided": "2026-08-18"
     },
     "217.76.50.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11541,7 +11541,7 @@
       "decided": "2026-08-18"
     },
     "217.76.52.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11556,7 +11556,7 @@
       "decided": "2026-08-18"
     },
     "217.76.56.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11571,7 +11571,7 @@
       "decided": "2026-08-18"
     },
     "217.76.60.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11586,7 +11586,7 @@
       "decided": "2026-08-18"
     },
     "217.76.62.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11601,7 +11601,7 @@
       "decided": "2026-08-18"
     },
     "217.76.63.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11616,7 +11616,7 @@
       "decided": "2026-08-18"
     },
     "62.146.168.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11631,7 +11631,7 @@
       "decided": "2026-08-18"
     },
     "217.77.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11646,7 +11646,7 @@
       "decided": "2026-08-18"
     },
     "185.202.238.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11661,7 +11661,7 @@
       "decided": "2026-08-18"
     },
     "86.48.0.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11676,7 +11676,7 @@
       "decided": "2026-08-18"
     },
     "81.17.96.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11691,7 +11691,7 @@
       "decided": "2026-08-18"
     },
     "157.173.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -11706,7 +11706,7 @@
       "decided": "2026-08-18"
     },
     "138.201.6.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11718,7 +11718,7 @@
       "decided": "2026-08-18"
     },
     "138.201.8.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11730,7 +11730,7 @@
       "decided": "2026-08-18"
     },
     "138.201.16.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11742,7 +11742,7 @@
       "decided": "2026-08-18"
     },
     "138.201.20.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11754,7 +11754,7 @@
       "decided": "2026-08-18"
     },
     "138.201.22.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11766,7 +11766,7 @@
       "decided": "2026-08-18"
     },
     "138.201.23.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11778,7 +11778,7 @@
       "decided": "2026-08-18"
     },
     "138.201.23.128/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11790,7 +11790,7 @@
       "decided": "2026-08-18"
     },
     "138.201.135.64/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11802,7 +11802,7 @@
       "decided": "2026-08-18"
     },
     "138.201.135.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11814,7 +11814,7 @@
       "decided": "2026-08-18"
     },
     "138.201.136.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11826,7 +11826,7 @@
       "decided": "2026-08-18"
     },
     "138.201.144.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11838,7 +11838,7 @@
       "decided": "2026-08-18"
     },
     "138.201.145.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11850,7 +11850,7 @@
       "decided": "2026-08-18"
     },
     "138.201.242.8/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11862,7 +11862,7 @@
       "decided": "2026-08-18"
     },
     "138.201.242.16/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11874,7 +11874,7 @@
       "decided": "2026-08-18"
     },
     "138.201.242.32/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11886,7 +11886,7 @@
       "decided": "2026-08-18"
     },
     "138.201.242.64/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11898,7 +11898,7 @@
       "decided": "2026-08-18"
     },
     "138.201.242.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11910,7 +11910,7 @@
       "decided": "2026-08-18"
     },
     "138.201.243.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11922,7 +11922,7 @@
       "decided": "2026-08-18"
     },
     "138.201.244.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11934,7 +11934,7 @@
       "decided": "2026-08-18"
     },
     "138.201.248.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11946,7 +11946,7 @@
       "decided": "2026-08-18"
     },
     "138.201.113.248/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11958,7 +11958,7 @@
       "decided": "2026-08-18"
     },
     "138.201.114.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11970,7 +11970,7 @@
       "decided": "2026-08-18"
     },
     "138.201.116.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11982,7 +11982,7 @@
       "decided": "2026-08-18"
     },
     "138.201.120.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -11994,7 +11994,7 @@
       "decided": "2026-08-18"
     },
     "138.201.124.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12006,7 +12006,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.0/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12018,7 +12018,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.128/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12030,7 +12030,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.192/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12042,7 +12042,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.224/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12054,7 +12054,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.240/31": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12066,7 +12066,7 @@
       "decided": "2026-08-18"
     },
     "138.201.126.242/32": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -12741,7 +12741,7 @@
       "decided": "2026-08-18"
     },
     "152.53.128.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12756,7 +12756,7 @@
       "decided": "2026-08-18"
     },
     "152.53.144.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12771,7 +12771,7 @@
       "decided": "2026-08-18"
     },
     "152.53.152.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12786,7 +12786,7 @@
       "decided": "2026-08-18"
     },
     "152.53.16.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12801,7 +12801,7 @@
       "decided": "2026-08-18"
     },
     "152.53.20.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12816,7 +12816,7 @@
       "decided": "2026-08-18"
     },
     "152.53.116.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12831,7 +12831,7 @@
       "decided": "2026-08-18"
     },
     "152.53.244.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12846,7 +12846,7 @@
       "decided": "2026-08-18"
     },
     "152.53.248.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12861,7 +12861,7 @@
       "decided": "2026-08-18"
     },
     "152.53.52.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -12876,7 +12876,7 @@
       "decided": "2026-08-18"
     },
     "152.53.192.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13191,7 +13191,7 @@
       "decided": "2026-08-18"
     },
     "92.240.64.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -13498,7 +13498,7 @@
       "decided": "2026-08-18"
     },
     "80.241.208.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13510,7 +13510,7 @@
       "decided": "2026-08-18"
     },
     "80.241.212.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13522,7 +13522,7 @@
       "decided": "2026-08-18"
     },
     "80.241.214.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13534,7 +13534,7 @@
       "decided": "2026-08-18"
     },
     "109.205.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13546,7 +13546,7 @@
       "decided": "2026-08-18"
     },
     "75.119.150.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13558,7 +13558,7 @@
       "decided": "2026-08-18"
     },
     "75.119.152.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13570,7 +13570,7 @@
       "decided": "2026-08-18"
     },
     "194.163.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13582,7 +13582,7 @@
       "decided": "2026-08-18"
     },
     "161.97.116.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13594,7 +13594,7 @@
       "decided": "2026-08-18"
     },
     "161.97.120.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13606,7 +13606,7 @@
       "decided": "2026-08-18"
     },
     "144.91.96.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Contabo GmbH",
@@ -13638,7 +13638,7 @@
       "decided": "2026-08-18"
     },
     "188.213.142.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13649,7 +13649,7 @@
       "decided": "2026-08-18"
     },
     "188.213.140.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13660,7 +13660,7 @@
       "decided": "2026-08-18"
     },
     "202.61.199.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13674,7 +13674,7 @@
       "decided": "2026-08-18"
     },
     "202.61.200.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13688,7 +13688,7 @@
       "decided": "2026-08-18"
     },
     "202.61.224.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13702,7 +13702,7 @@
       "decided": "2026-08-18"
     },
     "202.61.240.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13716,7 +13716,7 @@
       "decided": "2026-08-18"
     },
     "202.61.244.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13730,7 +13730,7 @@
       "decided": "2026-08-18"
     },
     "202.61.197.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13744,7 +13744,7 @@
       "decided": "2026-08-18"
     },
     "202.61.198.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator netcup GmbH",
@@ -13758,7 +13758,7 @@
       "decided": "2026-08-18"
     },
     "92.53.96.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13767,7 +13767,7 @@
       "decided": "2026-08-18"
     },
     "90.156.224.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13776,7 +13776,7 @@
       "decided": "2026-08-18"
     },
     "185.178.44.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13785,7 +13785,7 @@
       "decided": "2026-08-18"
     },
     "94.228.112.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13794,7 +13794,7 @@
       "decided": "2026-08-18"
     },
     "185.119.56.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13803,7 +13803,7 @@
       "decided": "2026-08-18"
     },
     "5.23.48.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -13812,7 +13812,7 @@
       "decided": "2026-08-18"
     },
     "136.243.99.248/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13825,7 +13825,7 @@
       "decided": "2026-08-18"
     },
     "136.243.100.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13838,7 +13838,7 @@
       "decided": "2026-08-18"
     },
     "136.243.104.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13851,7 +13851,7 @@
       "decided": "2026-08-18"
     },
     "136.243.108.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13864,7 +13864,7 @@
       "decided": "2026-08-18"
     },
     "136.243.108.64/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13877,7 +13877,7 @@
       "decided": "2026-08-18"
     },
     "136.243.108.80/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13890,7 +13890,7 @@
       "decided": "2026-08-18"
     },
     "136.243.129.192/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13903,7 +13903,7 @@
       "decided": "2026-08-18"
     },
     "136.243.130.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13916,7 +13916,7 @@
       "decided": "2026-08-18"
     },
     "136.243.132.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13929,7 +13929,7 @@
       "decided": "2026-08-18"
     },
     "136.243.136.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13942,7 +13942,7 @@
       "decided": "2026-08-18"
     },
     "136.243.144.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Hetzner Online GmbH",
@@ -13955,7 +13955,7 @@
       "decided": "2026-08-18"
     },
     "51.81.80.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13969,7 +13969,7 @@
       "decided": "2026-08-18"
     },
     "135.148.23.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13983,7 +13983,7 @@
       "decided": "2026-08-18"
     },
     "135.148.24.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -13997,7 +13997,7 @@
       "decided": "2026-08-18"
     },
     "135.148.28.0/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14011,7 +14011,7 @@
       "decided": "2026-08-18"
     },
     "15.204.233.104/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14025,7 +14025,7 @@
       "decided": "2026-08-18"
     },
     "15.204.233.112/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14039,7 +14039,7 @@
       "decided": "2026-08-18"
     },
     "15.204.233.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14053,7 +14053,7 @@
       "decided": "2026-08-18"
     },
     "15.204.234.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14067,7 +14067,7 @@
       "decided": "2026-08-18"
     },
     "15.204.236.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14081,7 +14081,7 @@
       "decided": "2026-08-18"
     },
     "15.204.240.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14095,7 +14095,7 @@
       "decided": "2026-08-18"
     },
     "15.204.242.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14109,7 +14109,7 @@
       "decided": "2026-08-18"
     },
     "15.204.243.0/26": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14123,7 +14123,7 @@
       "decided": "2026-08-18"
     },
     "15.204.243.64/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14137,7 +14137,7 @@
       "decided": "2026-08-18"
     },
     "15.204.243.96/29": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14151,7 +14151,7 @@
       "decided": "2026-08-18"
     },
     "15.204.243.112/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14165,7 +14165,7 @@
       "decided": "2026-08-18"
     },
     "15.204.243.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14179,7 +14179,7 @@
       "decided": "2026-08-18"
     },
     "15.204.244.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14193,7 +14193,7 @@
       "decided": "2026-08-18"
     },
     "15.204.248.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -14589,7 +14589,7 @@
       "decided": "2026-08-18"
     },
     "74.80.183.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -14597,7 +14597,7 @@
       "decided": "2026-08-18"
     },
     "74.80.184.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -14605,7 +14605,7 @@
       "decided": "2026-08-18"
     },
     "31.13.184.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google LLC"
@@ -14614,7 +14614,7 @@
       "decided": "2026-08-18"
     },
     "31.13.185.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google LLC"
@@ -15544,7 +15544,7 @@
       "decided": "2026-08-18"
     },
     "89.234.142.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ptr srv11.cyo.sclafer.com",
         "ptr srv12.crypto.sclafer.com"
@@ -15553,7 +15553,7 @@
       "decided": "2026-08-18"
     },
     "89.234.148.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ptr srv11.cyo.sclafer.com",
         "ptr srv12.crypto.sclafer.com"
@@ -15700,7 +15700,7 @@
       "decided": "2026-08-18"
     },
     "192.99.0.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15712,7 +15712,7 @@
       "decided": "2026-08-18"
     },
     "192.99.16.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15724,7 +15724,7 @@
       "decided": "2026-08-18"
     },
     "192.99.24.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15736,7 +15736,7 @@
       "decided": "2026-08-18"
     },
     "192.99.26.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15748,7 +15748,7 @@
       "decided": "2026-08-18"
     },
     "148.113.76.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15760,7 +15760,7 @@
       "decided": "2026-08-18"
     },
     "148.113.80.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15772,7 +15772,7 @@
       "decided": "2026-08-18"
     },
     "148.113.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15784,7 +15784,7 @@
       "decided": "2026-08-18"
     },
     "148.113.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15796,7 +15796,7 @@
       "decided": "2026-08-18"
     },
     "148.113.192.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15808,7 +15808,7 @@
       "decided": "2026-08-18"
     },
     "148.113.208.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15820,7 +15820,7 @@
       "decided": "2026-08-18"
     },
     "148.113.216.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -15832,7 +15832,7 @@
       "decided": "2026-08-18"
     },
     "148.113.220.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator OVH SAS",
@@ -16123,7 +16123,7 @@
       "decided": "2026-08-18"
     },
     "85.214.184.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS SE",
@@ -16134,7 +16134,7 @@
       "decided": "2026-08-18"
     },
     "85.214.192.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS SE",
@@ -16145,7 +16145,7 @@
       "decided": "2026-08-18"
     },
     "85.215.0.0/17": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS SE",
@@ -16156,7 +16156,7 @@
       "decided": "2026-08-18"
     },
     "85.215.158.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS SE",
@@ -16423,7 +16423,7 @@
       "decided": "2026-08-18"
     },
     "178.79.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -16437,7 +16437,7 @@
       "decided": "2026-08-18"
     },
     "85.159.208.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -16451,7 +16451,7 @@
       "decided": "2026-08-18"
     },
     "212.71.244.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -16465,7 +16465,7 @@
       "decided": "2026-08-18"
     },
     "212.71.248.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -16497,7 +16497,7 @@
       "decided": "2026-08-18"
     },
     "78.34.0.0/16": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16505,7 +16505,7 @@
       "decided": "2026-08-18"
     },
     "78.35.0.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16513,7 +16513,7 @@
       "decided": "2026-08-18"
     },
     "78.35.4.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16521,7 +16521,7 @@
       "decided": "2026-08-18"
     },
     "87.79.94.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16529,7 +16529,7 @@
       "decided": "2026-08-18"
     },
     "87.79.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16537,7 +16537,7 @@
       "decided": "2026-08-18"
     },
     "87.79.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16545,7 +16545,7 @@
       "decided": "2026-08-18"
     },
     "87.79.192.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16553,7 +16553,7 @@
       "decided": "2026-08-18"
     },
     "78.35.82.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16561,7 +16561,7 @@
       "decided": "2026-08-18"
     },
     "78.35.84.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16569,7 +16569,7 @@
       "decided": "2026-08-18"
     },
     "78.35.88.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16577,7 +16577,7 @@
       "decided": "2026-08-18"
     },
     "78.35.96.0/19": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16585,7 +16585,7 @@
       "decided": "2026-08-18"
     },
     "78.35.128.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16593,7 +16593,7 @@
       "decided": "2026-08-18"
     },
     "78.35.192.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16601,7 +16601,7 @@
       "decided": "2026-08-18"
     },
     "78.35.200.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "rdap NC-STATIC-IP-POOL"
       ],
@@ -16609,7 +16609,7 @@
       "decided": "2026-08-18"
     },
     "194.39.204.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap WEBHOSTING24-CLOUD-NET"
@@ -16618,7 +16618,7 @@
       "decided": "2026-08-18"
     },
     "23.198.16.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -16703,7 +16703,7 @@
       "decided": "2026-08-18"
     },
     "193.124.180.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap PSERVERS-CLOUD-HOSTING"
@@ -16712,7 +16712,7 @@
       "decided": "2026-08-18"
     },
     "185.112.82.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap PSERVERS-CLOUD-HOSTING"
@@ -16754,7 +16754,7 @@
       "decided": "2026-08-18"
     },
     "136.37.169.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16763,7 +16763,7 @@
       "decided": "2026-08-18"
     },
     "136.37.170.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16772,7 +16772,7 @@
       "decided": "2026-08-18"
     },
     "136.37.172.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16781,7 +16781,7 @@
       "decided": "2026-08-18"
     },
     "136.37.176.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16790,7 +16790,7 @@
       "decided": "2026-08-18"
     },
     "136.37.184.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16799,7 +16799,7 @@
       "decided": "2026-08-18"
     },
     "136.37.186.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16808,7 +16808,7 @@
       "decided": "2026-08-18"
     },
     "136.33.133.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16817,7 +16817,7 @@
       "decided": "2026-08-18"
     },
     "136.33.134.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Google Fiber Inc."
@@ -16987,7 +16987,7 @@
       "decided": "2026-08-18"
     },
     "176.53.160.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -16995,7 +16995,7 @@
       "decided": "2026-08-18"
     },
     "2.59.40.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -17197,7 +17197,7 @@
       "decided": "2026-08-18"
     },
     "157.250.192.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17209,7 +17209,7 @@
       "decided": "2026-08-18"
     },
     "157.250.200.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17221,7 +17221,7 @@
       "decided": "2026-08-18"
     },
     "157.250.204.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17233,7 +17233,7 @@
       "decided": "2026-08-18"
     },
     "64.20.41.80/28": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17245,7 +17245,7 @@
       "decided": "2026-08-18"
     },
     "64.20.41.96/27": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17257,7 +17257,7 @@
       "decided": "2026-08-18"
     },
     "64.20.41.128/25": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17269,7 +17269,7 @@
       "decided": "2026-08-18"
     },
     "64.20.42.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17281,7 +17281,7 @@
       "decided": "2026-08-18"
     },
     "64.20.44.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17293,7 +17293,7 @@
       "decided": "2026-08-18"
     },
     "64.20.48.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17305,7 +17305,7 @@
       "decided": "2026-08-18"
     },
     "64.20.50.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17379,7 +17379,7 @@
       "decided": "2026-08-18"
     },
     "94.16.119.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17393,7 +17393,7 @@
       "decided": "2026-08-18"
     },
     "193.26.156.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -17593,7 +17593,7 @@
       "decided": "2026-08-18"
     },
     "185.249.197.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ptr gold-turtle-51388.zap.cloud",
@@ -17603,7 +17603,7 @@
       "decided": "2026-08-18"
     },
     "185.249.198.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ptr gold-turtle-51388.zap.cloud",
@@ -17613,7 +17613,7 @@
       "decided": "2026-08-18"
     },
     "161.118.160.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Oracle Corporation"
@@ -17622,7 +17622,7 @@
       "decided": "2026-08-18"
     },
     "161.118.164.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Oracle Corporation"
@@ -17631,7 +17631,7 @@
       "decided": "2026-08-18"
     },
     "161.118.166.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Oracle Corporation"
@@ -17640,7 +17640,7 @@
       "decided": "2026-08-18"
     },
     "133.32.23.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -17648,7 +17648,7 @@
       "decided": "2026-08-18"
     },
     "133.32.24.0/21": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -17656,7 +17656,7 @@
       "decided": "2026-08-18"
     },
     "133.32.32.0/20": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -17664,7 +17664,7 @@
       "decided": "2026-08-18"
     },
     "133.32.48.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -17672,7 +17672,7 @@
       "decided": "2026-08-18"
     },
     "133.32.50.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -17688,7 +17688,7 @@
       "decided": "2026-08-18"
     },
     "179.237.64.0/18": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy",
         "operator Infomaniak Network SA",
@@ -17716,7 +17716,7 @@
       "decided": "2026-08-18"
     },
     "67.217.240.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator IONOS SE"
@@ -18012,7 +18012,7 @@
       "decided": "2026-08-18"
     },
     "170.205.30.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap ADVINSERVERS-IPV4-2"
@@ -18069,7 +18069,7 @@
       "decided": "2026-08-18"
     },
     "93.92.216.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -18077,7 +18077,7 @@
       "decided": "2026-08-18"
     },
     "93.92.220.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -18162,7 +18162,7 @@
       "decided": "2026-08-18"
     },
     "109.160.122.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -18170,7 +18170,7 @@
       "decided": "2026-08-18"
     },
     "109.160.124.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api proxy"
       ],
@@ -18258,7 +18258,7 @@
       "decided": "2026-08-18"
     },
     "193.160.32.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -18388,7 +18388,7 @@
       "decided": "2026-08-18"
     },
     "94.32.71.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -18396,7 +18396,7 @@
       "decided": "2026-08-18"
     },
     "194.28.98.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy"
@@ -18429,7 +18429,7 @@
       "decided": "2026-08-18"
     },
     "91.239.23.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting"
       ],
@@ -18571,7 +18571,7 @@
       "decided": "2026-08-18"
     },
     "103.65.231.0/24": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ptr vps39573.hosted-by-eurohoster.org",
@@ -18608,7 +18608,7 @@
       "decided": "2026-08-18"
     },
     "194.60.132.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "ip-api proxy",
@@ -18796,7 +18796,7 @@
       "decided": "2026-08-18"
     },
     "147.45.102.0/23": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -18805,7 +18805,7 @@
       "decided": "2026-08-18"
     },
     "147.45.104.0/22": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "rdap TW-Cloud"
@@ -18814,7 +18814,7 @@
       "decided": "2026-08-18"
     },
     "20.71.0.0/16": {
-      "class": "hosting",
+      "class": "datacenter",
       "evidence": [
         "ip-api hosting",
         "operator Microsoft Corporation"

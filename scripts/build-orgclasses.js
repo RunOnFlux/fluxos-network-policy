@@ -445,7 +445,7 @@ async function main() {
     ? (JSON.parse(fs.readFileSync(args.out, 'utf8')).entries ?? {})
     : {};
   const entries = {};
-  const tally = { residential: 0, hosting: 0, unclassified: 0 };
+  const tally = { residential: 0, datacenter: 0, unclassified: 0 };
   // Why each undecided organisation was undecided. "No evidence at all" is a
   // different problem from "the signals fought", and only one of them is a
   // classifier that can be improved.
@@ -542,7 +542,7 @@ async function main() {
   }
 
   if (args.report) {
-    const hostTally = { residential: 0, hosting: 0, unclassified: 0 };
+    const hostTally = { residential: 0, datacenter: 0, unclassified: 0 };
     for (const [token, orgHosts] of byOrg) {
       const firstRange = [...(rangesByOrg.get(token)?.keys() ?? [])][0];
       const bucket = entries[firstRange]?.class ?? 'unclassified';
