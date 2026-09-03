@@ -44,6 +44,13 @@ registry object) — reverse DNS alone does not carry a single witness.
    - An object covering EXACTLY the disputed range outweighs the covering
      allocation; but check what the object names — `LT-OVH` / `descr: UAB OVH`
      names a registering ENTITY, not a site. Registrant country is not location.
+   - ARIN customer assignments are the opposite case. A `type: ASSIGNMENT`
+     covering exactly the disputed range and naming a PERSON rather than a
+     company is that customer's service address, and there the address IS the
+     location — the rule above is about CORPORATE registrants, and applied here
+     it talks you out of the best signal on the block. Read the address from the
+     vcard `adr` LABEL parameter in the RDAP response; the value array beside it
+     is usually seven empty strings.
    - Hoster naming conventions are location-bearing when the operator's own DC
      list confirms them: Hetzner `fsn1`=Falkenstein(DE-SN) `nbg1`=Nuremberg(DE-BY)
      `hel1`=Helsinki(FI); OVH `gra`/`rbx`/`sbg`=FR `waw`=PL `bhs`=CA.
@@ -53,7 +60,13 @@ registry object) — reverse DNS alone does not carry a single witness.
 3. **Reverse DNS** across the block (fleet IPs plus stratified samples). ISP PTRs
    often encode metro codes (`nwrknj` = Newark NJ, `CMDNNJ` = Camden NJ, `asd` =
    Amsterdam). Verify a convention is location-bearing before citing it: netcup's
-   `*.srv.de` PTRs also cover its Vienna block, so they locate nothing.
+   `*.srv.de` PTRs also cover its Vienna block, so they locate nothing. To confirm
+   one does bear location, `dig -x` a few of the same operator's OTHER blocks and
+   check each code decodes to a different known place: Metronet's `molnilaa`
+   (Moline IL) is corroborated by `clsp`+co, `fyvl`+nc, `zmmn`+oh and `tlhs`+fl —
+   four for four city+state, so the state code is the convention and not a
+   coincidence. Four lookups, two minutes, and it is the difference between
+   evidence and a hunch.
 4. **Measurement** — TCP connect-time triangulation settles country-level ties in
    seconds when references exist: OVH publishes per-DC hosts
    (`gra|rbx|sbg|waw.proof.ovh.net`), so `curl -w %{time_connect}` from any fixed
