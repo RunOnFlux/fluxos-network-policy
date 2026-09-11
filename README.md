@@ -31,17 +31,30 @@ added back without the enforcement to go with it.
 
 ## How nodes read them
 
-FluxOS fetches each document on its own schedule (6 hours for blocked repositories and enterprise
-nodes, 12 hours for the tampering blocklist), validates its shape, and
-keeps the last valid copy it obtained. A node that cannot reach this repo keeps enforcing what it
-last read — indefinitely, and across restarts — rather than falling open. Each release also ships a
-copy of these files as a cold-start floor for a node that has never successfully fetched.
+FluxOS fetches each document on its own schedule — 6 hours for blocked and vetted repositories and
+for enterprise nodes, 12 hours for the tampering blocklist — and validates its shape before using
+it. No node ever writes a fetched document to disk: every copy it holds is in memory. What a node
+does when this repo is unreachable therefore differs per document, and the differences matter.
+
+- **Blocked and vetted repositories** sit in a six-hour cache. Without a readable list a node
+  refuses to install or spawn anything at all, but the hourly sweep that removes already-running
+  blocked apps does nothing that tick. The door fails closed; the sweep pauses, and resumes at the
+  next successful fetch.
+- **The tampering blocklist** is fetched fresh each tick and never cached. An unreadable one skips
+  the tick rather than clearing anything, and a DOS already applied is the node's own state, so an
+  outage postpones enforcement instead of undoing it.
+- **Enterprise nodes** are held as a map that only a successful fetch replaces, so a failed fetch
+  keeps the previous one. At boot it is seeded from `helpers/enterprisenodes.json` in the FluxOS
+  release — the one document a release still ships a copy anything reads.
+
+A restart does not preserve what a node last read. It begins from that release seed for enterprise
+nodes and from nothing for the other three, and the first successful fetch decides.
 
 Two consequences worth holding on to:
 
 - **An empty document is a real answer and an unreachable one is not.** `[]` means nothing is
-  listed. A node that cannot read a document does not treat it as empty; it keeps its previous copy,
-  and if it has never had one it declines to answer rather than guessing.
+  listed. No node reads unreachable as empty, so an outage can pause enforcement but never lifts
+  it.
 - **Removing an entry takes effect on a node's next successful fetch**, so unblocking is not
   instant. Adding one is subject to the same delay.
 
