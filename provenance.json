@@ -1,0 +1,18 @@
+{
+  "seq": 1,
+  "issued_at": "2026-09-11T10:42:16.331Z",
+  "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
+  "documents": {
+    "blockedrepositories": "291 entries",
+    "vettedrepositories": "0 entries",
+    "tamperingblockednodes": "14 entries",
+    "enterprisenodes": "2 keys"
+  },
+  "artifacts": {
+    "iplocation.bin.gz": {
+      "file": "iplocation-d3e2fed6b0f519d6bbd809e615176870ec44cd7ca57db0c58375e35650723ce8.bin.gz",
+      "sha256": "d3e2fed6b0f519d6bbd809e615176870ec44cd7ca57db0c58375e35650723ce8",
+      "bytes": 4801678
+    }
+  }
+}
