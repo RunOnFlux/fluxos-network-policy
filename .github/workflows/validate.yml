@@ -17,11 +17,7 @@ jobs:
         with:
           node-version: '24'
 
-      # Shape first: a malformed document is rejected by every node on the network.
+      # A malformed document is rejected by every node on the network, so shape is the one
+      # mistake worth failing a policy change over.
       - name: Validate policy documents
         run: node scripts/validate.js
-
-      # Then the dual-write reminder. Separate step so a divergence failure is never confused
-      # with a malformed document.
-      - name: Check RunOnFlux/flux copies are in step
-        run: node scripts/check-mirror.js

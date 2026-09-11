@@ -314,11 +314,6 @@ was the split itself: a merge to `RunOnFlux/flux` can no longer change what the 
 side effect of unrelated work, which is exactly how a tidy-up commit once removed a policy document
 from under the whole network.
 
-**While the migration is in progress, changes must also be applied to `RunOnFlux/flux` under
-`helpers/`.** Nodes on releases predating the switch still read from there, and they are most of the
-fleet. CI will fail the PR if the two diverge. This requirement goes away once
-`minimumFluxOSAllowedVersion` is above every release that reads the old location.
-
 ## What is not here
 
 These documents are served over plain HTTPS and are not signed. Their authenticity rests on GitHub
