@@ -57,10 +57,19 @@ on `main` rather than doubling it.
 Consumers pin a set of public keys and accept a document signed by any one of them, so a
 second key can take over without those consumers needing an update first.
 
-| key | custody | use |
-|---|---|---|
-| 1 | CI, secret `POLICY_SIGNING_SEED_B64` in the `policy-signing` environment | day to day |
-| 2 | cold, offline | continuity only |
+| key | public key (raw ed25519, hex) | custody | use |
+|---|---|---|---|
+| 1 | `c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380` | secret `POLICY_SIGNING_SEED_B64` in the `policy-signing` environment | day to day |
+| 2 | `739ca41408f66c75d6cb4bc1d5c044ca5a118de190081da68e5a7d6839fb69f8` | cold, offline, held by David | continuity only |
+
+Key 1 was generated straight into the secret — piped from node's stdout into `gh secret set`,
+never printed and never written to disk, so there is no copy of the private half anywhere.
+Key 2 covers its loss.
+
+A second key buys **continuity, not revocation**: removing a compromised key from the pinned
+set means updating consumers, which is a FluxOS release. What it avoids is being unable to
+sign at all while that happens. Two keys in the same place would buy nothing, which is why
+the cold half is not on CI.
 
 The environment's deployment branch policy admits `main` only, so a workflow run on any other
 ref is refused before its first step and a branch push cannot read the key.
