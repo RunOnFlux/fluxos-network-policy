@@ -1,0 +1,84 @@
+name: sign-policy
+
+# Signs the policy documents after a human has merged them, and publishes the result to the
+# `signed` branch for nodes to read.
+#
+# `main` is never written by this workflow. It refuses direct pushes, including from admins,
+# because the validate check has to pass first -- and a bot opening pull requests against it
+# would bury the human ones, which is the mistake that sent the hash list to its own
+# repository. `signed` is unprotected and nobody works on it, so the signer can push there.
+#
+# The split is also what the two branches mean: `main` is what people edit, `signed` is what
+# nodes read.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Never two signers at once. Both would read the same sequence high-water and claim the same
+# number, and the second push would either lose a change or publish a duplicate sequence.
+# cancel-in-progress is deliberately off: a cancelled run that had already pushed would leave
+# the high-water ahead of the document.
+concurrency:
+  group: sign-policy
+  cancel-in-progress: false
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    # The signing key lives in this environment, whose deployment branch policy admits main
+    # only, so a workflow run on any other ref cannot read it.
+    environment: policy-signing
+    steps:
+      - uses: actions/checkout@v7
+
+      # The published set, checked out where the signer writes. Created empty on the first
+      # run; after that it carries the previous document, which is where the sequence
+      # high-water is read from.
+      - name: Check out the signed branch
+        run: |
+          set -eo pipefail
+          git fetch --quiet origin signed:signed 2>/dev/null || true
+          if git rev-parse --verify --quiet signed >/dev/null; then
+            git worktree add signed signed
+          else
+            git worktree add --detach signed
+            git -C signed checkout --orphan signed
+            git -C signed rm -rq --cached . 2>/dev/null || true
+            find signed -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          fi
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Sign
+        id: sign
+        env:
+          POLICY_SIGNING_SEED_B64: ${{ secrets.POLICY_SIGNING_SEED_B64 }}
+          POLICY_SIGNED_DIR: signed
+        run: node scripts/sign-policy.js >> "$GITHUB_OUTPUT"
+
+      # Verified against the keys consumers pin, not against whatever key just signed it. A
+      # seed rotated without updating the pinned list produces a document every node rejects,
+      # and this is the step that catches that before it is published rather than after.
+      - name: Verify what was signed
+        if: steps.sign.outputs.changed == 'true'
+        env:
+          POLICY_PUBLIC_KEYS: ${{ vars.POLICY_PUBLIC_KEYS }}
+        run: node scripts/verify-policy.js signed/policy-signed.json
+
+      - name: Publish
+        if: steps.sign.outputs.changed == 'true'
+        run: |
+          set -eo pipefail
+          cd signed
+          git config user.name 'flux-policy-signer'
+          git config user.email 'noreply@runonflux.io'
+          git add -A
+          git commit -m "Sign policy at ${GITHUB_SHA:0:9}"
+          git push origin HEAD:signed
