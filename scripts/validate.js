@@ -15,6 +15,7 @@ const zlib = require('zlib');
 const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
 const orgclassOverrides = require('./orgclass-overrides');
+const blocklist = require('./blocklist');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -316,6 +317,42 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
       : 'the table already carries its values — the vendor has caught up';
     console.log(`WARNING ${file}: ${entry.range} (${claim}, added ${entry.added}) is retirable: ${why}; delete the entry`);
   });
+})();
+
+// blocklist.json is the source blockedrepositories.json is derived from, so it
+// carries two obligations the flat document cannot: every entry names the kind of
+// thing it refuses, and the artifact beside it is exactly what the projection would
+// write. A hand-edited artifact is the failure worth catching — it would enforce
+// something the source does not say, until the next build silently reverted it.
+(() => {
+  const file = 'blocklist.json';
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+  } catch (error) {
+    problems.push(`${file}: not readable as JSON — ${error.message}`);
+    return;
+  }
+
+  const shapeProblems = blocklist.documentProblems(parsed);
+  if (shapeProblems.length) {
+    shapeProblems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+
+  const expected = `${JSON.stringify(blocklist.projectToRepositories(parsed), null, 2)}\n`;
+  const actual = fs.readFileSync(path.join(ROOT, 'blockedrepositories.json'), 'utf8');
+  if (expected !== actual) {
+    problems.push('blockedrepositories.json: does not match blocklist.json — it is generated, run scripts/build-blockedrepositories.js');
+    return;
+  }
+
+  const counts = parsed.reduce((acc, entry) => ({ ...acc, [entry.kind]: (acc[entry.kind] ?? 0) + 1 }), {});
+  const summary = Object.keys(blocklist.KINDS)
+    .filter((kind) => counts[kind])
+    .map((kind) => `${counts[kind]} ${kind}`)
+    .join(', ');
+  console.log(`${file}: ok (${parsed.length} entries — ${summary})`);
 })();
 
 if (problems.length) {

@@ -13,16 +13,48 @@ default branch.
 
 | file | governs | shape |
 |---|---|---|
-| `blockedrepositories.json` | images, app owners and app hashes that may not run anywhere | array of strings |
+| `blocklist.json` | everything that may not run anywhere: app hashes, app names, owners, images, namespaces | array of typed entries |
+| `blockedrepositories.json` | **generated** from `blocklist.json`, for releases that predate typed entries | array of strings |
 | `enterprisenodes.json` | which app owners may install on which enterprise nodes | object of node pubkey → array of owner addresses |
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
 | `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
 | `iplocation.bin.gz` | the IP → (organisation, country, region) table placement uses to count fault domains | generated binary artifact, see below |
 
-Entries in `blockedrepositories.json` are matched against an image reference with its tag or digest
-stripped, and also against the namespace, so `someorg` blocks everything under that organisation
-while `someorg/someimage` blocks only that repository. Owner addresses and 64-character app hashes
-go in the same flat array.
+### `blocklist.json`
+
+Every entry names the **kind** of thing it refuses, and a kind names the one field it is compared
+against:
+
+```json
+{ "kind": "name", "value": "dowz", "reason": "why this is blocked", "added": "2026-09-12" }
+```
+
+| kind | compared against | covers |
+|---|---|---|
+| `hash` | the app message hash | one version of one application, and nothing after its next update |
+| `name` | the application name | that application for as long as it exists, across every update |
+| `owner` | the owner identity | every application that identity registers, present and future |
+| `image` | a component repository, tag removed | every application running that exact image |
+| `org` | a registry namespace | every application running any image published under it |
+
+**Prefer `name` over `hash` for an application you want off the network.** A non-extending update is
+free to its owner and mints a new hash: of the 149 hashes added on 2026-09-11, 23 had left the list
+within a day that way while keeping their names. Escaping a name ban costs a whole new registration.
+
+A kind exists so that an entry can never reach a field it was not written for. In the flat document
+an entry is a bare string tested against the image, the namespace, the owner and the hash at once,
+so `grafana` would refuse both the application called grafana and every image published under the
+grafana namespace, with no way to say which was meant.
+
+### `blockedrepositories.json` is generated
+
+It is an artifact of `blocklist.json`, kept because every release before typed entries fetches that
+name and would otherwise stop enforcing anything. Do not edit it — run
+`node scripts/build-blockedrepositories.js`; `validate.js` fails if the two drift apart.
+
+The projection is lossy on purpose: `name` entries are **omitted**, because a reader without kinds
+would test that bare string against the image and the namespace as well. A name ban is enforced only
+by a node that understands kinds, and is simply not in force on older releases.
 
 There is no image whitelist here. `RunOnFlux/flux` still carries a `helpers/repositories.json`, but
 nothing has enforced it since the method that read it was written without a caller in July 2024, and
@@ -306,6 +338,10 @@ A stale entry never fails CI. It is inert by definition, and blocking an unrelat
 somebody else's tidy-up is the rule that gets bypassed.
 
 ## Changing policy
+
+To block something, add an entry to `blocklist.json` and run
+`node scripts/build-blockedrepositories.js`. Both files go in the commit. Never edit
+`blockedrepositories.json` by hand — it is generated, and validation fails when it drifts.
 
 Open a PR. `main` refuses direct pushes, including from admins, because the `validate` check has to
 pass first and it cannot run against a commit that has not been pushed anywhere.
