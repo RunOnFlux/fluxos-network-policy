@@ -47,6 +47,7 @@ const PROVENANCE = path.join(OUT_DIR, 'provenance.json');
 // same sequence as the rest; a node that does not know the name ignores it, so a new
 // document can ship before the consumer that reads it.
 const DOCUMENTS = [
+  'blocklist',
   'blockedrepositories',
   'vettedrepositories',
   'tamperingblockednodes',
