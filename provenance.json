@@ -1,8 +1,9 @@
 {
-  "seq": 1,
-  "issued_at": "2026-09-11T10:42:16.331Z",
+  "seq": 2,
+  "issued_at": "2026-09-12T09:37:55.285Z",
   "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
   "documents": {
+    "blocklist": "310 entries",
     "blockedrepositories": "291 entries",
     "vettedrepositories": "0 entries",
     "tamperingblockednodes": "14 entries",
