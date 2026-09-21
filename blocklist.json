@@ -1858,5 +1858,11 @@
     "value": "5eb8c90776d48e4a787d6d526227f22b3a886d1fc1c6fa7753e7d797b48c9e63",
     "reason": "Orbit deployment registered en masse and run on the network for free; selected by description at or after the block best-internet-iran was registered",
     "added": "2026-09-11"
+  },
+  {
+    "kind": "owner",
+    "value": "1CpDqRjne5U1QWSgnJEYBh6FLYTuwZFsbi",
+    "reason": "Mass deployment of the Grass bandwidth-resale client",
+    "added": "2026-09-21"
   }
 ]
