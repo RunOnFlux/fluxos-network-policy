@@ -1,19 +1,19 @@
 {
-  "started": "2026-09-02T11:37:04.995Z",
+  "started": "2026-10-02T13:02:38.551Z",
   "malformedRows": [],
   "overlaps": [],
   "dbip": {
-    "databaseRows": 3588553,
+    "databaseRows": 3620434,
     "malformedRows": 0,
     "unsortedRows": 0,
-    "geoRows": 1968264,
+    "geoRows": 1999299,
     "coverageGaps": 0,
     "countries": 245,
-    "regions": 2447,
-    "rowsWithoutRegion": 382360,
-    "namesWithoutRegion": 931
+    "regions": 2433,
+    "rowsWithoutRegion": 381372,
+    "namesWithoutRegion": 954
   },
-  "collapsedRows": 22376,
+  "collapsedRows": 22450,
   "overrides": {
     "entries": [
       {
@@ -37,7 +37,7 @@
         "country": "DE",
         "region": null,
         "added": "2026-08-02",
-        "rowsTouched": 3,
+        "rowsTouched": 1,
         "noop": false
       },
       {
@@ -69,14 +69,15 @@
     "retirable": 0
   },
   "validation": {
-    "fleetIps": 2553,
-    "joined": 2505,
-    "agree": 2478,
+    "fleetIps": 2681,
+    "joined": 2637,
+    "agree": 2610,
     "expectedAgreement": 98.5,
     "disagreements": {
-      "DE->FR": 14,
+      "DE->FR": 12,
       "FR->NL": 6,
-      "GB->FR": 4,
+      "GB->FR": 5,
+      "GB->US": 1,
       "DE->US": 1,
       "FR->PL": 1,
       "IT->DE": 1
@@ -84,93 +85,100 @@
     "disagreementBlocks": [
       {
         "range": "188.213.142.0-188.213.143.255",
-        "org": "6d930d8ec73b",
+        "org": "5f4e9c1712d9",
         "table": "FR",
         "fleet": "NL",
         "nodes": 4
       },
       {
-        "range": "84.247.128.0-84.247.143.255",
-        "org": "bff336a4e907",
-        "table": "DE",
+        "range": "84.247.128.0-84.247.141.255",
+        "org": "73ee93f151cb",
+        "table": "GB",
         "fleet": "FR",
-        "nodes": 3
+        "nodes": 2
       },
       {
         "range": "161.97.116.0-161.97.121.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
         "table": "DE",
         "fleet": "FR",
         "nodes": 2
       },
       {
-        "range": "194.163.128.0-194.163.191.255",
-        "org": "55cc4f1ef8a5",
+        "range": "217.76.49.0-217.76.63.31",
+        "org": "73ee93f151cb",
         "table": "DE",
         "fleet": "FR",
         "nodes": 1
       },
       {
-        "range": "193.160.32.0-193.160.32.255",
-        "org": "26ac4415e1c3",
-        "table": "DE",
+        "range": "62.146.168.0-62.146.175.255",
+        "org": "73ee93f151cb",
+        "table": "GB",
         "fleet": "US",
         "nodes": 1
       },
       {
-        "range": "217.76.49.0-217.76.63.31",
-        "org": "bff336a4e907",
-        "table": "DE",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
-        "range": "157.173.96.0-157.173.127.255",
-        "org": "bff336a4e907",
-        "table": "DE",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
         "range": "5.196.190.0-5.196.190.255",
-        "org": "7a6e65eee028",
+        "org": "dfe41f62f845",
         "table": "FR",
         "fleet": "NL",
         "nodes": 1
       },
       {
+        "range": "84.247.142.0-84.247.142.255",
+        "org": "73ee93f151cb",
+        "table": "DE",
+        "fleet": "FR",
+        "nodes": 1
+      },
+      {
         "range": "80.241.208.0-80.241.214.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
         "table": "DE",
         "fleet": "FR",
         "nodes": 1
       },
       {
         "range": "75.119.150.0-75.119.152.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
         "table": "DE",
         "fleet": "FR",
         "nodes": 1
       },
       {
         "range": "109.205.180.0-109.205.183.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
         "table": "GB",
         "fleet": "FR",
         "nodes": 1
       },
       {
-        "range": "188.165.26.0-188.165.26.255",
-        "org": "7a6e65eee028",
-        "table": "FR",
-        "fleet": "PL",
+        "range": "194.163.128.0-194.163.191.255",
+        "org": "417aaf82b86d",
+        "table": "DE",
+        "fleet": "FR",
         "nodes": 1
       },
       {
-        "range": "89.234.142.0-89.234.143.255",
-        "org": "5a101472a29c",
+        "range": "157.173.96.0-157.173.127.255",
+        "org": "73ee93f151cb",
+        "table": "GB",
+        "fleet": "FR",
+        "nodes": 1
+      },
+      {
+        "range": "193.160.32.0-193.160.32.255",
+        "org": "b3c3a6c5eaf6",
+        "table": "DE",
+        "fleet": "US",
+        "nodes": 1
+      },
+      {
+        "range": "188.165.26.0-188.165.26.255",
+        "org": "dfe41f62f845",
         "table": "FR",
-        "fleet": "NL",
+        "fleet": "PL",
         "nodes": 1
       },
       {
@@ -181,315 +189,315 @@
         "nodes": 1
       },
       {
-        "range": "185.202.238.0-185.202.239.255",
-        "org": "bff336a4e907",
+        "range": "81.17.96.0-81.17.103.255",
+        "org": "73ee93f151cb",
         "table": "DE",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
-        "range": "31.220.74.64-31.220.79.255",
-        "org": "bff336a4e907",
-        "table": "DE",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
-        "range": "92.60.36.0-92.60.36.255",
-        "org": "c3013a66fb47",
-        "table": "IT",
-        "fleet": "DE",
-        "nodes": 1
-      },
-      {
-        "range": "144.91.94.0-144.91.97.255",
-        "org": "55cc4f1ef8a5",
-        "table": "GB",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
-        "range": "86.48.0.0-86.48.3.255",
-        "org": "bff336a4e907",
-        "table": "GB",
-        "fleet": "FR",
-        "nodes": 1
-      },
-      {
-        "range": "81.17.96.0-81.17.99.255",
-        "org": "bff336a4e907",
-        "table": "GB",
         "fleet": "FR",
         "nodes": 1
       },
       {
         "range": "5.189.174.0-5.189.174.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
+        "table": "DE",
+        "fleet": "FR",
+        "nodes": 1
+      },
+      {
+        "range": "185.202.238.0-185.202.239.255",
+        "org": "73ee93f151cb",
+        "table": "GB",
+        "fleet": "FR",
+        "nodes": 1
+      },
+      {
+        "range": "92.60.36.0-92.60.36.255",
+        "org": "4bca73d95cf6",
+        "table": "IT",
+        "fleet": "DE",
+        "nodes": 1
+      },
+      {
+        "range": "89.234.142.0-89.234.143.255",
+        "org": "3377f9939f53",
+        "table": "FR",
+        "fleet": "NL",
+        "nodes": 1
+      },
+      {
+        "range": "31.220.74.64-31.220.79.255",
+        "org": "73ee93f151cb",
+        "table": "DE",
+        "fleet": "FR",
+        "nodes": 1
+      },
+      {
+        "range": "144.91.94.0-144.91.98.255",
+        "org": "417aaf82b86d",
         "table": "DE",
         "fleet": "FR",
         "nodes": 1
       }
     ],
-    "regionJoined": 2500,
-    "regionAgree": 2237,
-    "regionDisagree": 235,
-    "regionTableNull": 28,
+    "regionJoined": 2634,
+    "regionAgree": 2350,
+    "regionDisagree": 255,
+    "regionTableNull": 29,
     "regionDisagreements": {
       "DK-82->DK-84": 53,
-      "DE-BW->DE-BY": 13,
-      "DE-HE->FR-GES": 11,
-      "DK-84->DK-85": 9,
-      "US-KY->US-IL": 5,
+      "DE-BW->DE-BY": 14,
+      "DE-HE->FR-GES": 9,
+      "BH-13->BH-14": 7,
+      "DE-NW->DE-HE": 7,
+      "FR-GES->FR-HDF": 7,
+      "US-SC->US-NC": 6,
+      "FR-IDF->FR-HDF": 6,
+      "NL-DR->NL-FR": 5,
+      "GB-ENG->FR-GES": 5,
       "FR-HDF->NL-ZH": 5,
-      "US-SC->US-NC": 4,
-      "FR-IDF->FR-NAQ": 4,
-      "FR-IDF->FR-HDF": 4,
-      "GB-ENG->FR-GES": 4,
-      "FR-HDF->FR-IDF": 3,
-      "FR-ARA->FR-IDF": 3,
-      "FR-IDF->FR-PAC": 3,
-      "NL-NH->NL-NB": 3,
+      "US-MI->US-OH": 5,
+      "US-KY->US-IL": 4,
       "DE-HE->DE-BY": 3,
+      "BG-23->BG-22": 3,
+      "FR-ARA->FR-IDF": 3,
       "DE-ST->DE-BY": 3,
-      "RO-B->RO-IF": 3,
+      "NL-NH->NL-NB": 2,
       "AE-DU->AE-SH": 2,
-      "NL-NH->NL-UT": 2,
-      "TW-TPE->TW-NWT": 2
+      "US-MO->US-KS": 2
     },
     "regionDisagreementBlocks": [
       {
         "range": "62.107.25.128-62.107.31.255",
-        "org": "d64bea2a808e",
+        "org": "6e100b4f060e",
         "table": "DK-82",
         "fleet": "DK-84",
         "nodes": 52
       },
       {
-        "range": "194.182.20.0-194.182.24.3",
-        "org": "c18c865c8fec",
-        "table": "DK-84",
-        "fleet": "DK-85",
-        "nodes": 8
+        "range": "80.95.208.0-80.95.223.255",
+        "org": "23fb0a00f304",
+        "table": "BH-13",
+        "fleet": "BH-14",
+        "nodes": 7
       },
       {
-        "range": "216.82.5.0-216.82.5.255",
-        "org": "bfa5b7b14b16",
-        "table": "US-KY",
-        "fleet": "US-IL",
-        "nodes": 5
+        "range": "5.230.172.0-5.230.172.255",
+        "org": "8100b3a7ff2d",
+        "table": "DE-NW",
+        "fleet": "DE-HE",
+        "nodes": 7
       },
       {
         "range": "206.198.210.0-206.198.210.255",
         "org": "d1647d75dafc",
         "table": "US-SC",
         "fleet": "US-NC",
+        "nodes": 6
+      },
+      {
+        "range": "54.36.13.0-54.36.13.255",
+        "org": "dfe41f62f845",
+        "table": "FR-GES",
+        "fleet": "FR-HDF",
+        "nodes": 6
+      },
+      {
+        "range": "92.70.198.0-92.70.198.255",
+        "org": "942f0bf332da",
+        "table": "NL-DR",
+        "fleet": "NL-FR",
+        "nodes": 5
+      },
+      {
+        "range": "74.80.183.0-74.80.184.255",
+        "org": "bfc6afdddef1",
+        "table": "US-MI",
+        "fleet": "US-OH",
+        "nodes": 5
+      },
+      {
+        "range": "216.82.5.0-216.82.5.255",
+        "org": "bfa5b7b14b16",
+        "table": "US-KY",
+        "fleet": "US-IL",
         "nodes": 4
       },
       {
         "range": "188.213.142.0-188.213.143.255",
-        "org": "6d930d8ec73b",
+        "org": "5f4e9c1712d9",
         "table": "FR-HDF",
         "fleet": "NL-ZH",
         "nodes": 4
       },
       {
-        "range": "84.247.128.0-84.247.143.255",
-        "org": "bff336a4e907",
-        "table": "DE-HE",
-        "fleet": "FR-GES",
-        "nodes": 3
-      },
-      {
         "range": "188.213.140.0-188.213.141.255",
-        "org": "6d930d8ec73b",
+        "org": "5f4e9c1712d9",
         "table": "FR-IDF",
         "fleet": "FR-HDF",
         "nodes": 3
       },
       {
-        "range": "86.127.152.0-86.127.159.255",
-        "org": "fcb82c77c891",
-        "table": "RO-B",
-        "fleet": "RO-IF",
-        "nodes": 3
-      },
-      {
         "range": "152.53.144.0-152.53.155.255",
-        "org": "2cfb548bc701",
+        "org": "18410be80dba",
         "table": "DE-BW",
         "fleet": "DE-BY",
         "nodes": 2
       },
       {
-        "range": "37.74.142.0-37.74.142.255",
-        "org": "a3f0508fb832",
-        "table": "NL-UT",
-        "fleet": "NL-ZH",
+        "range": "84.247.128.0-84.247.141.255",
+        "org": "73ee93f151cb",
+        "table": "GB-ENG",
+        "fleet": "FR-GES",
+        "nodes": 2
+      },
+      {
+        "range": "152.53.16.0-152.53.19.255",
+        "org": "18410be80dba",
+        "table": "AT-2",
+        "fleet": "AT-9",
+        "nodes": 2
+      },
+      {
+        "range": "202.61.204.0-202.61.207.255",
+        "org": "e73e1b63fac0",
+        "table": "DE-HH",
+        "fleet": "DE-BY",
         "nodes": 2
       },
       {
         "range": "161.97.116.0-161.97.121.255",
-        "org": "55cc4f1ef8a5",
+        "org": "417aaf82b86d",
         "table": "DE-BY",
         "fleet": "FR-GES",
         "nodes": 2
       },
       {
-        "range": "37.26.128.0-37.26.143.255",
-        "org": "2c9c9a78b2b6",
-        "table": "MD-SN",
-        "fleet": "MD-AN",
-        "nodes": 2
-      },
-      {
-        "range": "202.61.197.0-202.61.198.255",
-        "org": "e2fac38c8434",
-        "table": "DE-ST",
-        "fleet": "DE-BY",
+        "range": "37.74.142.0-37.74.142.255",
+        "org": "942f0bf332da",
+        "table": "NL-UT",
+        "fleet": "NL-ZH",
         "nodes": 2
       },
       {
         "range": "152.53.244.0-152.53.255.255",
-        "org": "2cfb548bc701",
+        "org": "18410be80dba",
         "table": "DE-BW",
         "fleet": "DE-BY",
         "nodes": 2
       },
       {
-        "range": "5.107.204.0-5.107.206.255",
-        "org": "98758588c49e",
-        "table": "AE-DU",
-        "fleet": "AE-SH",
-        "nodes": 1
+        "range": "202.61.197.0-202.61.198.255",
+        "org": "e73e1b63fac0",
+        "table": "DE-ST",
+        "fleet": "DE-BY",
+        "nodes": 2
       },
       {
-        "range": "108.14.101.0-108.14.101.255",
-        "org": "085e834d8aea",
-        "table": "US-VA",
-        "fleet": "US-NY",
-        "nodes": 1
-      },
-      {
-        "range": "151.251.154.0-151.251.154.255",
-        "org": "6a60fa3632d2",
-        "table": "BG-27",
-        "fleet": "BG-22",
-        "nodes": 1
-      },
-      {
-        "range": "5.195.165.0-5.195.165.255",
-        "org": "98758588c49e",
-        "table": "AE-RK",
-        "fleet": "AE-SH",
-        "nodes": 1
-      },
-      {
-        "range": "81.191.246.0-81.191.255.255",
-        "org": "bfc9fa5987b9",
-        "table": "NO-32",
-        "fleet": "NO-33",
-        "nodes": 1
-      },
-      {
-        "range": "173.79.199.0-173.79.207.255",
-        "org": "085e834d8aea",
-        "table": "US-DC",
-        "fleet": "US-MD",
-        "nodes": 1
-      },
-      {
-        "range": "84.0.152.0-84.0.152.255",
-        "org": "0681447be727",
-        "table": "HU-BU",
-        "fleet": "HU-HB",
-        "nodes": 1
-      },
-      {
-        "range": "79.117.114.0-79.117.114.255",
-        "org": "3ca7c7fe38a1",
-        "table": "ES-VC",
-        "fleet": "ES-MD",
-        "nodes": 1
-      },
-      {
-        "range": "86.83.200.0-86.83.200.255",
-        "org": "389a5c3d64f5",
+        "range": "86.82.165.240-86.82.168.239",
+        "org": "570fc4ea4d74",
         "table": "NL-NH",
-        "fleet": "NL-UT",
+        "fleet": "NL-NB",
         "nodes": 1
       },
       {
-        "range": "82.65.208.0-82.65.209.255",
-        "org": "2c80a9866034",
-        "table": "FR-IDF",
-        "fleet": "FR-NAQ",
-        "nodes": 1
-      },
-      {
-        "range": "114.45.3.0-114.45.9.255",
-        "org": "1ecd71d7bf55",
-        "table": "TW-TPE",
-        "fleet": "TW-NWT",
-        "nodes": 1
-      },
-      {
-        "range": "194.163.128.0-194.163.191.255",
-        "org": "55cc4f1ef8a5",
+        "range": "217.76.49.0-217.76.63.31",
+        "org": "73ee93f151cb",
         "table": "DE-HE",
         "fleet": "FR-GES",
         "nodes": 1
       },
       {
-        "range": "68.69.239.0-68.69.251.255",
-        "org": "93575badb3d3",
-        "table": "US-MN",
-        "fleet": "US-ND",
+        "range": "82.67.138.0-82.67.138.255",
+        "org": "402af723c885",
+        "table": "FR-PDL",
+        "fleet": "FR-HDF",
         "nodes": 1
       },
       {
-        "range": "91.173.61.0-91.173.61.255",
-        "org": "0dec41beb742",
-        "table": "FR-HDF",
-        "fleet": "FR-IDF",
+        "range": "91.154.120.0-91.154.183.255",
+        "org": "b284ce05e784",
+        "table": "FI-18",
+        "fleet": "FI-11",
         "nodes": 1
       },
       {
-        "range": "82.64.123.0-82.64.123.255",
-        "org": "2c80a9866034",
-        "table": "FR-HDF",
-        "fleet": "FR-IDF",
+        "range": "93.65.104.0-93.65.105.255",
+        "org": "e92148493747",
+        "table": "IT-45",
+        "fleet": "IT-34",
         "nodes": 1
       },
       {
-        "range": "82.67.186.0-82.67.186.255",
-        "org": "2c80a9866034",
+        "range": "218.221.128.0-218.221.173.255",
+        "org": "6e3397b87246",
+        "table": "JP-13",
+        "fleet": "JP-47",
+        "nodes": 1
+      },
+      {
+        "range": "86.209.189.0-86.209.194.255",
+        "org": "99104e2d0edf",
         "table": "FR-GES",
-        "fleet": "FR-IDF",
+        "fleet": "FR-BFC",
+        "nodes": 1
+      },
+      {
+        "range": "46.110.10.248-46.110.14.159",
+        "org": "bfa5b7b14b16",
+        "table": "US-KS",
+        "fleet": "US-MI",
+        "nodes": 1
+      },
+      {
+        "range": "104.235.236.0-104.235.237.255",
+        "org": "085e834d8aea",
+        "table": "US-OR",
+        "fleet": "US-MN",
+        "nodes": 1
+      },
+      {
+        "range": "82.165.180.0-82.165.180.255",
+        "org": "1518274140ca",
+        "table": "DE-HE",
+        "fleet": "DE-BE",
+        "nodes": 1
+      },
+      {
+        "range": "5.107.157.0-5.107.157.255",
+        "org": "d4f5d09cdf21",
+        "table": "AE-DU",
+        "fleet": "AE-SH",
+        "nodes": 1
+      },
+      {
+        "range": "5.107.144.0-5.107.144.255",
+        "org": "d4f5d09cdf21",
+        "table": "AE-DU",
+        "fleet": "AE-SH",
         "nodes": 1
       }
     ],
     "continentMismatches": {}
   },
-  "finished": "2026-09-02T11:37:35.384Z",
+  "finished": "2026-10-02T13:03:07.877Z",
   "sources": {
-    "ripencc": "1788299999",
-    "arin": "1788267620772",
-    "apnic": "20260902",
-    "lacnic": "20260901",
-    "afrinic": "20260902",
-    "dbip": "2026-09"
+    "ripencc": "1790891999",
+    "arin": "1790946022061",
+    "apnic": "20261002",
+    "lacnic": "20261001",
+    "afrinic": "20261002",
+    "dbip": "2026-10"
   },
   "output": {
     "file": "iplocation.bin.gz",
-    "rows": 1990071,
+    "rows": 2021156,
     "countries": 245,
-    "orgs": 103452,
-    "regions": 2447,
+    "orgs": 103443,
+    "regions": 2433,
     "regionNames": 2789,
     "orgClasses": 163,
     "orgClassRangesUnresolved": [],
     "orgClassConflicts": 0,
-    "uncompressedBytes": 17349289,
-    "bytes": 4801678
+    "uncompressedBytes": 17576961,
+    "bytes": 4830866
   }
 }
