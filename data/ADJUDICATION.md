@@ -32,7 +32,8 @@ Enter a correction only when ALL three hold:
    table alone.
 
 One-node blocks need an operator-grade signal (a geofeed, an exactly-covering
-registry object) — reverse DNS alone does not carry a single witness.
+registry object, or the node's own path measured from the node — signal 4) —
+reverse DNS alone does not carry a single witness.
 
 ## The signals, strongest first
 
@@ -54,9 +55,11 @@ registry object) — reverse DNS alone does not carry a single witness.
    - Hoster naming conventions are location-bearing when the operator's own DC
      list confirms them: Hetzner `fsn1`=Falkenstein(DE-SN) `nbg1`=Nuremberg(DE-BY)
      `hel1`=Helsinki(FI); OVH `gra`/`rbx`/`sbg`=FR `waw`=PL `bhs`=CA.
-   - Some hosters mark foreign ranges deliberately — Contabo's inetnums say DE
-     except the six that say SG/FR/GB/US/DK, so DE there is a statement. Establish
-     the operator's convention (sample their other objects) before trusting one.
+   - A hoster that marks some foreign ranges does not mark them all. Contabo's
+     inetnums say DE for ranges in Lauterbourg (FR) and Seattle (US) as well as
+     its German sites, so DE there names the registrant, not the site. Establish
+     the operator's convention (sample their other objects) and check it against
+     a measured node before trusting one.
 3. **Reverse DNS** across the block (fleet IPs plus stratified samples). ISP PTRs
    often encode metro codes (`nwrknj` = Newark NJ, `CMDNNJ` = Camden NJ, `asd` =
    Amsterdam). Verify a convention is location-bearing before citing it: netcup's
@@ -75,6 +78,19 @@ registry object) — reverse DNS alone does not carry a single witness.
    often filtered; use TCP to the nodes' API port. One vantage suffices when the
    block MATCHES a reference; excluding requires knowing what the alternative
    would measure.
+   - **From the node itself.** With a shell on a fleet node, `mtr -r -w 1.1.1.1`
+     names its first carrier hop, and a carrier router name that decodes to a
+     site places the node: Arelion `laut-b1`/`laut-b2` = Lauterbourg (FR),
+     `ffm` = Frankfurt; Lumen `Seattle1` = Seattle. Ping the reference hosts
+     from the node too. Nearest-reference alone can mislead: Contabo's
+     Lauterbourg site reaches Frankfurt in 3 ms and Strasbourg in 6, so the hop
+     name decides between them.
+   - **Read `flux.uplink` before citing a node's path**
+     (`stats.runonflux.io/fluxinfo?projection=ip,flux`). A node behind a tunnel
+     reaches every reference through it: its first hops are the tunnel's, and
+     every timing carries the tunnel's delay, so a latency bound read from it
+     says nothing about its block. Cite timings only from a node reporting
+     `tunnel: none` with a sub-millisecond `rttMs` to its router.
 
 Re-derive the fleet view first (same joins the build makes): the deterministic
 node list crossed with `stats.runonflux.io/fluxinfo?projection=geolocation,ip`,
