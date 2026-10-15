@@ -1,6 +1,6 @@
 {
-  "seq": 5,
-  "issued_at": "2026-10-04T09:12:10.095Z",
+  "seq": 6,
+  "issued_at": "2026-10-15T06:17:40.784Z",
   "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
   "documents": {
     "blocklist": "311 entries",
@@ -11,9 +11,9 @@
   },
   "artifacts": {
     "iplocation.bin.gz": {
-      "file": "iplocation-de513f0ca2e1df382c6e82024d52434ed80138ce8d1d29a7f235e0bf796fba90.bin.gz",
-      "sha256": "de513f0ca2e1df382c6e82024d52434ed80138ce8d1d29a7f235e0bf796fba90",
-      "bytes": 4830866
+      "file": "iplocation-033b4c0d5fcd42f856e993d90b5e4858aa964c1a778d86451fe8f0f919fac1cc.bin.gz",
+      "sha256": "033b4c0d5fcd42f856e993d90b5e4858aa964c1a778d86451fe8f0f919fac1cc",
+      "bytes": 4834315
     }
   }
 }
