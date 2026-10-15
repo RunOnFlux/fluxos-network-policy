@@ -1,15 +1,93 @@
 [
   {
-    "range": "46.250.240.0/21",
-    "country": "GB",
-    "evidence": "Fleet reports GB. The address holder's own RIPE object YorkshireTech (46.250.240.0 - 46.250.255.255) carries geoloc: 51.50695934709921 -0.13581826238943562 and geofeed: https://geofeed.ipxo.com/geofeed.txt, which lists `46.250.240.0/20,GB,GB-ENG,London`. DB-IP has said AU / New South Wales in every month from 2026-06, and no source places the block in Australia.",
-    "added": "2026-08-02"
+    "range": "5.189.174.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 5.189.174.19 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.086 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "38.242.192.0/18",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 38.242.237.195 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.088 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "62.146.168.0/21",
+    "country": "US",
+    "region": "US-WA",
+    "evidence": "Fleet node 62.146.171.229 self-reports US (Washington). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.066 ms to its router); first carrier hop ae2.3615.edge6.Seattle1.net.lumen.tech, Lumen's Seattle edge, and 1.0 ms to speedtest.seattle.linode.com. Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
   },
   {
     "range": "71.172.179.0/24",
     "region": "US-NJ",
     "evidence": "2 fleet nodes report US-NJ. Every PTR that answers across the /24 is *.nwrknj.fios.verizon.net (Verizon FiOS, Newark, New Jersey) and the router at .1 is CMDNNJ-VFTTP-301.verizon-gni.net (Camden, New Jersey); both codes carry the state. DB-IP said US / Massachusetts in 2026-06 and 2026-07 and US / New York in 2026-08, and has never named New Jersey.",
     "added": "2026-08-02"
+  },
+  {
+    "range": "75.119.150.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 75.119.150.96 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.053 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 9.3 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "75.119.152.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 75.119.150.96 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.053 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 9.3 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "80.241.208.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 80.241.213.220 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.073 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 10.0 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "80.241.212.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 80.241.213.220 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.073 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 10.0 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "80.241.214.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 80.241.213.220 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.073 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 10.0 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "84.247.128.0/21",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 84.247.133.132 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.054 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Fleet node 84.247.133.134 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.08 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "84.247.136.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 84.247.133.132 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.054 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Fleet node 84.247.133.134 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.08 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "84.247.140.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 84.247.133.132 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.054 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Fleet node 84.247.133.134 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.08 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.6 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "84.247.142.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 84.247.142.161 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.067 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.4 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
   },
   {
     "range": "84.247.160.0/19",
@@ -24,15 +102,127 @@
     "added": "2026-08-02"
   },
   {
+    "range": "109.205.180.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 109.205.180.57 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.066 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 6.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
     "range": "135.181.226.0/24",
     "country": "FI",
     "evidence": "4 fleet nodes report FI. Hetzner registers the covering 135.181.0.0/16 as DE-HETZNER-19931109 with country: FI, and all 231 of its hel1-named objects carry FI while its 19,226 fsn1 and 1,342 nbg1 objects carry DE. The customer assignment inside this /24 says DE, as every Hetzner customer object inside the Finnish /16 does, so it locates nothing. DB-IP has said DE / Hesse since 2026-06 and Hetzner has no Hesse site.",
     "added": "2026-08-02"
   },
   {
+    "range": "144.91.94.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 144.91.97.114 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.064 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "144.91.96.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 144.91.97.114 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.064 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "144.91.98.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 144.91.97.114 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.064 ms to its router); first carrier hop laut-b2-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "157.173.96.0/20",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 157.173.97.240 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 9.4 ms, Nuremberg 9.3 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "161.97.116.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 161.97.121.142 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.08 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.7 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "161.97.120.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 161.97.121.142 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.08 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 5.7 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "185.202.238.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 185.202.239.115 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.052 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 6.2 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says GB/London.",
+    "added": "2026-10-15"
+  },
+  {
     "range": "188.165.26.0/24",
     "country": "FR",
     "evidence": "3 fleet nodes report FR. The covering RIPE allocation is FR-OVH-20090605 (188.165.0.0/16, country: FR); the /21 inside it is LT-OVH, descr: UAB OVH, which names the registering OVH entity and not a site. DB-IP itself said FR / Île-de-France in 2026-06 and 2026-07 and flipped to PL / Mazovia in 2026-08.",
     "added": "2026-08-02"
+  },
+  {
+    "range": "194.163.128.0/18",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 194.163.156.2 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.057 ms to its router); first carrier hop laut-b1-link.ip.twelve99.net, Arelion's Lauterbourg router; 9.5 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.49.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.50.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.52.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.56.0/22",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.60.0/23",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.62.0/24",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
+  },
+  {
+    "range": "217.76.63.0/27",
+    "country": "FR",
+    "region": "FR-GES",
+    "evidence": "Fleet node 217.76.53.112 self-reports FR (Grand Est). Measured from the node on 2026-10-15: uplink untunnelled (FluxOS uplink tunnel none, MTU 1500, 0.056 ms to its router); first carrier hop e0.dblnir2-ts1.bbnplanet.net, Lumen; its path leaves through the same Contabo site routers (10.243.x.101, 10.0.66.x) as the Lauterbourg-routed nodes, and its reference-server profile matches theirs (Amsterdam 11.0 ms, Nuremberg 7.0 ms; a node in Düsseldorf would be within 3 ms of Amsterdam, and one in Nuremberg within 1 ms of Nuremberg); 5.3 ms to sbg.proof.ovh.net (Strasbourg). Contabo's RIPE object says DE, the country Contabo registers for its Lauterbourg and Seattle ranges alike, so it names the registrant rather than the site. DB-IP 2026-10 says DE.",
+    "added": "2026-10-15"
   }
 ]
