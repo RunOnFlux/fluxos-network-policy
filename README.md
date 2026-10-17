@@ -54,16 +54,22 @@ its window, and then measures it against that reduced share, so a saturated app 
 20% back. For a game server that is lag: its tick is a latency budget, and the ticks that overrun
 it arrive late for every player.
 
-Each entry is the **lowercased marketplace name** of a game the games hub deploys. The hub names
-every server it registers `<marketplace name><Date.now()>`, and a node exempts an app only when its
+Each entry is a prefix the games hub writes for a game server: the **lowercased marketplace name**
+for every game it deploys today, plus `minecraftj` and `minecraftb`, the Java and Bedrock prefixes
+the standalone Minecraft site wrote before the hub took it over (those servers are still running).
+Every one names a server `<prefix><Date.now()>`, and a node exempts an app only when its
 name splits into a listed prefix followed by exactly that 13-digit millisecond timestamp, dated
 from 2023 to a day past the node's clock. `enshrouded1792177003381` qualifies; `enshrouded`,
 `myenshrouded1792177003381` and `enshroudedserver` do not. The match is on the whole prefix, so
 `rustserver` does not cover `rustserveroxide`: every marketplace app is listed on its own.
 
 An exempt app is held at the cpu its owner specified, never more, so a name that qualifies without
-being a game gains nothing it was not already paying for. When a new game launches on the hub, add
-its marketplace name here as part of the launch.
+being a game gains nothing it was not already paying for. The match ignores case, so the same game
+deployed straight from the marketplace (`MinecraftServer1761055063053`) is exempt too.
+
+When a new game launches on the hub, add its marketplace name here as part of the launch. The
+prefixes match the `prefixes` of the game sites in FluxView's `src/constants/dedicatedSites.js`,
+which is the other place that has to know them.
 
 Read by the FluxOS release that carries RunOnFlux/flux#1868. A node that has no copy, or finds the document malformed, exempts
 nothing and throttles as it always has.
