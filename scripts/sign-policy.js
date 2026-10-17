@@ -52,6 +52,7 @@ const DOCUMENTS = [
   'vettedrepositories',
   'tamperingblockednodes',
   'enterprisenodes',
+  'cputhrottleexempt',
 ];
 
 // Named by hash rather than carried by value, for size. Republished under a content-derived

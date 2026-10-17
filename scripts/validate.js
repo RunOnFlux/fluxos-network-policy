@@ -41,11 +41,18 @@ function isNodeOwnerMap(value) {
   );
 }
 
+// App name prefixes, compared against a lowercased app name. Anything outside [a-z0-9] could
+// never match a name the games hub mints, so it is a typo that would sit silently inert.
+function isAppNamePrefixArray(value) {
+  return Array.isArray(value) && value.every((entry) => typeof entry === 'string' && /^[a-z0-9]+$/.test(entry));
+}
+
 const DOCUMENTS = [
   { file: 'blockedrepositories.json', check: isStringArray, shape: 'an array of strings' },
   { file: 'vettedrepositories.json', check: isStringArray, shape: 'an array of strings' },
   { file: 'tamperingblockednodes.json', check: isStringArray, shape: 'an array of strings' },
   { file: 'enterprisenodes.json', check: isNodeOwnerMap, shape: 'an object of pubkey -> array of owner strings' },
+  { file: 'cputhrottleexempt.json', check: isAppNamePrefixArray, shape: 'an array of lowercase alphanumeric app name prefixes' },
 ];
 
 const problems = [];
