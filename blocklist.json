@@ -1864,5 +1864,11 @@
     "value": "1CpDqRjne5U1QWSgnJEYBh6FLYTuwZFsbi",
     "reason": "Mass deployment of the Grass bandwidth-resale client",
     "added": "2026-09-21"
+  },
+  {
+    "kind": "owner",
+    "value": "18BwQ6A4GQWksnFZWFvuCJPCVdJfX5XNPi",
+    "reason": "Unregistered apps run on the network for free, abusing node resources",
+    "added": "2026-10-20"
   }
 ]
