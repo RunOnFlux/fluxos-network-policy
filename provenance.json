@@ -1,6 +1,6 @@
 {
-  "seq": 10,
-  "issued_at": "2026-10-20T09:38:33.924Z",
+  "seq": 11,
+  "issued_at": "2026-10-21T19:20:15.961Z",
   "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
   "documents": {
     "blocklist": "312 entries",
@@ -8,7 +8,7 @@
     "vettedrepositories": "0 entries",
     "tamperingblockednodes": "14 entries",
     "enterprisenodes": "2 keys",
-    "cputhrottleexempt": "31 entries"
+    "cputhrottleexempt": "32 entries"
   },
   "artifacts": {
     "iplocation.bin.gz": {
