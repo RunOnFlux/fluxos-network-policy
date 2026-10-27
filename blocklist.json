@@ -1870,5 +1870,11 @@
     "value": "18BwQ6A4GQWksnFZWFvuCJPCVdJfX5XNPi",
     "reason": "Unregistered apps run on the network for free, abusing node resources",
     "added": "2026-10-20"
+  },
+  {
+    "kind": "owner",
+    "value": "164ubcHD6ERRkhg22qsSrvu7fHjdryJWUs",
+    "reason": "Mass deployment abusing node resources",
+    "added": "2026-10-27"
   }
 ]
