@@ -1,10 +1,10 @@
 {
-  "seq": 17,
-  "issued_at": "2026-10-27T12:58:06.102Z",
+  "seq": 18,
+  "issued_at": "2026-10-27T20:40:39.352Z",
   "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
   "documents": {
-    "blocklist": "312 entries",
-    "blockedrepositories": "293 entries",
+    "blocklist": "313 entries",
+    "blockedrepositories": "294 entries",
     "vettedrepositories": "0 entries",
     "tamperingblockednodes": "14 entries",
     "enterprisenodes": "2 keys",
