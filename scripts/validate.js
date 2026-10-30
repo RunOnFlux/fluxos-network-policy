@@ -360,6 +360,12 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
     .map((kind) => `${counts[kind]} ${kind}`)
     .join(', ');
   console.log(`${file}: ok (${parsed.length} entries — ${summary})`);
+
+  // An expired client ban is inert on every node, so it never fails CI; it is
+  // named here so it is deleted rather than left to look as if it were in force.
+  const today = new Date().toISOString().slice(0, 10);
+  parsed.filter((entry) => entry.kind === 'client' && entry.expires < today)
+    .forEach((entry) => console.log(`WARNING ${file}: client ${entry.value} expired ${entry.expires}; delete the entry`));
 })();
 
 if (problems.length) {
