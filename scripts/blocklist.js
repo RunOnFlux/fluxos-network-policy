@@ -1,5 +1,7 @@
 'use strict';
 
+const net = require('net');
+
 // The vocabulary of `blocklist.json`, and the projection that keeps
 // `blockedrepositories.json` in step with it.
 //
@@ -32,6 +34,71 @@ const HEX_ADDRESS = /^0x[0-9a-fA-F]{40}$/;
 const REGISTRY_TOKEN = /^[a-z0-9]+(?:[._-][a-z0-9]+)*$/;
 const REPOSITORY = /^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\/[a-z0-9]+(?:[._-][a-z0-9]+)*)+$/;
 
+// A `client` range: a CIDR on its own boundary, prefix always written. The floors
+// stop a typo from banning a continent; IPv6 stops at /64 because one customer is
+// given a whole /64, so a finer range bans an address its holder can step off.
+const CLIENT_PREFIX = { 4: { min: 12, max: 32 }, 6: { min: 32, max: 64 } };
+
+// Address space no submitter calls from. A range starting in it names nobody.
+// One list per family: a BlockList also checks an IPv4 address against its IPv6
+// rules in the IPv4-mapped form, which ::ffff:0:0/96 would match for every one.
+function blockListOf(ranges, family) {
+  const list = new net.BlockList();
+  ranges.forEach(([address, prefix]) => list.addSubnet(address, prefix, family));
+  return list;
+}
+const NON_PUBLIC = {
+  4: blockListOf([
+    ['0.0.0.0', 8], ['10.0.0.0', 8], ['100.64.0.0', 10], ['127.0.0.0', 8], ['169.254.0.0', 16],
+    ['172.16.0.0', 12], ['192.0.0.0', 24], ['192.0.2.0', 24], ['192.168.0.0', 16], ['198.18.0.0', 15],
+    ['198.51.100.0', 24], ['203.0.113.0', 24], ['224.0.0.0', 4], ['240.0.0.0', 4],
+  ], 'ipv4'),
+  6: blockListOf([
+    ['::', 96], ['::ffff:0:0', 96], ['64:ff9b::', 96], ['100::', 64], ['2001:db8::', 32],
+    ['fc00::', 7], ['fe80::', 10], ['ff00::', 8],
+  ], 'ipv6'),
+};
+
+// An address as an unsigned integer, so a range's boundary can be checked.
+function addressBits(address, family) {
+  if (family === 4) {
+    return address.split('.').reduce((acc, octet) => (acc << 8n) + BigInt(octet), 0n);
+  }
+  const [head, tail = ''] = address.toLowerCase().split('::');
+  const headGroups = head ? head.split(':') : [];
+  const tailGroups = address.includes('::') && tail ? tail.split(':') : [];
+  const groups = [...headGroups, ...new Array(8 - headGroups.length - tailGroups.length).fill('0'), ...tailGroups];
+  return groups.reduce((acc, group) => (acc << 16n) + BigInt(parseInt(group, 16)), 0n);
+}
+
+/**
+ * Why a `client` value is not a range the network can ban, or null.
+ * @param {string} value
+ * @returns {string|null}
+ */
+function clientRangeProblem(value) {
+  const match = /^([^/]+)\/(\d{1,3})$/.exec(value);
+  if (!match) return 'a CIDR with its prefix written, such as 203.0.113.7/32';
+  const [, address, prefixText] = match;
+  const family = net.isIP(address);
+  if (family === 0) return 'a CIDR whose address is an IPv4 or IPv6 address';
+  if (family === 6 && address.includes('.')) return 'an IPv6 range written in hexadecimal groups only';
+  const prefix = Number(prefixText);
+  const { min, max } = CLIENT_PREFIX[family];
+  if (prefix < min || prefix > max) return `an IPv${family} prefix from /${min} to /${max}`;
+  const width = family === 4 ? 32n : 128n;
+  const hostBits = width - BigInt(prefix);
+  if (addressBits(address, family) & ((1n << hostBits) - 1n)) return `a range on its own boundary — ${address} has host bits set below /${prefix}`;
+  if (NON_PUBLIC[family].check(address, family === 4 ? 'ipv4' : 'ipv6')) return 'a range in public address space';
+  return null;
+}
+
+// How long a `client` entry may stand. An address is reassigned when its renter
+// lets it go, so a ban that outlives its abuser lands on whoever rents it next;
+// renewing is a new date in a PR.
+const CLIENT_MAX_DAYS = 90;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
 const KINDS = {
   hash: {
     field: 'the application message hash',
@@ -62,6 +129,14 @@ const KINDS = {
     covers: 'every application running any image published under it',
     valid: (value) => REGISTRY_TOKEN.test(value),
     expected: 'a single registry namespace token',
+  },
+  client: {
+    field: 'the address an application message is submitted from',
+    covers: 'every registration and update submitted from that range, until it expires',
+    valid: (value) => clientRangeProblem(value) === null,
+    problem: clientRangeProblem,
+    expected: 'an IPv4 range /12 to /32 or an IPv6 range /32 to /64, on its own boundary, in public address space',
+    fields: ['expires'],
   },
 };
 
@@ -98,7 +173,8 @@ function entryProblems(entry, index) {
     // for a ban not to be in force.
     problems.push(`${at}: value has leading or trailing whitespace`);
   } else if (kind && !kind.valid(entry.value)) {
-    problems.push(`${at}: ${JSON.stringify(entry.value)} is not ${kind.expected} for kind ${entry.kind}`);
+    const detail = kind.problem ? kind.problem(entry.value) : kind.expected;
+    problems.push(`${at}: ${JSON.stringify(entry.value)} is not ${detail} for kind ${entry.kind}`);
   }
   // Why an entry exists is the part that cannot be recovered later. The 149
   // application hashes added on 2026-09-11 carried their reasoning in a commit
@@ -109,7 +185,16 @@ function entryProblems(entry, index) {
   if (typeof entry.added !== 'string' || !ISO_DATE.test(entry.added)) {
     problems.push(`${at}: added must be a YYYY-MM-DD date`);
   }
-  const allowed = new Set(['kind', 'value', 'reason', 'added']);
+  if (entry.kind === 'client') {
+    if (typeof entry.expires !== 'string' || !ISO_DATE.test(entry.expires)) {
+      problems.push(`${at}: expires must be a YYYY-MM-DD date — a client ban always ends`);
+    } else if (typeof entry.added === 'string' && ISO_DATE.test(entry.added)) {
+      const days = (Date.parse(entry.expires) - Date.parse(entry.added)) / DAY_MS;
+      if (!(days > 0)) problems.push(`${at}: expires must be after added`);
+      else if (days > CLIENT_MAX_DAYS) problems.push(`${at}: expires is ${days} days after added — at most ${CLIENT_MAX_DAYS}`);
+    }
+  }
+  const allowed = new Set(['kind', 'value', 'reason', 'added', ...(kind?.fields ?? [])]);
   const extra = Object.keys(entry).filter((key) => !allowed.has(key));
   if (extra.length) {
     problems.push(`${at}: unexpected field(s) ${extra.join(', ')}`);
@@ -153,6 +238,7 @@ function projectToRepositories(entries) {
 }
 
 module.exports = {
+  CLIENT_MAX_DAYS,
   KINDS,
   PROJECTED_KINDS,
   entryProblems,
