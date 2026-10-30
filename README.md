@@ -37,7 +37,7 @@ against:
 | `owner` | the owner identity | every application that identity registers, present and future |
 | `image` | a component repository, tag removed | every application running that exact image |
 | `org` | a registry namespace | every application running any image published under it |
-| `client` | the address a registration or update is submitted from | every app message submitted from that range, until the entry expires |
+| `client` | the address a request to a route that takes or prepares an app message comes from | every registration and update from that range, and every request preparing one, until the entry expires |
 
 **Prefer `name` over `hash` for an application you want off the network.** A non-extending update is
 free to its owner and mints a new hash: of the 149 hashes added on 2026-09-11, 23 had left the list
@@ -52,8 +52,8 @@ grafana namespace, with no way to say which was meant.
 
 A `client` entry refuses submissions, not applications. A node turns away a caller in the range at
 every route that takes or prepares an app message — registration, update, specification
-verification, pricing, the public key for an enterprise specification, the image check, and a test
-install — before doing any work for it. Behind a Flux load balancer the caller is the address the
+verification, placement feasibility, pricing, the public key for an enterprise specification, the
+image check, and a test install — before doing any work for it. Behind a Flux load balancer the caller is the address the
 balancer forwarded, so a ban never lands on the balancer. An application already registered is never
 removed or refused because of where it was submitted from: nothing records that.
 
@@ -61,13 +61,18 @@ removed or refused because of where it was submitted from: nothing records that.
 { "kind": "client", "value": "203.0.113.7/32", "reason": "why", "added": "2026-10-30", "expires": "2027-01-28" }
 ```
 
-- **`value`** is a CIDR on its own boundary with the prefix written, `/32` for one IPv4 address.
-  IPv4 runs from `/12` to `/32`, IPv6 from `/32` to `/64`: the floors stop a typo from banning a
-  continent, and one IPv6 customer holds a whole /64, so a finer range is one its holder steps off.
-  A range in private, loopback, documentation or other non-public space names nobody and fails.
-- **`expires` is required, at most 90 days after `added`.** A cloud address goes to another customer
-  when its renter lets it go, so a ban that outlives its abuser lands on whoever rents it next.
-  Renew with a new date. A node stops enforcing an entry the day after it expires; `validate.js`
+- **`value`** is a CIDR on its own boundary with the prefix written, `/32` for one IPv4 address,
+  spelled canonically: dotted decimal, or IPv6 in RFC 5952 form (lowercase, no leading zeros, the
+  longest zero run as `::`). One range then has one spelling, so the duplicate check sees every
+  copy. IPv4 runs from `/12` to `/32`, IPv6 from `/32` to `/64`: the floors stop a typo from banning
+  a continent, and one IPv6 customer holds a whole /64, so a finer range is one its holder steps off.
+- **A range that overlaps special-purpose space fails**: the IANA special-purpose registries for
+  both families, multicast and reserved IPv4, and for IPv6 anything outside global unicast
+  (2000::/3). Those addresses name no submitter; split a range around them.
+- **`expires` is required, at most 90 days after `added`, and `added` is no later than the day it
+  merges.** A cloud address goes to another customer when its renter lets it go, so a ban that
+  outlives its abuser lands on whoever rents it next. Renew with new dates. Both are calendar
+  dates. A node stops enforcing an entry the day after it expires; `validate.js`
   warns about an expired entry so it is deleted.
 - **`reason` says what the address did, never who holds it.** This repository is public.
 
