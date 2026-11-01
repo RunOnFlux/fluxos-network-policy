@@ -19,6 +19,7 @@ default branch.
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
 | `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
 | `cputhrottleexempt.json` | games-hub game servers the CPU throttle leaves at their full specified cpu | array of lowercase app name prefixes |
+| `unpaidallowances.json` | how many unpaid app messages a node takes from one client and from one admitting operator, and the submitter ranges granted a client cap of their own | object of two caps and an array of submitter entries |
 | `iplocation.bin.gz` | the IP → (organisation, country, region) table placement uses to count fault domains | generated binary artifact, see below |
 
 ### `blocklist.json`
@@ -82,6 +83,27 @@ genuine ones deploying from it.
 Read by the FluxOS release that carries RunOnFlux/flux#1897. A release that does not know the kind
 ignores the entry, and `client` is not projected into `blockedrepositories.json`, so no older node
 misreads it.
+
+### `unpaidallowances.json`
+
+A node holds at most `clientTagCap` unpaid app messages from one client and `originKeyCap` from one admitting operator, counted over the hour a pending message lives. A message stops counting once it is paid. A client is the address a registration or update came from (an IPv4 address, or an IPv6 /64), as the node that admitted it saw it; behind a Flux load balancer that is the address the balancer forwarded.
+
+```json
+{
+  "clientTagCap": 20,
+  "originKeyCap": 100,
+  "submitters": [
+    { "value": "203.0.113.7/32", "cap": 100, "reason": "what it submits", "added": "2026-11-01", "expires": "2027-01-30" }
+  ]
+}
+```
+
+- **A submitter** is a range whose callers submit for many clients from one address: a backend that registers or renews on its customers' behalf. The node that admits a message from it writes the entry's `cap` into the message, under that node's signature, and every node holds the client to that cap.
+- **`cap`** runs from `clientTagCap` to `originKeyCap`. A node takes a written cap up to the largest any entry grants, so the largest entry is the most any one node can write; every operator is still held to `originKeyCap`.
+- **`value`, `added` and `expires`** follow the `client` entry rules: a canonical CIDR within the same floors, clear of special-purpose space, and `expires` at most 90 days after `added`. An address goes to another customer when its renter lets it go, so a grant ends; renew it with new dates. A node grants nothing for an entry the day after it expires.
+- **`reason`** says what the range submits, never who holds it.
+
+A node that holds no readable copy uses its release defaults (20 and 100) and grants no range a cap of its own; it never reads an unreadable document as no cap. Read by the FluxOS release that carries RunOnFlux/flux#1897.
 
 ### `cputhrottleexempt.json`
 

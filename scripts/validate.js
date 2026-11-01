@@ -16,6 +16,7 @@ const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
 const orgclassOverrides = require('./orgclass-overrides');
 const blocklist = require('./blocklist');
+const unpaidAllowances = require('./unpaidallowances');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -366,6 +367,27 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
   const today = new Date().toISOString().slice(0, 10);
   parsed.filter((entry) => entry.kind === 'client' && entry.expires < today)
     .forEach((entry) => console.log(`WARNING ${file}: client ${entry.value} expired ${entry.expires}; delete the entry`));
+})();
+
+(() => {
+  const file = 'unpaidallowances.json';
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+  } catch (error) {
+    problems.push(`${file}: not readable as JSON — ${error.message}`);
+    return;
+  }
+  const shapeProblems = unpaidAllowances.documentProblems(parsed);
+  if (shapeProblems.length) {
+    shapeProblems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+  console.log(`${file}: ok (client ${parsed.clientTagCap}, operator ${parsed.originKeyCap}, ${parsed.submitters.length} submitter range(s))`);
+  // An expired submitter range grants nothing on any node; named so it is deleted or renewed.
+  const today = new Date().toISOString().slice(0, 10);
+  parsed.submitters.filter((entry) => entry.expires < today)
+    .forEach((entry) => console.log(`WARNING ${file}: submitter ${entry.value} expired ${entry.expires}; delete or renew the entry`));
 })();
 
 if (problems.length) {

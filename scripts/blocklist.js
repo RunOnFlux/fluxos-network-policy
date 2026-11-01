@@ -295,9 +295,12 @@ function projectToRepositories(entries) {
 
 module.exports = {
   CLIENT_MAX_DAYS,
+  DAY_MS,
   KINDS,
   PROJECTED_KINDS,
   entryProblems,
   documentProblems,
   projectToRepositories,
+  clientRangeProblem,
+  isCalendarDate,
 };
