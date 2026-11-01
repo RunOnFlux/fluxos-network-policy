@@ -65,8 +65,9 @@ removed or refused because of where it was submitted from: nothing records that.
 - **`value`** is a CIDR on its own boundary with the prefix written, `/32` for one IPv4 address,
   spelled canonically: dotted decimal, or IPv6 in RFC 5952 form (lowercase, no leading zeros, the
   longest zero run as `::`). One range then has one spelling, so the duplicate check sees every
-  copy. IPv4 runs from `/12` to `/32`, IPv6 from `/32` to `/64`: the floors stop a typo from banning
-  a continent, and one IPv6 customer holds a whole /64, so a finer range is one its holder steps off.
+  copy. IPv4 runs from `/24` to `/32`, IPv6 from `/48` to `/64`: no entry names more than one small
+  hosting range or one site, and one IPv6 customer holds a whole /64, so a finer range is one its
+  holder steps off. A node enforces the same floors and skips an entry outside them.
 - **A range that overlaps special-purpose space fails**: the IANA special-purpose registries for
   both families, multicast and reserved IPv4, and for IPv6 anything outside global unicast
   (2000::/3). Those addresses name no submitter; split a range around them.

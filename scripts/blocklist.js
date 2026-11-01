@@ -36,10 +36,12 @@ const REPOSITORY = /^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\/[a-z0-9]+(?:[._-][a-z0-9]+
 
 // A `client` range: a CIDR on its own boundary, prefix always written, in the one
 // canonical spelling - so one range can never be listed twice under two spellings,
-// and the duplicate check sees every copy. The floors stop a typo from banning a
-// continent; IPv6 stops at /64 because one customer is given a whole /64, so a
-// finer range bans an address its holder can step off.
-const CLIENT_PREFIX = { 4: { min: 12, max: 32 }, 6: { min: 32, max: 64 } };
+// and the duplicate check sees every copy. The floors stop an entry naming more
+// than one small hosting range (an IPv4 /24) or one site (an IPv6 /48); IPv6 stops
+// at /64 because one customer is given a whole /64, so a finer range bans an
+// address its holder can step off. FluxOS holds every entry to the same floors
+// (ZelBack/src/services/utils/policyRanges.js) and skips one outside them.
+const CLIENT_PREFIX = { 4: { min: 24, max: 32 }, 6: { min: 48, max: 64 } };
 const FAMILY_BITS = { 4: 32n, 6: 128n };
 
 // IPv6 unicast is allocated from 2000::/3; nothing outside it is a submitter.
@@ -183,7 +185,7 @@ const KINDS = {
     covers: 'every registration and update from that range, and every request preparing one, until it expires',
     valid: (value) => clientRangeProblem(value) === null,
     problem: clientRangeProblem,
-    expected: 'an IPv4 range /12 to /32 or an IPv6 range /32 to /64 in global unicast space, canonically spelled, on its own boundary, clear of special-purpose space',
+    expected: 'an IPv4 range /24 to /32 or an IPv6 range /48 to /64 in global unicast space, canonically spelled, on its own boundary, clear of special-purpose space',
     fields: ['expires'],
   },
 };
