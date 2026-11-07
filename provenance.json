@@ -1,20 +1,20 @@
 {
-  "seq": 23,
-  "issued_at": "2026-11-07T11:52:19.513Z",
+  "seq": 24,
+  "issued_at": "2026-11-07T21:31:11.722Z",
   "public_key": "c31930ec386a49f31321851766d93bcb90bf269cd15bec7a329155a4d79ea380",
   "documents": {
     "blocklist": "513 entries",
     "blockedrepositories": "294 entries",
     "vettedrepositories": "0 entries",
-    "tamperingblockednodes": "14 entries",
+    "tamperingblockednodes": "46 entries",
     "enterprisenodes": "2 keys",
     "cputhrottleexempt": "42 entries"
   },
   "artifacts": {
     "iplocation.bin.gz": {
-      "file": "iplocation-033b4c0d5fcd42f856e993d90b5e4858aa964c1a778d86451fe8f0f919fac1cc.bin.gz",
-      "sha256": "033b4c0d5fcd42f856e993d90b5e4858aa964c1a778d86451fe8f0f919fac1cc",
-      "bytes": 4834315
+      "file": "iplocation-22c46329cf7aec68100f60d5b89fc2fffcd76889b7b536c38508c72969eb3bd0.bin.gz",
+      "sha256": "22c46329cf7aec68100f60d5b89fc2fffcd76889b7b536c38508c72969eb3bd0",
+      "bytes": 4836164
     }
   }
 }
