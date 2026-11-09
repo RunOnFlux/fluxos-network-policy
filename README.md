@@ -13,12 +13,13 @@ default branch.
 
 | file | governs | shape |
 |---|---|---|
-| `blocklist.json` | everything that may not run anywhere: app hashes, app names, owners, images, namespaces | array of typed entries |
+| `blocklist.json` | everything the network refuses: the app hashes, app names, owners, images and namespaces that may not run anywhere, and the addresses whose registrations and updates no node takes | array of typed entries |
 | `blockedrepositories.json` | **generated** from `blocklist.json`, for releases that predate typed entries | array of strings |
 | `enterprisenodes.json` | which app owners may install on which enterprise nodes | object of node pubkey → array of owner addresses |
 | `tamperingblockednodes.json` | collateral txhashes DOSed for tampering, above the score threshold | array of strings |
 | `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
 | `cputhrottleexempt.json` | games-hub game servers the CPU throttle leaves at their full specified cpu | array of lowercase app name prefixes |
+| `unpaidallowances.json` | how many unpaid app messages a node takes from one client and from one admitting operator, and the submitter ranges granted a client cap of their own | object of two caps and an array of submitter entries |
 | `iplocation.bin.gz` | the IP → (organisation, country, region) table placement uses to count fault domains | generated binary artifact, see below |
 
 ### `blocklist.json`
@@ -37,6 +38,7 @@ against:
 | `owner` | the owner identity | every application that identity registers, present and future |
 | `image` | a component repository, tag removed | every application running that exact image |
 | `org` | a registry namespace | every application running any image published under it |
+| `client` | the address a request to a route that takes or prepares an app message comes from | every registration and update from that range, and every request preparing one, until the entry expires |
 
 **Prefer `name` over `hash` for an application you want off the network.** A non-extending update is
 free to its owner and mints a new hash: of the 149 hashes added on 2026-09-11, 23 had left the list
@@ -46,6 +48,63 @@ A kind exists so that an entry can never reach a field it was not written for. I
 an entry is a bare string tested against the image, the namespace, the owner and the hash at once,
 so `grafana` would refuse both the application called grafana and every image published under the
 grafana namespace, with no way to say which was meant.
+
+### `client` entries
+
+A `client` entry refuses submissions, not applications. A node turns away a caller in the range at
+every route that takes or prepares an app message — registration, update, specification
+verification, placement feasibility, pricing, the public key for an enterprise specification, the
+image check, and a test install — before doing any work for it. Behind a Flux load balancer the caller is the address the
+balancer forwarded, so a ban never lands on the balancer. An application already registered is never
+removed or refused because of where it was submitted from: nothing records that.
+
+```json
+{ "kind": "client", "value": "203.0.113.7/32", "reason": "why", "added": "2026-10-30", "expires": "2027-01-28" }
+```
+
+- **`value`** is a CIDR on its own boundary with the prefix written, `/32` for one IPv4 address,
+  spelled canonically: dotted decimal, or IPv6 in RFC 5952 form (lowercase, no leading zeros, the
+  longest zero run as `::`). One range then has one spelling, so the duplicate check sees every
+  copy. IPv4 runs from `/24` to `/32`, IPv6 from `/48` to `/64`: no entry names more than one small
+  hosting range or one site, and one IPv6 customer holds a whole /64, so a finer range is one its
+  holder steps off. A node enforces the same floors and skips an entry outside them.
+- **A range that overlaps special-purpose space fails**: the IANA special-purpose registries for
+  both families, multicast and reserved IPv4, and for IPv6 anything outside global unicast
+  (2000::/3). Those addresses name no submitter; split a range around them.
+- **`expires` is required, at most 90 days after `added`, and `added` is no later than the day it
+  merges.** A cloud address goes to another customer when its renter lets it go, so a ban that
+  outlives its abuser lands on whoever rents it next. Renew with new dates. Both are calendar
+  dates. A node stops enforcing an entry the day after it expires; `validate.js`
+  warns about an expired entry so it is deleted.
+- **`reason` says what the address did, never who holds it.** This repository is public.
+
+Ban addresses before ranges. A provider range turns away every customer of that provider, including
+genuine ones deploying from it.
+
+Read by the FluxOS release that carries RunOnFlux/flux#1897. A release that does not know the kind
+ignores the entry, and `client` is not projected into `blockedrepositories.json`, so no older node
+misreads it.
+
+### `unpaidallowances.json`
+
+A node holds at most `clientTagCap` unpaid app messages from one client and `originKeyCap` from one admitting operator, counted over the hour a pending message lives. A message stops counting once it is paid. A client is the address a registration or update came from (an IPv4 address, or an IPv6 /64), as the node that admitted it saw it; behind a Flux load balancer that is the address the balancer forwarded.
+
+```json
+{
+  "clientTagCap": 20,
+  "originKeyCap": 100,
+  "submitters": [
+    { "value": "203.0.113.7/32", "cap": 100, "reason": "what it submits", "added": "2026-11-01", "expires": "2027-01-30" }
+  ]
+}
+```
+
+- **A submitter** is a range whose callers submit for many clients from one address: a backend that registers or renews on its customers' behalf. The node that admits a message from it writes the entry's `cap` into the message, under that node's signature, and every node holds the client to that cap.
+- **`cap`** runs from `clientTagCap` to `originKeyCap`. A node takes a written cap up to the largest any entry grants, so the largest entry is the most any one node can write; every operator is still held to `originKeyCap`.
+- **`value`, `added` and `expires`** follow the `client` entry rules: a canonical CIDR within the same floors, clear of special-purpose space, and `expires` at most 90 days after `added`. An address goes to another customer when its renter lets it go, so a grant ends; renew it with new dates. A node grants nothing for an entry the day after it expires.
+- **`reason`** says what the range submits, never who holds it.
+
+A node that holds no readable copy uses its release defaults (20 and 100) and grants no range a cap of its own; it never reads an unreadable document as no cap. Read by the FluxOS release that carries RunOnFlux/flux#1897.
 
 ### `cputhrottleexempt.json`
 

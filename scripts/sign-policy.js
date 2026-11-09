@@ -53,6 +53,7 @@ const DOCUMENTS = [
   'tamperingblockednodes',
   'enterprisenodes',
   'cputhrottleexempt',
+  'unpaidallowances',
 ];
 
 // Named by hash rather than carried by value, for size. Republished under a content-derived
