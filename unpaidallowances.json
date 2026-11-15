@@ -1,0 +1,13 @@
+{
+  "clientTagCap": 20,
+  "originKeyCap": 100,
+  "submitters": [
+    {
+      "value": "37.59.187.37/32",
+      "cap": 100,
+      "reason": "submits subscription renewals for many customers",
+      "added": "2026-11-01",
+      "expires": "2027-01-30"
+    }
+  ]
+}

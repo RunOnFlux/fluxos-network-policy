@@ -16,8 +16,12 @@ const orgclasses = require('./orgclasses');
 const overrides = require('./overrides');
 const orgclassOverrides = require('./orgclass-overrides');
 const blocklist = require('./blocklist');
+const unpaidAllowances = require('./unpaidallowances');
 
 const ROOT = path.join(__dirname, '..');
+
+// How long before a submitter range's `expires` validate.js starts naming it.
+const SUBMITTER_RENEW_DAYS = 35;
 
 // A structurally valid but truncated generation must not publish: every node would
 // take it and silently under-resolve, discovered only from an absence of updates.
@@ -360,6 +364,38 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
     .map((kind) => `${counts[kind]} ${kind}`)
     .join(', ');
   console.log(`${file}: ok (${parsed.length} entries — ${summary})`);
+
+  // An expired client ban is inert on every node, so it never fails CI; it is
+  // named here so it is deleted rather than left to look as if it were in force.
+  const today = new Date().toISOString().slice(0, 10);
+  parsed.filter((entry) => entry.kind === 'client' && entry.expires < today)
+    .forEach((entry) => console.log(`WARNING ${file}: client ${entry.value} expired ${entry.expires}; delete the entry`));
+})();
+
+(() => {
+  const file = 'unpaidallowances.json';
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+  } catch (error) {
+    problems.push(`${file}: not readable as JSON — ${error.message}`);
+    return;
+  }
+  const shapeProblems = unpaidAllowances.documentProblems(parsed);
+  if (shapeProblems.length) {
+    shapeProblems.forEach((problem) => problems.push(`${file}: ${problem}`));
+    return;
+  }
+  console.log(`${file}: ok (client ${parsed.clientTagCap}, operator ${parsed.originKeyCap}, ${parsed.submitters.length} submitter range(s))`);
+  // An expired submitter range grants nothing on any node; named so it is deleted or renewed.
+  const today = new Date().toISOString().slice(0, 10);
+  parsed.submitters.filter((entry) => entry.expires < today)
+    .forEach((entry) => console.log(`WARNING ${file}: submitter ${entry.value} expired ${entry.expires}; delete or renew the entry`));
+  // A range still in force is named once it is within SUBMITTER_RENEW_DAYS of its end. The
+  // window is longer than the month between baseline runs, so at least one run warns.
+  const renewBy = new Date(Date.parse(today) + SUBMITTER_RENEW_DAYS * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  parsed.submitters.filter((entry) => entry.expires >= today && entry.expires <= renewBy)
+    .forEach((entry) => console.log(`WARNING ${file}: submitter ${entry.value} expires ${entry.expires}; renew the entry or let it lapse`));
 })();
 
 if (problems.length) {
