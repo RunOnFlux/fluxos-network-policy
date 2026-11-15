@@ -96,12 +96,6 @@
     "added": "2026-08-02"
   },
   {
-    "range": "94.130.14.0/26",
-    "region": "DE-SN",
-    "evidence": "2 fleet nodes report DE-SN. The RIPE object covering exactly this /26 is netname HETZNER-fsn1-dc1, descr: Hetzner Online GmbH / Datacenter fsn1-dc1. Hetzner's published data center parks are Nuremberg, Falkenstein/Vogtland and Helsinki (https://www.hetzner.com/unternehmen/rechenzentrum/); Falkenstein is in Saxony and it is Nuremberg that is in Bavaria. DB-IP has said Bavaria since 2026-06, which is Hetzner's other German park.",
-    "added": "2026-08-02"
-  },
-  {
     "range": "109.205.180.0/22",
     "country": "FR",
     "region": "FR-GES",
