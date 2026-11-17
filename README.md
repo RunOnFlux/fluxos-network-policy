@@ -138,8 +138,9 @@ nothing and throttles as it always has.
 
 A Flux node runs on bare metal or in a virtual machine. A node whose FluxOS runs inside a container
 (LXC, OpenVZ, systemd-nspawn, Docker, Podman) is told apart by its PID namespace: the host's has a
-fixed inode, a container's does not, and nothing inside the container changes which one FluxOS is
-in. A virtual machine runs its own kernel and is not a container.
+fixed inode, a container's does not, and no file or setting inside the container changes that. A
+container started in the host's PID namespace (Docker's `--pid=host`, LXC sharing the host's) reads
+as a host and is not held. A virtual machine runs its own kernel and is not a container.
 
 `true` holds every container node in DOS until it moves to a host or a virtual machine. `false`
 holds none: each still reports `flux.containerRuntime.inContainer` in `/flux/info`. A node treats
