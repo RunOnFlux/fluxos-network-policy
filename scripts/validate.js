@@ -373,6 +373,22 @@ DOCUMENTS.forEach(({ file, check, shape }) => {
 })();
 
 (() => {
+  const file = 'containerdos.json';
+  let parsed;
+  try {
+    parsed = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+  } catch (error) {
+    problems.push(`${file}: not readable as JSON — ${error.message}`);
+    return;
+  }
+  if (typeof parsed !== 'boolean') {
+    problems.push(`${file}: must be true or false`);
+    return;
+  }
+  console.log(`${file}: ok (${parsed ? 'container nodes held in DOS' : 'container nodes reported, not held'})`);
+})();
+
+(() => {
   const file = 'unpaidallowances.json';
   let parsed;
   try {
