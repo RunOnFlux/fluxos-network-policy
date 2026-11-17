@@ -20,6 +20,7 @@ default branch.
 | `vettedrepositories.json` | owners, app hashes and repos whose apps bypass user-level blocks | array of strings |
 | `cputhrottleexempt.json` | games-hub game servers the CPU throttle leaves at their full specified cpu | array of lowercase app name prefixes |
 | `unpaidallowances.json` | how many unpaid app messages a node takes from one client and from one admitting operator, and the submitter ranges granted a client cap of their own | object of two caps and an array of submitter entries |
+| `containerdos.json` | whether a node running inside a container is held in DOS | `true` or `false` |
 | `iplocation.bin.gz` | the IP → (organisation, country, region) table placement uses to count fault domains | generated binary artifact, see below |
 
 ### `blocklist.json`
@@ -132,6 +133,20 @@ which is the other place that has to know them.
 
 Read by the FluxOS release that carries RunOnFlux/flux#1868. A node that has no copy, or finds the document malformed, exempts
 nothing and throttles as it always has.
+
+### `containerdos.json`
+
+A Flux node runs on bare metal or in a virtual machine. A node whose FluxOS runs inside a container
+(LXC, OpenVZ, systemd-nspawn, Docker, Podman) is told apart by its PID namespace: the host's has a
+fixed inode, a container's does not, and nothing inside the container changes which one FluxOS is
+in. A virtual machine runs its own kernel and is not a container.
+
+`true` holds every container node in DOS until it moves to a host or a virtual machine. `false`
+holds none: each still reports `flux.containerRuntime.inContainer` in `/flux/info`. A node treats
+any value other than `true`, and a policy it has not verified, as `false`.
+
+Read by the FluxOS release that carries RunOnFlux/flux#1919. Releases before it ignore the
+document, so it can merge before that release ships.
 
 ### `blockedrepositories.json` is generated
 
